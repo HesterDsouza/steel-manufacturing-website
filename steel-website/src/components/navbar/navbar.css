@@ -1,14 +1,14 @@
 .navbar{
     display: flex;
-    align-items: end;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
     padding: 5px 0;
-    background-color: var(--white);
+    background-color: white;
     box-shadow: 0 4px 2px var(--box-shadow);
     position: sticky;
     top: 0.1px;
-    z-index: 999;
+    z-index: 9;
 
     .logo img{
         width: 100%;
@@ -16,24 +16,87 @@
         object-fit: fill;
     }
 
-    .nav-links{
+    .right{
         display: flex;
-        align-items: flex-end;
-        background-color: var(--logo-blue);
-        padding: 10px 15px;
+        flex-direction: column;
+        gap: 30px;
 
-        ul{
+        .searchbar{
+            width: 100%;
             display: flex;
-            gap: 10px;
+            gap: 5px;
 
-            li{
+            input{
+                width: 90%;
+                height: 45px;
+                padding: 10px 5px;
+                border: 1px solid black;
+            }
+
+            button{
+                border: none;
+                outline: none;
+                background-color: var(--logo-blue);
                 color: white;
-                font-weight: 600;
+                font-weight: 500;
+                cursor: pointer;
+                padding: 10px 15px;
+            }
+        }
 
-                &:hover{
-                    color: var(--dark-blue);
+        .nav-links{
+            display: flex;
+            background-color: var(--logo-blue);
+            padding: 10px 15px;
+    
+            .links-list{
+                display: flex;
+                gap: 10px;
+    
+                .links-list-item{
+                    color: white;
+                    font-weight: 600;
+                    position: relative;
+    
+                    &:hover{
+                        color: var(--dark-blue);
+                    }
+    
+                    &.expertise-container:hover .expertise-dropdown,
+                    &.services-container:hover .services-dropdown
+                    {
+                        display: block;
+                    }                    
+                }
+            }
+    
+            .expertise-dropdown, .services-dropdown{
+                display: none;
+                position: absolute;
+                background: linear-gradient(135deg, white 60%, var(--logo-blue) 100%);
+                border-radius: 5px;
+                padding: 10px;
+                z-index: 10;
+                box-shadow: 0 0 6px 4px var(--logo-blue-faded);
+                
+                ul{
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 350px;
+    
+                    li{
+                        padding: 8px 16px;
+                        color: var(--dark-blue);
+                        font-weight: 500;
+                        border-radius: 8px;
+        
+                        &:hover{
+                            color: var(--logo-blue);
+                        }
+                    }
                 }
             }
         }
     }
+
 }
