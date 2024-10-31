@@ -71,7 +71,7 @@
     }
 
     section:not(section:first-of-type){
-        padding: 0 15px;
+        padding: 15px;
         text-align: center;
 
         h2{
@@ -82,11 +82,14 @@
     .about-us{
         p{
             color: var(--steel-gray);
-            line-height: 1.6;
         }
     }
 
     .services{
+        p{
+            color: var(--steel-gray);
+        }
+        
         .cards{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -113,19 +116,69 @@
     }
 
     .values{
-        /* margin: 40px 0; */
-        /* padding: 20px; */
-        background-color: var(--logo-blue-faded);
-    }
+        .value-boxes{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
 
-    .contact-cta{
-        /* margin: 50px 0; */
-        /* padding: 30px; */
-        background-color: var(--dark-blue);
-        color: #fff;
+            .value-box:nth-of-type(2), .value-box:nth-of-type(4){
+                flex-direction: row-reverse;
+            }
 
-        h2{
-            color: #fff;
+            .value-box{
+                display: flex;
+                align-items: start;
+                justify-content: space-around;
+
+                .value-img{
+                    width: 600px;
+
+                    img{
+                        width: 100%;
+                        height: 350px;
+                        object-fit: cover;
+                        border-radius: 8px;
+                        transition: transform 0.5s ease;
+
+                        &:hover{
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+
+                .value-content{
+                    text-align: left;
+
+                    h3{
+                        color: var(--burgundy);
+                        font-size: 22px;
+                    }
+
+                    ul{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        list-style-type: square;
+                        position: relative;
+                        left: 30px;
+                        
+                        li{
+                            color: var(--logo-blue);
+                            font-size: 20px;
+                        }
+                    }
+                }
+            }
         }
     }
+
+    /* .contact-cta{
+        background-color: var(--dark-blue);
+        text-align: left;
+        color: #fff;
+
+        h3{
+            color: #fff;
+        }
+    } */
 }
