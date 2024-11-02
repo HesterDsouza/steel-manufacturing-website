@@ -6,51 +6,61 @@ import { useEffect, useRef, useState } from "react"
 
 const HomePage = () => {
   const [slideIndex, setSlideIndex] = useState(1);
-  const slides = ["/grinding.jpg", "/welding.jpg", "/lazor-cutting.jpg", "/welding2.jpg", "/lazor-welding.jpg", "/welding4.jpg", "/lazor-cutting2.jpg"];
-  const intervalRef = useRef(null);
-
   const [activeSlides, setActiveSlides] = useState(Array(8).fill(0));
-  const intervalRefs = useRef([]);
+  const mainSlideInterval = useRef(null);
+  const seviceIntervals = useRef([]);
+  
+  const slides = ["/grinding.jpg", "/welding.jpg", "/lazor-cutting.jpg", "/welding2.jpg", "/lazor-welding.jpg", "/welding4.jpg", "/lazor-cutting2.jpg"];
 
-  const serviceTitles = [
-    "Stainless Steel Railings",
-    "Steel Utilities",
-    "Metal Structures",
-    "Glass Partitions / Balustrade",
-    "Decorative Arches",
-    "Ceiling",
-    "Interior Fit-Out",
-    "Stainless Steel Gratings"
+  const services = [
+    {
+      title: "Stainless Steel Railings",
+      images: ["/services-slides/ss-railing1.jpg", "/services-slides/ss-railing2.jpg", "/services-slides/ss-railing3.jpg", "/services-slides/ss-railing4.jpg"],
+      captions: ["Partioned / Interval Railings", "Staircase Railings", "Public Railings", "Curved Staircase Railings"]
+    },
+    {
+      title: "Steel Utilities",
+      images: ["/services-slides/ss-utilities1.jpg", "/services-slides/ss-utilities2.jpg", "/services-slides/ss-utilities3.jpg", "/services-slides/ss-utilities4.jpg"],
+      captions: ["Staircases", "SS Bollards", "Spiral Stairase", "Airport Utilities"]
+    },
+    {
+      title: "Metal Structures",
+      images: ["/services-slides/metal-structure1.jpg", "/services-slides/metal-structure2.jpg", "/services-slides/metal-structure3.jpg", "/services-slides/metal-structure4.jpg"],
+      captions: ["Artisan Doors", "Decorative Claddings", "SS Canopys", "Custom Design Canopys"]
+    },
+    {
+      title: "Glass Partitions / Balustrade",
+      images: ["/services-slides/glass-work1.jpg", "/services-slides/glass-work2.jpg", "/services-slides/glass-work3.jpg", "/services-slides/glass-work4.jpg"],
+      captions: ["Staircase Glasses", "Glass Cabins", "Glass Door Designs", "Glass Partitions"]
+    },
+    {
+      title: "Decorative Arches",
+      images: ["/services-slides/decorative-arch1.jpg", "/services-slides/decorative-arch2.jpg", "/services-slides/decorative-arch3.jpg", "/services-slides/decorative-arch4.jpg"],
+      captions: ["Fifa World Cup Entrance", "Arch Lighting", "Fifa World Cup Entrance", "Arch Structure"]
+    },
+    {
+      title: "Ceiling",
+      images: ["/services-slides/ceiling1.jpg", "/services-slides/ceiling2.jpg", "/services-slides/ceiling3.jpg","/services-slides/ceiling4.jpg"],
+      captions: ["Colourful Ceilings", "SS Ceilings", "Artisan Ceilings", "Custom Design Ceilings"]
+    },
+    {
+      title: "Interior Fit-Out",
+      images: ["/services-slides/interior-fit-out1.jpg", "/services-slides/interior-fit-out2.jpg", "/services-slides/interior-fit-out3.jpg", "/services-slides/interior-fit-out4.jpg"],
+      captions: ["Wadrobes", "Furnishings", "Wall Designs", "Custom Interiors"]
+    },
+    {
+      title: "Stainless Steel Gratings",
+      images: ["/services-slides/ss-grating1.jpg", "/services-slides/ss-grating2.jpg", "/services-slides/ss-grating3.jpg", "/services-slides/ss-grating4.jpg"],
+      captions: ["Welded Grating", "Press-Locked Grating", "Swage-Locked Grating", "Riveted Grating"]
+    }
   ];
-
-  const captions = [
-    ["Partioned / Interval Railings", "Staircase Railings", "Public Railings", "Curved Staircase Railings"],
-    ["Staircases", "SS Bollards", "Spiral Stairase", "Airport Utilities"],
-    ["Artisan Doors", "Decorative Claddings", "SS Canopys", "Custom Design Canopys"],
-    ["Staircase Glasses", "Glass Cabins", "Glass Door Designs", "Glass Partitions"],
-    ["Fifa World Cup Entrance", "Arch Lighting", "Fifa World Cup Entrance", "Arch Structure"],
-    ["Colourful Ceilings", "SS Ceilings", "Artisan Ceilings", "Custom Design Ceilings"],
-    ["Wadrobes", "Furnishings", "Wall Designs", "Custom Interiors"],
-    ["Welded Grating", "Press-Locked Grating", "Swage-Locked Grating", "Riveted Grating"]
-  ];
-
-  const images = [
-    ["/services-slides/ss-railing1.jpg", "/services-slides/ss-railing2.jpg", "/services-slides/ss-railing3.jpg", "/services-slides/ss-railing4.jpg"],
-    ["/services-slides/ss-utilities1.jpg", "/services-slides/ss-utilities2.jpg", "/services-slides/ss-utilities3.jpg", "/services-slides/ss-utilities4.jpg"],
-    ["/services-slides/metal-structure1.jpg", "/services-slides/metal-structure2.jpg", "/services-slides/metal-structure3.jpg", "/services-slides/metal-structure4.jpg"],
-    ["/services-slides/glass-work1.jpg", "/services-slides/glass-work2.jpg", "/services-slides/glass-work3.jpg", "/services-slides/glass-work4.jpg"],
-    ["/services-slides/decorative-arch1.jpg", "/services-slides/decorative-arch2.jpg", "/services-slides/decorative-arch3.jpg", "/services-slides/decorative-arch4.jpg"],
-    ["/services-slides/ceiling1.jpg", "/services-slides/ceiling2.jpg", "/services-slides/ceiling3.jpg","/services-slides/ceiling4.jpg"],
-    ["/services-slides/interior-fit-out1.jpg", "/services-slides/interior-fit-out2.jpg", "/services-slides/interior-fit-out3.jpg", "/services-slides/interior-fit-out4.jpg"],
-    ["/services-slides/ss-grating1.jpg", "/services-slides/ss-grating2.jpg", "/services-slides/ss-grating3.jpg", "/services-slides/ss-grating4.jpg"]
-  ]
 
   useEffect(() => {
-    intervalRef.current = setInterval(() => {
+    mainSlideInterval.current = setInterval(() => {
       setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 5000);
 
-    return () => clearInterval(intervalRef.current);
+    return () => clearInterval(mainSlideInterval.current);
   }, [slides.length]);
 
   const changeSlide = (n) => {
@@ -59,17 +69,17 @@ const HomePage = () => {
   }
 
   useEffect(() => {
-    intervalRefs.current = activeSlides.map((_, cardIndex) =>
+    seviceIntervals.current = activeSlides.map((_, cardIndex) =>
       setInterval(() => {
         setActiveSlides((prevSlides) => {
           const updatedSlides = [...prevSlides];
           updatedSlides[cardIndex] = (updatedSlides[cardIndex] + 1) % 4;
           return updatedSlides;
         })
-      }, 3000)
+      }, 5000)
     );
 
-    return () => intervalRefs.current.forEach(clearInterval);
+    return () => seviceIntervals.current.forEach(clearInterval);
   }, [activeSlides])
 
   return (
@@ -80,9 +90,8 @@ const HomePage = () => {
             <img src={src} alt={`Slide ${index + 1}`} />
           </div>
         ))}
-        {/* Arrow buttons */}
-        <FontAwesomeIcon className="slide-arrow prev" icon={faChevronLeft} onClick={() => changeSlide(-1)} />
-        <FontAwesomeIcon className="slide-arrow next" icon={faChevronRight} onClick={() => changeSlide(1)} />
+        <FontAwesomeIcon className="slide-arrow prev" icon={faChevronLeft} onClick={() => changeSlide(-1)} aria-label="Previous Slide" role="button"/>
+        <FontAwesomeIcon className="slide-arrow next" icon={faChevronRight} onClick={() => changeSlide(1)} aria-label="Next Slide" role="button"/>
         <div className="hero-overlay">
           <h1>Building the Future with Steel Innovation</h1>
           <p>Your Trusted Partner in Fabrication, Design &amp; Installation</p>
@@ -100,17 +109,17 @@ const HomePage = () => {
           Handrail Balustrade, Water feature, Kitchen SS Table, SS Grating with modern machinary &amp; modern technology.
         </p>
         <div className="cards">
-          {serviceTitles.map((title, cardIndex) => (
+          {services.map((service, cardIndex) => (
             <div key={cardIndex} className="card">
               <div className="image-wrapper">
-                {images[cardIndex].map((imageSrc, slideIndex) => (
+                {service.images.map((imageSrc, slideIndex) => (
                   <div key={slideIndex} className={`slide ${slideIndex === activeSlides[cardIndex] ? 'active' : ''}`}>
-                    <img src={imageSrc} alt={`${title} Slide ${slideIndex + 1}`} />
-                    <p className="caption">{captions[cardIndex][slideIndex]}</p>
+                    <img src={imageSrc} alt={`${service.title} Slide ${slideIndex + 1}`} />
+                    <p className="caption">{service.captions[slideIndex]}</p>
                   </div>
                 ))}
               </div>
-              <h3>{title}</h3>
+              <h3>{service.title}</h3>
             </div>
           ))}
         </div>
@@ -133,7 +142,7 @@ const HomePage = () => {
           </div>
           <div className="value-box">
             <div className="value-img">
-              <img src="/integrity.jpg" alt="company ethics" />
+              <img src="/ethics.jpg" alt="company ethics" />
             </div>
             <div className="value-content">
               <h3>Ethical and Transparent</h3>

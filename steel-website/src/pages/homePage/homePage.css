@@ -1,5 +1,5 @@
 .homePage{
-    padding: 5px 0;
+    padding: 10px 0;
 
     .slideshow-container{
         position: relative;
@@ -36,12 +36,11 @@
             top: 50%;
             transform: translateY(-50%);
             padding: 10px 20px;
-            /* margin-top: -22px; */
             font-weight: bold;
             font-size: 24px;
             color: white;
             background-color: var(--logo-blue-faded);
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
             
             &:hover{
                 background-color: var(--steel-gray);
@@ -67,29 +66,42 @@
             color: #fff;
             background: linear-gradient(135deg, transparent 35%, var(--steel-gray) 100%);
             z-index: 2;
+
+            h1{
+                font-size: 2.4rem;
+            }
+
+            p{
+                font-size: 1.8rem;
+                font-weight: 500;
+            }
         }
     }
 
     section:not(section:first-of-type){
-        padding: 15px;
+        padding: 20px;
         text-align: center;
 
         h2{
-            color: var(--dark-blue);
+            color: var(--logo-blue);
+            font-size: 2.4rem;
+
+            &:hover{
+                color: var(--dark-blue);
+            }
         }
     }
 
-    .about-us{
+    .about-us, .services{
         p{
             color: var(--steel-gray);
+            font-size: 1.6rem;
         }
     }
 
     .services{
-        p{
-            color: var(--steel-gray);
-        }
-        
+        background-color: var(--bg-highlight);
+              
         .cards{
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -150,6 +162,7 @@
 
                 h3{
                     color: var(--burgundy);
+                    font-size: 2rem;
                 }
             }
         }
@@ -191,7 +204,7 @@
 
                     h3{
                         color: var(--burgundy);
-                        font-size: 22px;
+                        font-size: 2rem;
                     }
 
                     ul{
@@ -200,11 +213,11 @@
                         gap: 10px;
                         list-style-type: disc;
                         position: relative;
-                        left: 30px;
+                        left: 20px;
                         
                         li{
                             color: var(--logo-blue);
-                            font-size: 20px;
+                            font-size: 1.8rem;
                         }
                     }
                 }

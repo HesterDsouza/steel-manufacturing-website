@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom"
 import "./navbar.css"
-// import { useState } from "react"
 
 const Navbar = () => {
-
-  // const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <header className="navbar">
       <div className="logo">
         <img src="/logo.jpg" alt="logo" />
-      </div>      
-      <div className="right">
+      </div>
+      <div className="header-title">
+        <h1>Establishment AHMAD MOHAMED AHMAD AL-MUHANNADI FOR DECORATION</h1>
+      </div>
+      <div className="search-nav">
         <div className="searchbar">
           <input type="text" placeholder="Search"/>
           <button>Search</button>
