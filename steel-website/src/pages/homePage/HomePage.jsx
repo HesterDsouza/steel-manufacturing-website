@@ -1,16 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import SlideShow from "../../components/slideshow/SlideShow";
 import "./homePage.css"
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons"
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useRef, useState } from "react"
 
 const HomePage = () => {
-  const [slideIndex, setSlideIndex] = useState(1);
   const [activeSlides, setActiveSlides] = useState(Array(8).fill(0));
-  const mainSlideInterval = useRef(null);
   const seviceIntervals = useRef([]);
   
-  const slides = ["/grinding.jpg", "/welding.jpg", "/lazor-cutting.jpg", "/welding2.jpg", "/lazor-welding.jpg", "/welding4.jpg", "/lazor-cutting2.jpg"];
+  const slides = ["/grinding.jpg", "/welding.jpg", "/lazor-cutting.jpg", "/welding2.jpg", "/lazor-welding.jpg", "/welding3.jpg", "/lazor-cutting2.jpg"];
 
   const services = [
     {
@@ -56,19 +52,6 @@ const HomePage = () => {
   ];
 
   useEffect(() => {
-    mainSlideInterval.current = setInterval(() => {
-      setSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
-    }, 5000);
-
-    return () => clearInterval(mainSlideInterval.current);
-  }, [slides.length]);
-
-  const changeSlide = (n) => {
-    setSlideIndex((prevIndex) =>
-      (prevIndex + n + slides.length) % slides.length);
-  }
-
-  useEffect(() => {
     seviceIntervals.current = activeSlides.map((_, cardIndex) =>
       setInterval(() => {
         setActiveSlides((prevSlides) => {
@@ -84,19 +67,11 @@ const HomePage = () => {
 
   return (
     <div className="homePage">
-      <section className="slideshow-container">
-        {slides.map((src, index) => (
-          <div key={index} className={`slide ${index === slideIndex ? "active" : ""}`}>
-            <img src={src} alt={`Slide ${index + 1}`} />
-          </div>
-        ))}
-        <FontAwesomeIcon className="slide-arrow prev" icon={faChevronLeft} onClick={() => changeSlide(-1)} aria-label="Previous Slide" role="button"/>
-        <FontAwesomeIcon className="slide-arrow next" icon={faChevronRight} onClick={() => changeSlide(1)} aria-label="Next Slide" role="button"/>
-        <div className="hero-overlay">
+      <SlideShow images={slides}/>
+      <div className="hero-overlay">
           <h1>Building the Future with Steel Innovation</h1>
           <p>Your Trusted Partner in Fabrication, Design &amp; Installation</p>
-        </div>
-      </section>
+      </div>
       <section className="about-us">
         <h2>About Us</h2>
         <p>We are Qatar&apos;s leading provider of steel solutions, operating across multiple countries in selected markets headquarted in Qatar.</p>

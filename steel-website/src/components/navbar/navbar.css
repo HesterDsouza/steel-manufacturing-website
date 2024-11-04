@@ -1,11 +1,11 @@
 .navbar{
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     width: 100%;
     padding: 5px 0;
-    background-color: white;
-    box-shadow: 0 4px 2px var(--box-shadow);
+    background-color: var(--bg-highlight);
+    box-shadow: 0 4px 6px var(--box-shadow);
     position: sticky;
     top: 0.1px;
     z-index: 9;
@@ -45,14 +45,16 @@
                 width: 90%;
                 height: 45px;
                 padding: 10px 5px;
-                border: 1px solid black;
+                border: 1px solid var(--steel-gray);
+                background-color: transparent;
+                color: var(--text-primary);
                 font-size: 1.6rem;
             }
 
             button{
                 border: none;
                 outline: none;
-                background-color: var(--logo-blue);
+                background-color: var(--dark-blue);
                 color: white;
                 font-weight: 500;
                 cursor: pointer;
@@ -63,7 +65,7 @@
 
         .nav-links{
             display: flex;
-            background-color: var(--logo-blue);
+            background-color: var(--dark-blue);
             padding: 10px 15px;
     
             .links-list{
@@ -71,7 +73,7 @@
                 gap: 10px;
     
                 .links-list-item{
-                    color: white;
+                    color: var(--text-primary);
                     font-weight: 600;
                     position: relative;
 
@@ -80,7 +82,7 @@
                     }
     
                     &:hover{
-                        color: var(--dark-blue);
+                        color: var(--logo-blue);
                     }
     
                     &.expertise-container:hover .expertise-dropdown,
@@ -94,26 +96,26 @@
             .expertise-dropdown, .services-dropdown{
                 display: none;
                 position: absolute;
-                background: linear-gradient(135deg, white 60%, var(--logo-blue) 100%);
+                background: linear-gradient(135deg, var(--bg-highlight2) 0%, var(--bg-highlight2) 60%,  var(--dark-blue) 80%, var(--dark-blue) 100%);
                 border-radius: 5px;
                 padding: 10px;
                 z-index: 10;
-                box-shadow: 0 0 6px 4px var(--logo-blue-faded);
+                box-shadow: 0 0 6px 4px var(--box-shadow);
                 
                 ul{
                     display: flex;
                     flex-wrap: wrap;
-                    width: 400px;
+                    width: 300px;
     
                     li{
-                        padding: 8px 16px;
-                        color: var(--logo-blue);
+                        padding: 6px 12px;
+                        color: var(--text-primary);
                         font-weight: 500;
                         border-radius: 8px;
                         font-size: 1.6em;
         
                         &:hover{
-                            color: var(--dark-blue);
+                            color: var(--logo-blue);
                         }
                     }
                 }

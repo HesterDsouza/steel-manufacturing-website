@@ -1,6 +1,11 @@
+import SlideShow from "../../components/slideshow/SlideShow"
 import "./aboutUsPage.css"
 
 const AboutUsPage = () => {
+
+    const workers = ["/company-members/factory.jpg","/company-members/worker1.jpg","/company-members/worker2.jpg","/company-members/factory2.jpg","/company-members/worker4.jpg","/company-members/worker6.jpg","/company-members/worker7.jpg"];
+    const employees = ["/company-members/employee1.jpg", "/company-members/employee2.jpg", "/company-members/employee3.jpg"];
+
   return (
     <div className="aboutUsPage">
         <section className="hero-section">
@@ -26,6 +31,37 @@ const AboutUsPage = () => {
                 </div>
             </div>
         </section>
+        <section className="team">
+            <h2>Our Team & Facility</h2>
+            <div className="team-cards">
+                <div className="team-card">
+                    <img src="/company-members/simon.jpg" alt="Simon Pinto, CEO" />
+                    <h3>Mr. Simon Pinto</h3>
+                    <p>CEO</p>
+                </div>
+                <div className="team-card">
+                    <img src="/company-members/david.jpg" alt="David, Office Manager" />
+                    <h3>Mr. David</h3>
+                    <p>Office Manager</p>
+                </div>
+                <div className="team-card">
+                    <img src="/company-members/christyKelly.jpg" alt="Christy Kelly, Company Manager" />
+                    <h3>Mr. Christy Kelly</h3>
+                    <p>Company Manager</p>
+                </div>
+            </div>
+            <div className="office-slides">
+                <div className="factory-workers">
+                    <SlideShow images={workers} class_name="about-us"/>
+                    <h3>Our Factory and Workers</h3>
+
+                </div>
+                <div className="employees">
+                    <SlideShow images={employees} class_name="about-us"/>
+                    <h3>Our Employees</h3>
+                </div>
+            </div>
+        </section>        
         <section className="goals">
             <h2>Our Mission & Vision</h2>
             <div className="goal-content">
@@ -88,26 +124,6 @@ const AboutUsPage = () => {
                     Our work contributes meaningfully to society and the environment. Whether we&apos;re creating spaces for education, connecting communities through infrastructure, or building hospital environments conducive to healing, 
                     our purpose remains steadfast: to provide the right solution for a better society. We&apos;re not just a business; we are a responsible organization committed to building for the present and future needs of the communities we serve.
                 </p>
-            </div>
-        </section>
-        <section className="team">
-            <h2>Meet Our Members</h2>
-            <div className="team-cards">
-                <div className="team-card">
-                    <img src="/company-members/simon.jpg" alt="Simon Pinto, CEO" />
-                    <h3>Mr. Simon Pinto</h3>
-                    <p>CEO</p>
-                </div>
-                <div className="team-card">
-                    <img src="/company-members/david.jpg" alt="David, Office Manager" />
-                    <h3>Mr. David</h3>
-                    <p>Office Manager</p>
-                </div>
-                <div className="team-card">
-                    <img src="/company-members/christyKelly.jpg" alt="Christy Kelly, Company Manager" />
-                    <h3>Mr. Christy Kelly</h3>
-                    <p>Company Manager</p>
-                </div>
             </div>
         </section>
     </div>

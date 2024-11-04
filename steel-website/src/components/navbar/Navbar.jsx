@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div className="logo">
-        <img src="/logo.jpg" alt="logo" />
+        <img src="/logo.png" alt="logo" />
       </div>
       <div className="header-title">
         <h1>Establishment AHMAD MOHAMED AHMAD AL-MUHANNADI FOR DECORATION</h1>

@@ -1,15 +1,14 @@
 import "./footer.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import { faFacebook, faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
+// import { faFacebook, faInstagram, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="company-details">
         <div className="logo">
-          <img src="/logo2.png" alt="logo" />
+          <img src="/logo.png" alt="logo" />
         </div>
         <div className="company-name">
           <h2>Establishment AHMAD MOHAMED AHMAD AL-MUHANNADI FOR DECORATION</h2>
@@ -29,14 +28,29 @@ const Footer = () => {
           <div className="contact">
             <div className="phone-email">
               <p><FontAwesomeIcon className="icon" icon={faPhone}/> + 966 56 983 6636</p>
-              <p><FontAwesomeIcon className="icon" icon={faEnvelope}/> <Link to="mailto:simon.pinto@abstract.qa" className="email-link">simon.pinto@abstract.qa</Link></p>
-              {/* <p><FontAwesomeIcon className="icon" icon={faEnvelope}/>simon.pinto@abstract.qa</p> */}
+              {/* <p>
+                <FontAwesomeIcon className="icon" icon={faEnvelope}/>
+                <a 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=simon.pinto@abstract.qa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="email-link"
+                >
+                  simon.pinto@abstract.qa
+                </a>
+              </p> */}
+              <p>
+                <FontAwesomeIcon className="icon" icon={faEnvelope}/>
+                <a href="mailto:simon.pinto@abstract.qa" className="email-link">
+                  simon.pinto@abstract.qa
+                </a>
+              </p>
             </div>
-            <div className="social-icons">
+            {/* <div className="social-icons">
               <p><FontAwesomeIcon className="icon social" icon={faFacebook}/></p>
               <p><FontAwesomeIcon className="icon social" icon={faInstagram}/></p>
               <p><FontAwesomeIcon className="icon social" icon={faXTwitter}/></p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="right">
