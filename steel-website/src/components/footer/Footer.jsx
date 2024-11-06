@@ -12,6 +12,7 @@ const Footer = () => {
         </div>
         <div className="company-name">
           <h2>Establishment AHMAD MOHAMED AHMAD AL-MUHANNADI FOR DECORATION</h2>
+          <h2 className="arabic-name">المؤسسة أحمد محمد أحمد المهندي للديكور</h2>
         </div>
       </div>
       <div className="other-details">

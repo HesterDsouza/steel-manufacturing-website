@@ -10,6 +10,7 @@ const Navbar = () => {
       </div>
       <div className="header-title">
         <h1>Establishment AHMAD MOHAMED AHMAD AL-MUHANNADI FOR DECORATION</h1>
+        <h1 className="arabic-title">المؤسسة أحمد محمد أحمد المهندي للديكور</h1>
       </div>
       <div className="search-nav">
         <div className="searchbar">
@@ -54,7 +55,7 @@ const Navbar = () => {
               </div>
             </li>
             <li className="links-list-item">
-              <Link to="/projects-and-technology">Projects & Technology</Link>
+              <Link to="/products-and-technology">Products & Technology</Link>
             </li>
             <li className="links-list-item">
               <Link to="/contact">Contact</Link>

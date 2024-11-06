@@ -6,7 +6,7 @@ const HomePage = () => {
   const [activeSlides, setActiveSlides] = useState(Array(8).fill(0));
   const seviceIntervals = useRef([]);
   
-  const slides = ["/grinding.jpg", "/welding.jpg", "/lazor-cutting.jpg", "/welding2.jpg", "/lazor-welding.jpg", "/welding3.jpg", "/lazor-cutting2.jpg"];
+  const slides = ["/grinding.jpg", "/welding.jpg", "/lazer-cutting.jpg", "/welding2.jpg", "/lazer-welding.jpg", "/welding3.jpg", "/lazer-cutting2.jpg"];
 
   const services = [
     {
