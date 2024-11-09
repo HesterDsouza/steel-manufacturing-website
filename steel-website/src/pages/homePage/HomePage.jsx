@@ -1,3 +1,4 @@
+import InfoCard from "../../components/infoCard/InfoCard";
 import SlideShow from "../../components/slideshow/SlideShow";
 import "./homePage.css"
 import { useEffect, useRef, useState } from "react"
@@ -84,18 +85,24 @@ const HomePage = () => {
           Handrail Balustrade, Water feature, Kitchen SS Table, SS Grating with modern machinary &amp; modern technology.
         </p>
         <div className="cards">
-          {services.map((service, cardIndex) => (
-            <div key={cardIndex} className="card">
-              <div className="image-wrapper">
-                {service.images.map((imageSrc, slideIndex) => (
-                  <div key={slideIndex} className={`slide ${slideIndex === activeSlides[cardIndex] ? 'active' : ''}`}>
-                    <img src={imageSrc} alt={`${service.title} Slide ${slideIndex + 1}`} />
-                    <p className="caption">{service.captions[slideIndex]}</p>
-                  </div>
-                ))}
-              </div>
-              <h3>{service.title}</h3>
-            </div>
+          {services.map((service, index) => (
+            // <div key={cardIndex} className="card">
+            //   <div className="image-wrapper">
+            //     {service.images.map((imageSrc, slideIndex) => (
+            //       <div key={slideIndex} className={`slide ${slideIndex === activeSlides[cardIndex] ? 'active' : ''}`}>
+            //         <img src={imageSrc} alt={`${service.title} Slide ${slideIndex + 1}`} />
+            //         <p className="caption">{service.captions[slideIndex]}</p>
+            //       </div>
+            //     ))}
+            //   </div>
+            //   <h3>{service.title}</h3>
+            // </div>
+            <InfoCard 
+              key={index}
+              title={service.title}
+              images={service.images}
+              description={service.captions}
+            />
           ))}
         </div>
       </section>

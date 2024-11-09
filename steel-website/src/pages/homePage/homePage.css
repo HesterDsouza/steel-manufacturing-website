@@ -50,10 +50,10 @@
             gap: 20px;
             justify-items: center;
 
-            .card{
+            /* .card{
                 background-color: var(--bg-highlight);
                 padding: 20px;
-                /* box-shadow: 0 4px 8px var(--box-shadow); */
+                box-shadow: 0 4px 8px var(--box-shadow);
                 transition: box-shadow 0.5s ease-in-out;
                 text-align: center;
                 width: 90%;
@@ -103,7 +103,7 @@
                     color: var(--burgundy);
                     font-size: 2rem;
                 }
-            }
+            } */
         }
     }
 

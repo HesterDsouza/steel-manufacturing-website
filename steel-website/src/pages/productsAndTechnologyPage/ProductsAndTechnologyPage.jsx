@@ -6,7 +6,7 @@ const ProductsAndTechnologyPage = () => {
   const products = [
     {
       title: "Railings",
-      images: ["/pdf-images/railings/railing1.JPG","/pdf-images/railings/railing2.JPG","/pdf-images/railings/railing3.JPG","/pdf-images/railings/railing4.JPG","/pdf-images/railings/railing5.JPG","/pdf-images/railings/railing6.JPG","/pdf-images/railings/railing7.JPG","/pdf-images/railings/railing8.JPG","/pdf-images/railings/railing9.JPG","/pdf-images/railings/railing10.JPG","/pdf-images/railings/railing11.JPG","/pdf-images/railings/railing12.JPG","/pdf-images/railings/railing13.JPG","/pdf-images/railings/railing14.JPG", "/pdf-images/railings/railing15.JPG"],
+      images: ["/products/railings/railing1.JPG","/products/railings/railing2.JPG","/products/railings/railing3.JPG","/products/railings/railing4.JPG","/products/railings/railing5.JPG","/products/railings/railing6.JPG","/products/railings/railing7.JPG","/products/railings/railing8.JPG","/products/railings/railing9.JPG","/products/railings/railing10.JPG","/products/railings/railing11.JPG","/products/railings/railing12.JPG","/products/railings/railing13.JPG","/products/railings/railing14.JPG", "/products/railings/railing15.JPG"],
       description: [
         "Black metal railings of a white spiral staircase, showcasing a modern and elegant design.",
         "Intricate metal railings of a stairway featuring geometric designs, showcasing modern craftsmanship and artistic detail.",
@@ -27,7 +27,7 @@ const ProductsAndTechnologyPage = () => {
     },
     {
       title: "Canopies",
-      images: ["/pdf-images/canopies/canopy1.JPG","/pdf-images/canopies/canopy2.JPG","/pdf-images/canopies/canopy3.JPG","/pdf-images/canopies/canopy4.JPG","/pdf-images/canopies/canopy5.JPG","/pdf-images/canopies/canopy6.JPG","/pdf-images/canopies/canopy7.JPG","/pdf-images/canopies/canopy8.JPG","/pdf-images/canopies/canopy9.JPG","/pdf-images/canopies/canopy10.JPG","/pdf-images/canopies/canopy11.JPG","/pdf-images/canopies/canopy12.JPG","/pdf-images/canopies/canopy13.JPG","/pdf-images/canopies/canopy14.JPG"],
+      images: ["/products/canopies/canopy1.JPG","/products/canopies/canopy2.JPG","/products/canopies/canopy3.JPG","/products/canopies/canopy4.JPG","/products/canopies/canopy5.JPG","/products/canopies/canopy6.JPG","/products/canopies/canopy7.JPG","/products/canopies/canopy8.JPG","/products/canopies/canopy9.JPG","/products/canopies/canopy10.JPG","/products/canopies/canopy11.JPG","/products/canopies/canopy12.JPG","/products/canopies/canopy13.JPG","/products/canopies/canopy14.JPG"],
       description: [
         "A modern Nespresso kiosk showcasing coffee machines and capsules with prominent branding and a decorative coffee-themed wall.", 
         "A rectangular, open café kiosk with a wooden structure, metal grids, hanging lights, and seating around a counter.",
@@ -46,27 +46,31 @@ const ProductsAndTechnologyPage = () => {
       ]
     },
     {
-      title: "Table Furniture",
-      images: ["/pdf-images/tables/table1.JPG","/pdf-images/tables/table2.JPG","/pdf-images/tables/table3.JPG","/pdf-images/tables/table4.JPG","/pdf-images/tables/table5.JPG","/pdf-images/tables/table7.JPG","/pdf-images/tables/table8.JPG","/pdf-images/tables/table9.JPG","/pdf-images/tables/table17.JPG","/pdf-images/tables/table18.JPG","/pdf-images/tables/table20.JPG","/pdf-images/tables/table21.JPG","/pdf-images/tables/table24.JPG"],
+      title: "Tables",
+      images: ["/products/tables/table1.JPG","/products/tables/table2.JPG","/products/tables/table3.JPG","/products/tables/table4.JPG","/products/tables/table5.JPG","/products/tables/table6.JPG","/products/tables/table7.JPG","/products/tables/table8.JPG","/products/tables/table9.JPG","/products/tables/table10.JPG","/products/tables/table11.JPG","/products/tables/table12.JPG","/products/tables/table13.JPG","/products/tables/table14.JPG","/products/tables/table15.JPG","/products/tables/table16.JPG","/products/tables/table17.JPG",],
       description: [
-        "A metal table featuring a modern geometric design, showcasing intricate patterns and a sleek finish.",
-        "A round metal table featuring a smooth wooden top, blending modern and rustic design elements.",
-        "A black metal shelf supporting a wooden shelf, showcasing a modern and industrial design aesthetic.",
-        "A black metal stand featuring four sturdy shelves for versatile storage and display options.",
+        "Metal table featuring a geometric design, showcasing modern aesthetics, intricate patterns and a sleek finish",
+        "Round metal table featuring a wooden top, showcasing a blend of modern and rustic design elements.",
+        "Black metal shelf featuring a wooden shelf, showcasing a modern and industrial design aesthetic.",
         "Wodden table with unique steel bar suspensions design",
-        "A wooden nightstand featuring two drawers, elegantly designed for bedside storage and organization.",
+        "Glass table featuring a wooden base and a sleek glass top, showcasing modern design and elegance.",
+        "Wooden nightstand featuring two drawers, elegantly designed for bedside storage and organization.",
         "A triangular glass table with a sleek metal frame, showcasing modern design and elegance in a contemporary setting.",
         "Intricate table and seats stainless steel model",
-        "A stylish black metal table with a durable metal frame, perfect for enhancing modern interior spaces.",
-        "An artistic wooden sculpture complemented by a wire hanging, highlighting the blend of natural and crafted elements.",
-        "Industrial-style cabinet featuring two solid doors and one glass door, showcasing a blend of functionality and modern design.",
-        "Modern shelf featuring a black metal and wood finish, supported by two elegant metal triangles for a unique aesthetic.",
-        "Modern glass and metal side table adorned with a stylish vase, enhancing the aesthetic of the living space."
+        "Black and white table surrounded by four chairs, creating a minimalist and elegant dining space.",
+        "Black metal table featuring a sturdy metal frame, showcasing a sleek and modern design suitable for various settings.",
+        "Black metal cube featuring an intricate geometric design, showcasing sharp angles and a modern aesthetic.",
+        "Bench set featuring two benches and a central table, ideal for outdoor gatherings and relaxation.",
+        "Modern metal table featuring a sleek glass top that showcases a modern and minimalist design aesthetic.",
+        "Modern glass and metal side table featuring a decorative vase on top, showcasing modern design and elegance.",
+        "Glass table featuring a sleek metal frame and sturdy metal base, showcasing modern design and elegance.",
+        "Glass table featuring a sleek metal base, adorned with a decorative vase on top.",
+        "Glass table featuring a sleek black base and vibrant blue top, showcasing modern design and elegance.",
       ]
     },
     {
       title: "Racks",
-      images: ["/pdf-images/racks/rack1.JPG","/pdf-images/racks/rack2.JPG","/pdf-images/racks/rack3.JPG","/pdf-images/racks/rack4.JPG","/pdf-images/racks/rack5.JPG","/pdf-images/racks/rack6.JPG"],
+      images: ["/products/racks/rack1.JPG","/products/racks/rack2.JPG","/products/racks/rack3.JPG","/products/racks/rack4.JPG","/products/racks/rack5.JPG","/products/racks/rack6.JPG"],
       description: [
         "Sturdy metal rack for displaying a motorcycle, emphasizing its design and enhancing showroom appeal.", 
         "A blue metal shelf featuring three sturdy shelves for storage and organization.",
@@ -77,29 +81,29 @@ const ProductsAndTechnologyPage = () => {
       ]
     },
     {
-      title: "Chair Furniture",
-      images: ["/pdf-images/chairs/chair1.JPG", "/pdf-images/chairs/chair2.JPG", "/pdf-images/chairs/chair3.JPG", "/pdf-images/chairs/chair4.JPG","/pdf-images/chairs/chair5.JPG","/pdf-images/chairs/chair7.JPG","/pdf-images/chairs/chair8.JPG","/pdf-images/chairs/chair9.JPG","/pdf-images/chairs/chair10.JPG","/pdf-images/chairs/chair11.JPG","/pdf-images/chairs/chair12.JPG","/pdf-images/chairs/chair13.JPG","/pdf-images/chairs/chair14.JPG","/pdf-images/chairs/chair15.JPG","/pdf-images/chairs/chair16.JPG"],
+      title: "Chairs",
+      images: ["/products/chairs/chair1.JPG", "/products/chairs/chair2.JPG", "/products/chairs/chair3.JPG", "/products/chairs/chair4.JPG","/products/chairs/chair5.JPG","/products/chairs/chair6.JPG","/products/chairs/chair7.JPG","/products/chairs/chair8.JPG","/products/chairs/chair9.JPG","/products/chairs/chair10.JPG","/products/chairs/chair11.JPG","/products/chairs/chair12.JPG","/products/chairs/chair13.JPG","/products/chairs/chair14.JPG","/products/chairs/chair15.JPG"],
       description: [
         "Sleek metal stool featuring a modern black seat, perfect for contemporary spaces and versatile seating options.",
         "Sturdy black metal bench featuring a chain, highlighting its robust design and potential for public use.",
-        "Cozy outdoor seating arrangement with two benches flanking a central table, perfect for socializing.",
         "Metal-framed bench with a wooden seat, perfect for parks or gardens, offering a blend of durability and comfort.",
-        "Table accompanied by two chairs, positioned within a garage setting.",
         "An elegant bench featuring a combination of iron and wood, highlighting strength and aesthetic appeal in outdoor settings.",
         "Stylish stool with a wooden seat and durable metal legs, perfect for adding seating to any space.",
         "Sturdy bench crafted from wood and metal, showcasing a blend of natural and industrial design elements.",
+        "Stylish wooden and metal bench blending natural and industrial elements for a modern outdoor setting.",
         "Contemporary chair with a stylish curved back and a plush white cushion, ideal for adding elegance to any space.",
         "Wooden chair featuring a sleek black frame and seat, showcasing a modern and minimalist design.",
         "Stylish chair with a wooden seat and contrasting black legs, perfect for contemporary interior decor.",
-        "Pair of stylish wooden bar stools with sturdy metal legs, ideal for contemporary dining spaces.",
+        "Two sturdy chairs with wood and black metal finish, positioned within a garage setting.",
         "A sleek bench featuring a wooden seat and metal frame, perfect for outdoor relaxation and contemporary aesthetics.",
         "Elegant black and gold chair with a wooden base, combining luxury and comfort for any living space.",
+        "Pair of stylish wooden bar stools with sturdy metal legs, ideal for contemporary dining spaces.",
         "Stylish bench featuring a metal frame, decorated with lush plants for a vibrant outdoor ambiance.",
       ]
     },
     {
       title: "Decorative Panels",
-      images: ["/pdf-images/decorative-panels/deco-panel1.JPG","/pdf-images/decorative-panels/deco-panel2.JPG","/pdf-images/decorative-panels/deco-panel3.JPG","/pdf-images/decorative-panels/deco-panel4.JPG","/pdf-images/decorative-panels/deco-panel5.JPG","/pdf-images/decorative-panels/deco-panel6.JPG"],
+      images: ["/products/deco-panels/deco-panel1.JPG","/products/deco-panels/deco-panel2.JPG","/products/deco-panels/deco-panel3.JPG","/products/deco-panels/deco-panel4.JPG","/products/deco-panels/deco-panel5.JPG","/products/deco-panels/deco-panel6.JPG"],
       description: [
         "Brown metal panel with a sleek design, suitable for outdoor or architectural use, adding a warm aesthetic.", 
         "Large brown metal panel, designed with durability and style, ideal for industrial or decorative purposes.",

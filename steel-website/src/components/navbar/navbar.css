@@ -68,10 +68,11 @@
         .nav-links{
             display: flex;
             background-color: var(--dark-blue);
-            padding: 10px 15px;
+            padding: 12px 15px;
     
             .links-list{
                 display: flex;
+                align-items: center;
                 gap: 10px;
     
                 .links-list-item{
@@ -79,8 +80,9 @@
                     font-weight: 600;
                     position: relative;
 
-                    a{
+                    a, p{
                         font-size: 1.6rem;
+                        margin: 0;
                     }
     
                     &:hover{
@@ -98,6 +100,7 @@
             .expertise-dropdown, .services-dropdown{
                 display: none;
                 position: absolute;
+                top: 120%;
                 background: linear-gradient(135deg, var(--bg-highlight2) 0%, var(--bg-highlight2) 60%,  var(--dark-blue) 80%, var(--dark-blue) 100%);
                 border-radius: 5px;
                 padding: 10px;
