@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import "./infoCard.css";
 import PropTypes from "prop-types";
 
-const InfoCard = ({ images, title, description, class_name }) => {
+const InfoCard = ({ images, title, description, onClick, class_name = "" }) => {
 
   const [activeSlide, setActiveSlide] = useState(0);
   const intervalRef = useRef();
@@ -16,7 +16,7 @@ const InfoCard = ({ images, title, description, class_name }) => {
   }, [images.length]);
 
   return (
-    <div className={`card ${class_name}`}>
+    <div className={`card ${class_name}`} onClick={onClick}>
       <div className="image-wrapper">
         {images.map((src, index) => (
           <div key={index} className={`slide ${index === activeSlide ? "active" : ""}`}>
@@ -34,11 +34,8 @@ InfoCard.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onClick: PropTypes.func,
   class_name: PropTypes.string
-}
-
-InfoCard.defaultProps = {
-  class_name: ""
 }
 
 export default InfoCard

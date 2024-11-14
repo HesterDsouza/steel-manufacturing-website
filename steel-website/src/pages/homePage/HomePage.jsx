@@ -86,17 +86,6 @@ const HomePage = () => {
         </p>
         <div className="cards">
           {services.map((service, index) => (
-            // <div key={cardIndex} className="card">
-            //   <div className="image-wrapper">
-            //     {service.images.map((imageSrc, slideIndex) => (
-            //       <div key={slideIndex} className={`slide ${slideIndex === activeSlides[cardIndex] ? 'active' : ''}`}>
-            //         <img src={imageSrc} alt={`${service.title} Slide ${slideIndex + 1}`} />
-            //         <p className="caption">{service.captions[slideIndex]}</p>
-            //       </div>
-            //     ))}
-            //   </div>
-            //   <h3>{service.title}</h3>
-            // </div>
             <InfoCard 
               key={index}
               title={service.title}

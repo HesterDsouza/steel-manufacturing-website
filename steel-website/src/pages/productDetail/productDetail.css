@@ -1,0 +1,19 @@
+.productDetail{
+    padding: 10px 12px;
+
+    h1{
+        font-size: 2.8rem;
+        color: var(--logo-blue);
+        text-align: center;
+    }
+
+    .cards-container{
+        margin-bottom: 30px;
+
+        &.product-detail{
+            .card .card-content h3{
+                display: none;
+            }
+        }
+    }
+}

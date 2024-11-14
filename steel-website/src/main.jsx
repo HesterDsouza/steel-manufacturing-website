@@ -6,6 +6,8 @@ import RootLayout from './layouts/rootLayout/RootLayout.jsx';
 import HomePage from './pages/homePage/HomePage.jsx';
 import AboutUsPage from './pages/aboutUsPage/AboutUsPage.jsx';
 import ProductsAndTechnologyPage from './pages/productsAndTechnologyPage/ProductsAndTechnologyPage.jsx';
+import ContactPage from './pages/contactPage/ContactPage.jsx';
+import ProductDetail from './pages/productDetail/ProductDetail.jsx';
 // import App from './App.jsx'
 
 const router = createBrowserRouter([
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: '/products-and-technology',
         element: <ProductsAndTechnologyPage />
+      },
+      {
+        path: '/products-and-technology/:productId',
+        element: <ProductDetail />
+      },
+      {
+        path: '/contact',
+        element: <ContactPage />
       },
     ]
   }

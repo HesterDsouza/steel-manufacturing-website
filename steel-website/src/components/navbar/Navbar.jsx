@@ -23,7 +23,7 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li className="links-list-item expertise-container">
-              <p className="expertise-button">Our Expertise</p>
+              <Link className="expertise-button">Our Expertise</Link>
               <div className="expertise-dropdown">
                 <ul>
                   <li>Stainless Steel</li>
@@ -41,7 +41,7 @@ const Navbar = () => {
               <Link to="/about-us">About Us</Link>
             </li>
             <li className="links-list-item services-container">
-              <p>Services</p>
+              <Link>Services</Link>
               <div className="services-dropdown">
                 <ul>
                   <li><Link>Stainless Steel / Galvanized Steel Railing</Link></li>

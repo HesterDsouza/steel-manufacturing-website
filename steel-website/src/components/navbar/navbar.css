@@ -80,7 +80,7 @@
                     font-weight: 600;
                     position: relative;
 
-                    a, p{
+                    a{
                         font-size: 1.6rem;
                         margin: 0;
                     }
@@ -92,20 +92,24 @@
                     &.expertise-container:hover .expertise-dropdown,
                     &.services-container:hover .services-dropdown
                     {
-                        display: block;
+                        opacity: 1;
+                        visibility: visible;
                     }                    
                 }
             }
     
             .expertise-dropdown, .services-dropdown{
-                display: none;
+                display: block;
                 position: absolute;
-                top: 120%;
+                top: 25px;
                 background: linear-gradient(135deg, var(--bg-highlight2) 0%, var(--bg-highlight2) 60%,  var(--dark-blue) 80%, var(--dark-blue) 100%);
                 border-radius: 5px;
                 padding: 10px;
                 z-index: 10;
                 box-shadow: 0 0 6px 4px var(--box-shadow);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
                 
                 ul{
                     display: flex;
