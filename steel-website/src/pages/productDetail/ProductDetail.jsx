@@ -1,5 +1,5 @@
 import DetailsCard from "../../components/detailsCard/DetailsCard"
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import "./productDetail.css"
 
 const ProductDetail = () => {
@@ -47,6 +47,18 @@ const ProductDetail = () => {
     <div className="productDetail">
         <h1>{productTitle}</h1>
         <DetailsCard collections={collections} class_name="product-detail"/>
+        <section className="contact-section">
+            <h2>Let&apos;s Work Together</h2>
+            <p>
+            If you&apos;re looking for exceptional craftsmanship, innovative designs, and reliable service, look no further. Contact us today to discuss your project and explore how we can bring your vision to life.
+            Whether it&apos;s a small custom piece or a large industrial project, our team is ready to turn your ideas into reality.
+            </p>
+            <Link to="/contact">
+                <button className="contact-button">
+                    Contact Us
+                </button>
+            </Link>
+      </section>
     </div>
   )
 }

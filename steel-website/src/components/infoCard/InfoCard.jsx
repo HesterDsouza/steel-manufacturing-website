@@ -33,7 +33,7 @@ const InfoCard = ({ images, title, description, onClick, class_name = "" }) => {
 InfoCard.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.arrayOf(PropTypes.string).isRequired,
+  description: PropTypes.arrayOf(PropTypes.string),
   onClick: PropTypes.func,
   class_name: PropTypes.string
 }

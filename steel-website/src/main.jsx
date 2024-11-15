@@ -8,6 +8,7 @@ import AboutUsPage from './pages/aboutUsPage/AboutUsPage.jsx';
 import ProductsAndTechnologyPage from './pages/productsAndTechnologyPage/ProductsAndTechnologyPage.jsx';
 import ContactPage from './pages/contactPage/ContactPage.jsx';
 import ProductDetail from './pages/productDetail/ProductDetail.jsx';
+import ServicePage from './pages/servicePage/ServicePage.jsx';
 // import App from './App.jsx'
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/products-and-technology/:productId',
         element: <ProductDetail />
+      },
+      {
+        path: "/services",
+        element: <ServicePage />
       },
       {
         path: '/contact',

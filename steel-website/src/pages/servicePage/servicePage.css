@@ -1,0 +1,74 @@
+.servicePage{
+    padding: 10px 0;
+
+    .hero-section{
+        background: linear-gradient(155deg, var(--dark-blue) 0%, var(--dark-blue) 45%, var(--steel-gray) 85%, var(--steel-gray) 100%);
+        /* background-color: var(--logo-blue); */
+        color: #fff;
+        padding: 60px 20px;
+        text-align: center;
+        margin-bottom: 40px;
+
+        .hero-content{
+            h1{
+                font-size: 3.6rem;
+                margin: 0;
+            }
+
+            p{
+                font-size: 2rem;
+                margin: 10px 0 0;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .expertise, .commitment, .contact-section{
+        padding: 1rem 1.2rem;
+
+        h2{
+            font-size: 2.4rem;
+            margin: 0;
+            color: var(--logo-blue);
+        }
+
+        p{
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        ul{
+            li{
+                margin: 0.5em 0;
+                font-size: 1.6rem;
+                color: var(--text-secondary);
+
+                strong{
+                    font-size: 1.8rem;
+                    color: var(--gold-brass);
+                }
+            }
+        }
+    }
+
+    .commitment{
+        background-color: var(--bg-highlight);
+    }
+
+    .contact-section .contact-button{
+        font-size: 2.2rem;
+        font-weight: bold;
+        background-color: transparent;
+        color: var(--text-primary);
+        padding: 10px 12px;
+        border: 1px solid var(--dark-blue);
+        cursor: pointer;
+        transition: background-color 0.5s ease-in-out;
+
+        &:hover{
+            background-color: var(--dark-blue);
+            border: none;
+        }
+    }
+}

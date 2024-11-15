@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DetailsCard from "../../components/detailsCard/DetailsCard";
 import InfoCard from "../../components/infoCard/InfoCard";
 import "./productsAndTechnologyPage.css"
@@ -43,6 +43,11 @@ const ProductsAndTechnologyPage = () => {
       images: ["/products/home-decos/home-deco1.JPG","/products/home-decos/home-deco2.JPG","/products/home-decos/home-deco3.JPG","/products/home-decos/home-deco4.JPG","/products/home-decos/home-deco5.JPG","/products/home-decos/home-deco6.JPG","/products/home-decos/home-deco7.JPG","/products/home-decos/home-deco8.JPG","/products/home-decos/home-deco9.JPG","/products/home-decos/home-deco10.JPG","/products/home-decos/home-deco11.JPG","/products/home-decos/home-deco12.JPG","/products/home-decos/home-deco13.JPG","/products/home-decos/home-deco14.JPG","/products/home-decos/home-deco15.JPG","/products/home-decos/home-deco16.JPG","/products/home-decos/home-deco17.JPG","/products/home-decos/home-deco18.JPG","/products/home-decos/home-deco19.JPG","/products/home-decos/home-deco20.JPG","/products/home-decos/home-deco21.JPG",],
       description: []
     },
+    {
+      title: "SS Gratings",
+      images: [],
+      description: []
+    }
   ];
 
   const handleCardClick = (title) => {
@@ -123,6 +128,18 @@ const ProductsAndTechnologyPage = () => {
       <section className="tech-section">
         <h2>Our Technology</h2>
         <DetailsCard collections={techs} />
+      </section>
+      <section className="contact-section">
+            <h2>Let&apos;s Work Together</h2>
+            <p>
+            If you&apos;re looking for exceptional craftsmanship, innovative designs, and reliable service, look no further. Contact us today to discuss your project and explore how we can bring your vision to life.
+            Whether it&apos;s a small custom piece or a large industrial project, our team is ready to turn your ideas into reality.
+            </p>
+            <Link to="/contact">
+                <button className="contact-button">
+                    Contact Us
+                </button>
+            </Link>
       </section>
     </div>
   )

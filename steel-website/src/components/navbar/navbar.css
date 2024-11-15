@@ -89,7 +89,6 @@
                         color: var(--logo-blue);
                     }
     
-                    &.expertise-container:hover .expertise-dropdown,
                     &.services-container:hover .services-dropdown
                     {
                         opacity: 1;
@@ -98,7 +97,7 @@
                 }
             }
     
-            .expertise-dropdown, .services-dropdown{
+            .services-dropdown{
                 display: block;
                 position: absolute;
                 top: 25px;

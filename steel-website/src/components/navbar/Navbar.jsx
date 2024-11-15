@@ -3,6 +3,8 @@ import "./navbar.css"
 
 const Navbar = () => {
 
+  // const navigate = useNavigate();
+
   return (
     <header className="navbar">
       <div className="logo">
@@ -22,8 +24,8 @@ const Navbar = () => {
             <li className="links-list-item">
               <Link to="/">Home</Link>
             </li>
-            <li className="links-list-item expertise-container">
-              <Link className="expertise-button">Our Expertise</Link>
+            {/* <li className="links-list-item expertise-container">
+              <span>Our Expertise</span>
               <div className="expertise-dropdown">
                 <ul>
                   <li>Stainless Steel</li>
@@ -36,15 +38,15 @@ const Navbar = () => {
                   <li>Assembly & Installation</li>
                 </ul>
               </div>
-            </li>
+            </li> */}
             <li className="links-list-item">
               <Link to="/about-us">About Us</Link>
             </li>
             <li className="links-list-item services-container">
-              <Link>Services</Link>
+              <Link to="/services">Services</Link>
               <div className="services-dropdown">
                 <ul>
-                  <li><Link>Stainless Steel / Galvanized Steel Railing</Link></li>
+                  <li><Link to="/products-and-technology/railings">Stainless Steel / Galvanized Steel Railing</Link></li>
                   <li><Link>Stainless Steel</Link></li>
                   <li><Link>Glass</Link></li>
                   <li><Link>Decorative Arch</Link></li>
