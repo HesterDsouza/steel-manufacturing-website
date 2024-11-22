@@ -7,12 +7,14 @@ const Navbar = () => {
 
   return (
     <header className="navbar">
-      <div className="logo">
-        <img src="/logo.png" alt="logo" />
-      </div>
-      <div className="header-title">
-        <h1>Establishment AHMAD MOHAMED AHMAD AL-MUHANNADI FOR DECORATION</h1>
-        <h1 className="arabic-title">المؤسسة أحمد محمد أحمد المهندي للديكور</h1>
+      <div className="logo-title">
+        <div className="logo">
+          <img src="/logo.png" alt="logo" />
+        </div>
+        <div className="header-title">
+          <h1>Establishment AHMAD MOHAMED AHMAD AL-MUHANNADI FOR DECORATION</h1>
+          <h1 className="arabic-title">المؤسسة أحمد محمد أحمد المهندي للديكور</h1>
+        </div>
       </div>
       <div className="search-nav">
         <div className="searchbar">
@@ -24,21 +26,6 @@ const Navbar = () => {
             <li className="links-list-item">
               <Link to="/">Home</Link>
             </li>
-            {/* <li className="links-list-item expertise-container">
-              <span>Our Expertise</span>
-              <div className="expertise-dropdown">
-                <ul>
-                  <li>Stainless Steel</li>
-                  <li>Black Iron Steel</li>
-                  <li>Decorative Steel</li>
-                  <li>Galvanized Steel</li>
-                  <li>Aluminum & Brass</li>
-                  <li>Desgin & Prototyping</li>
-                  <li>Paint & Powder Coating</li>
-                  <li>Assembly & Installation</li>
-                </ul>
-              </div>
-            </li> */}
             <li className="links-list-item">
               <Link to="/about-us">About Us</Link>
             </li>
@@ -46,13 +33,16 @@ const Navbar = () => {
               <Link to="/services">Services</Link>
               <div className="services-dropdown">
                 <ul>
-                  <li><Link to="/products-and-technology/railings">Stainless Steel / Galvanized Steel Railing</Link></li>
-                  <li><Link>Stainless Steel</Link></li>
-                  <li><Link>Glass</Link></li>
-                  <li><Link>Decorative Arch</Link></li>
-                  <li><Link>Ceiling</Link></li>
-                  <li><Link>Interior Fit-Out</Link></li>
-                  <li><Link>Stainless Steel Gratings</Link></li>
+                  <li><Link to="/products-and-technology/railings">Steel Railings</Link></li>
+                  <li><Link to="/products-and-technology/canopies">Canopies</Link></li>
+                  <li><Link to="/products-and-technology/railings">Tables</Link></li>
+                  <li><Link to="/products-and-technology/railings">Racks</Link></li>
+                  <li><Link to="/products-and-technology/railings">Chairs</Link></li>
+                  <li><Link to="/products-and-technology/railings">Panels &amp; Arches</Link></li>
+                  <li><Link to="/products-and-technology/railings">Interior Fit-Out</Link></li>
+                  <li><Link to="/products-and-technology/railings">Steel Gratings</Link></li>
+                  <li><Link to="/products-and-technology/railings">Glass Work</Link></li>
+                  <li><Link to="/products-and-technology/railings">Artisan Ceilings</Link></li>
                 </ul>
               </div>
             </li>

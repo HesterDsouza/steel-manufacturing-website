@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState } from "react";
 
-const SlideShow = ({ images, class_name }) => {
+const SlideShow = ({ images, class_name = "" }) => {
     const [slideIndex, setSlideIndex] = useState(1);
     const intervalRef = useRef(null);
 
@@ -36,10 +36,6 @@ const SlideShow = ({ images, class_name }) => {
 SlideShow.propTypes = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
     class_name: PropTypes.string
-}
-
-SlideShow.defaultProps = {
-    class_name: ""
 }
 
 export default SlideShow

@@ -152,11 +152,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* <section className="contact-cta">
-          <h3>Ready to build with Us?</h3>
-          <button>Get a Quote</button>
-          <p>Email: simon.pinto@abstract.qa | Phone: +966 56 983 6636</p>
-        </section> */}
     </div>
   )
 }

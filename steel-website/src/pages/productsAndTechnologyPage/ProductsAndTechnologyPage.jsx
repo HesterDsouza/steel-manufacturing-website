@@ -1,7 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DetailsCard from "../../components/detailsCard/DetailsCard";
 import InfoCard from "../../components/infoCard/InfoCard";
 import "./productsAndTechnologyPage.css"
+import Contact from "../../components/contact/Contact";
 
 const ProductsAndTechnologyPage = () => {
   
@@ -9,43 +10,58 @@ const ProductsAndTechnologyPage = () => {
 
   const products = [
     {
+      title: "SS Products",
+      images: ["/products/ss/ss1.jpg","/products/ss/ss4.jpg","/products/ss/ss11.jpg","/products/ss/ss13.jpg",],
+      description: []
+    },
+    {
       title: "Railings",
-      images: ["/products/railings/railing1.JPG","/products/railings/railing2.JPG","/products/railings/railing3.JPG","/products/railings/railing4.JPG","/products/railings/railing5.JPG","/products/railings/railing6.JPG","/products/railings/railing7.JPG","/products/railings/railing8.JPG","/products/railings/railing9.JPG","/products/railings/railing10.JPG","/products/railings/railing11.JPG","/products/railings/railing12.JPG","/products/railings/railing13.JPG","/products/railings/railing14.JPG", "/products/railings/railing15.JPG"],
+      images: ["/products/railings/railing4.JPG","/products/railings/railing6.JPG","/products/railings/railing14.JPG", "/products/railings/railing15.JPG"],
       description: []
     },
     {
       title: "Canopies",
-      images: ["/products/canopies/canopy1.JPG","/products/canopies/canopy2.JPG","/products/canopies/canopy3.JPG","/products/canopies/canopy4.JPG","/products/canopies/canopy5.JPG","/products/canopies/canopy6.JPG","/products/canopies/canopy7.JPG","/products/canopies/canopy8.JPG","/products/canopies/canopy9.JPG","/products/canopies/canopy10.JPG","/products/canopies/canopy11.JPG","/products/canopies/canopy12.JPG","/products/canopies/canopy13.JPG","/products/canopies/canopy14.JPG"],
+      images: ["/products/canopies/canopy3.JPG","/products/canopies/canopy8.JPG","/products/canopies/canopy11.JPG","/products/canopies/canopy14.JPG"],
       description: []
     },
     {
       title: "Tables",
-      images: ["/products/tables/table1.JPG","/products/tables/table2.JPG","/products/tables/table3.JPG","/products/tables/table4.JPG","/products/tables/table5.JPG","/products/tables/table6.JPG","/products/tables/table7.JPG","/products/tables/table8.JPG","/products/tables/table9.JPG","/products/tables/table10.JPG","/products/tables/table11.JPG","/products/tables/table12.JPG","/products/tables/table13.JPG","/products/tables/table14.JPG","/products/tables/table15.JPG","/products/tables/table16.JPG","/products/tables/table17.JPG",],
+      images: ["/products/tables/table1.JPG","/products/tables/table5.JPG","/products/tables/table8.JPG","/products/tables/table14.JPG"],
       description: []
     },
     {
       title: "Racks",
-      images: ["/products/racks/rack1.JPG","/products/racks/rack2.JPG","/products/racks/rack3.JPG","/products/racks/rack4.JPG","/products/racks/rack5.JPG","/products/racks/rack6.JPG"],
+      images: ["/products/racks/rack1.JPG","/products/racks/rack3.JPG","/products/racks/rack5.JPG","/products/racks/rack6.JPG"],
       description: []
     },
     {
       title: "Chairs",
-      images: ["/products/chairs/chair1.JPG", "/products/chairs/chair2.JPG", "/products/chairs/chair3.JPG", "/products/chairs/chair4.JPG","/products/chairs/chair5.JPG","/products/chairs/chair6.JPG","/products/chairs/chair7.JPG","/products/chairs/chair8.JPG","/products/chairs/chair9.JPG","/products/chairs/chair10.JPG","/products/chairs/chair11.JPG","/products/chairs/chair12.JPG","/products/chairs/chair13.JPG","/products/chairs/chair14.JPG","/products/chairs/chair15.JPG"],
+      images: ["/products/chairs/chair2.JPG", "/products/chairs/chair3.JPG", "/products/chairs/chair4.JPG","/products/chairs/chair8.JPG"],
       description: []
     },
     {
-      title: "Decorative Panels",
-      images: ["/products/deco-panels/deco-panel1.JPG","/products/deco-panels/deco-panel2.JPG","/products/deco-panels/deco-panel3.JPG","/products/deco-panels/deco-panel4.JPG","/products/deco-panels/deco-panel5.JPG","/products/deco-panels/deco-panel6.JPG"],
+      title: "Panels & Arches",
+      images: ["/products/deco-panels/deco-panel2.JPG","/products/deco-panels/deco-panel6.JPG","/products/deco-panels/decorative-arch1.jpg","/products/deco-panels/decorative-arch3.jpg"],
       description: []
     },
     {
-      title: "Home Interior",
-      images: ["/products/home-decos/home-deco1.JPG","/products/home-decos/home-deco2.JPG","/products/home-decos/home-deco3.JPG","/products/home-decos/home-deco4.JPG","/products/home-decos/home-deco5.JPG","/products/home-decos/home-deco6.JPG","/products/home-decos/home-deco7.JPG","/products/home-decos/home-deco8.JPG","/products/home-decos/home-deco9.JPG","/products/home-decos/home-deco10.JPG","/products/home-decos/home-deco11.JPG","/products/home-decos/home-deco12.JPG","/products/home-decos/home-deco13.JPG","/products/home-decos/home-deco14.JPG","/products/home-decos/home-deco15.JPG","/products/home-decos/home-deco16.JPG","/products/home-decos/home-deco17.JPG","/products/home-decos/home-deco18.JPG","/products/home-decos/home-deco19.JPG","/products/home-decos/home-deco20.JPG","/products/home-decos/home-deco21.JPG",],
+      title: "Interior Fit-Outs",
+      images: ["/products/home-decos/home-deco4.JPG","/products/home-decos/home-deco5.JPG","/products/home-decos/home-deco17.JPG","/products/home-decos/home-deco20.JPG"],
       description: []
     },
     {
       title: "SS Gratings",
-      images: [],
+      images: ["/products/gratings/ss-grating1.jpg", "/products/gratings/ss-grating5.jpg","/products/gratings/ss-grating6.jpg","/products/gratings/ss-grating7.jpg"],
+      description: []
+    },
+    {
+      title: "Glass Work",
+      images: ["/products/glass/glass-work.jpg","/products/glass/glass-work1.jpg"],
+      description: []
+    },
+    {
+      title: "Artisan Ceilings",
+      images: ["/products/ceiling/ceiling1.jpg", "/products/ceiling/ceiling2.jpg"],
       description: []
     }
   ];
@@ -129,18 +145,7 @@ const ProductsAndTechnologyPage = () => {
         <h2>Our Technology</h2>
         <DetailsCard collections={techs} />
       </section>
-      <section className="contact-section">
-            <h2>Let&apos;s Work Together</h2>
-            <p>
-            If you&apos;re looking for exceptional craftsmanship, innovative designs, and reliable service, look no further. Contact us today to discuss your project and explore how we can bring your vision to life.
-            Whether it&apos;s a small custom piece or a large industrial project, our team is ready to turn your ideas into reality.
-            </p>
-            <Link to="/contact">
-                <button className="contact-button">
-                    Contact Us
-                </button>
-            </Link>
-      </section>
+      <Contact />
     </div>
   )
 }

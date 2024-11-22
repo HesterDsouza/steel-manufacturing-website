@@ -96,12 +96,115 @@
                 margin-top: 20px;
                 border-radius: 10px;
                 overflow: hidden;
-                box-shadow: 0 0 6px 6px var(--box-shadow);
+                transition: box-shadow 0.4s ease-in-out;
+                
+                &:hover{
+                    box-shadow: 0 0 8px 3px var(--box-shadow);
+                }
 
                 iframe{
                     width: 400px;
                     height: 300px;
                     border: none;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1024px){
+        .company-details{
+            .logo img{
+                height: 80px;
+            }
+
+            .company-name{
+                h2, .arabic-name{
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        .other-details{
+            flex-direction: column;
+            gap: 20px;
+
+            .left{
+                .address p{
+                    font-size: 1.6rem;
+                }
+
+                .contact{
+                    .phone-email{
+                        gap: 15px;
+
+                        p{
+                            font-size: 1.6rem;
+                        }
+                    }
+                }
+            }
+
+            .right{
+                .map-container{
+                    max-width: 600px;
+
+                    iframe{
+                        width: 600px;
+                        height: 300px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .company-details {
+          .logo img {
+            height: 70px;
+          }
+    
+          .company-name {
+            h2 {
+              font-size: 1.8rem;
+            }
+    
+            .arabic-name {
+              font-size: 2rem;
+            }
+          }
+        }
+    
+        .other-details {
+          gap: 20px;
+    
+          .left {
+            .address p {
+              font-size: 1.4rem;
+            }
+    
+            .contact {
+              .phone-email, .social-icons {
+                gap: 10px;
+    
+                p {
+                  font-size: 1.4rem;
+    
+                  .icon {
+                    font-size: 1.6rem;
+                  }
+    
+                  .email-link {
+                    font-size: 1.4rem;
+                  }
+                }
+              }
+            }
+          }
+    
+          .right {
+                .map-container iframe {
+                max-width: 300px;
+                height: 200px;
                 }
             }
         }

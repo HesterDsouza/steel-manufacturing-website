@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import SlideShow from "../../components/slideshow/SlideShow"
 import "./aboutUsPage.css"
+import Contact from "../../components/contact/Contact";
 
 const AboutUsPage = () => {
 
@@ -55,7 +55,6 @@ const AboutUsPage = () => {
                 <div className="factory-workers">
                     <SlideShow images={workers} class_name="about-us"/>
                     <h3>Our Factory and Workers</h3>
-
                 </div>
                 <div className="employees">
                     <SlideShow images={employees} class_name="about-us"/>
@@ -127,18 +126,7 @@ const AboutUsPage = () => {
                 </p>
             </div>
         </section>
-        <section className="contact-section">
-            <h2>Let&apos;s Work Together</h2>
-            <p>
-            If you&apos;re looking for exceptional craftsmanship, innovative designs, and reliable service, look no further. Contact us today to discuss your project and explore how we can bring your vision to life.
-            Whether it&apos;s a small custom piece or a large industrial project, our team is ready to turn your ideas into reality.
-            </p>
-            <Link to="/contact">
-                <button className="contact-button">
-                    Contact Us
-                </button>
-            </Link>
-      </section>
+        <Contact />
     </div>
   )
 }

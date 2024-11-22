@@ -65,12 +65,13 @@
         border: none;
         padding: 10px 12px;
         font-size: 1.8em;
-        color: var(--text-primary);
+        font-weight: bold;
+        color: #fff;
         width: 90%;
 
         &:hover{
           cursor: pointer;
-          background-color: var(--dark-blue-faded);
+          background-color: var(--dark-blue-hover);
         }
       }
 

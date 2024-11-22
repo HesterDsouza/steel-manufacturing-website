@@ -11,6 +11,7 @@
         padding: 5px;
         background: linear-gradient(135deg, transparent 25%, var(--steel-gray) 100%);
         z-index: 2;
+        color: #fff;
 
         h1{
             font-size: 2.4rem;
@@ -19,11 +20,11 @@
         p{
             font-size: 1.8rem;
             font-weight: 500;
-            color: var(--text-secondary);
+            color: #e7e7e7;
         }
     }
 
-    section:not(section:first-of-type){
+    section{
         padding: 20px;
         text-align: center;
 
@@ -36,7 +37,7 @@
     .about-us, .services{
         p{
             color: var(--text-secondary);
-            font-size: 1.6rem;
+            font-size: 2rem;
         }
     }
 
@@ -66,6 +67,7 @@
                 display: flex;
                 align-items: start;
                 justify-content: space-around;
+                gap: 5px;
 
                 .value-img{
                     width: 600px;
@@ -78,7 +80,7 @@
                         transition: transform 0.5s ease;
 
                         &:hover{
-                            transform: scale(1.1);
+                            transform: scale(1.05);
                         }
                     }
                 }
@@ -98,6 +100,7 @@
                         list-style-type: disc;
                         position: relative;
                         left: 20px;
+                        padding-right: 5px;
                         
                         li{
                             color: var(--logo-blue);
@@ -108,14 +111,235 @@
             }
         }
     }
-
-    /* .contact-cta{
-        background-color: var(--dark-blue);
-        text-align: left;
-        color: #fff;
-
-        h3{
-            color: #fff;
+    
+    @media only screen and (max-width: 1024px){
+        .hero-overlay{
+            top: 425px;
+            left: 45px;
+    
+            h1{
+                font-size: 2.2rem;
+            }
         }
-    } */
+
+        section:not(section:first-of-type){
+            h2{
+                font-size: 2.2rem;
+            }
+        }
+
+        .about-us, .services{
+            p{
+                font-size: 1.8rem;
+            }
+        }        
+
+        .values .value-boxes{
+            .value-box{  
+                gap: 20px;
+
+                .value-img{
+                    width: 75%;
+                    
+                    img{
+                        height: 300px;
+                    }
+                }
+
+                .value-content{
+                    width: 55%;
+                    
+                    h3{
+                        font-size: 1.8rem;
+                    }
+
+                    ul li{
+                        font-size: 1.6rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 900px){
+        .hero-overlay{
+            top: 425px;
+        }
+
+        .values{
+            .value-boxes{
+                .value-box{
+                    .value-img{
+                        width: 65%;
+
+                        img{
+                            height: 250px;
+                        }
+                    }
+
+                    .value-content{
+                        padding-right: 3px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .hero-overlay {
+          top: 490px;
+          left: 30px;
+
+          h1{
+            font-size: 1.8rem;
+          }
+
+          p{
+            font-size: 1.4rem;
+          }
+        }
+      
+        section {
+          padding: 15px;
+      
+          h2 {
+            font-size: 2rem;
+          }
+        }
+      
+        .about-us, .services {
+          p {
+            font-size: 1.6rem;
+          }
+        }
+      
+        .services {
+          .cards {
+            grid-template-columns: 1fr;
+            gap: 15px;
+          }
+        }
+      
+        .values {
+          .value-boxes {
+            gap: 15px;
+      
+            .value-box {
+      
+              .value-img {
+                width: 100%;
+
+                img {
+                  height: 200px;
+                }
+              }
+      
+              .value-content {
+                width: 100%;
+                padding: 0;
+      
+                h3 {
+                  font-size: 1.6rem;
+                }
+      
+                ul {
+                  left: 15px;
+      
+                  li {
+                    font-size: 1.4rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+    }
+    
+    @media only screen and (max-width: 400px){
+        .hero-overlay {
+            top: 470px;
+            left: 20px;
+  
+            h1{
+              font-size: 1.6rem;
+            }
+  
+            p{
+              font-size: 1.2rem;
+            }
+          }
+    }
+
+    @media only screen and (max-width: 360px) {
+        .hero-overlay {
+          top: 450px;
+          left: 10px;
+          padding: 3px;
+    
+          h1 {
+            font-size: 1.4rem;
+          }
+    
+          p {
+            font-size: 1rem;
+          }
+        }
+    
+        section {
+          padding: 10px;
+    
+          h2 {
+            font-size: 1.8rem;
+          }
+        }
+    
+        .about-us,
+        .services {
+          p {
+            font-size: 1.4rem;
+          }
+        }
+    
+        .services {
+          .cards {
+            grid-template-columns: 1fr;
+            gap: 10px;
+          }
+        }
+    
+        .values {
+          .value-boxes {
+            gap: 10px;
+    
+            .value-box {
+              gap: 10px;
+    
+              .value-img {
+                width: 100%;
+    
+                img {
+                  height: 180px;
+                }
+              }
+    
+              .value-content {
+                width: 100%;
+                padding: 0;
+    
+                h3 {
+                  font-size: 1.4rem;
+                }
+    
+                ul {
+                  left: 10px;
+    
+                  li {
+                    font-size: 1.2rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+    }      
 }
