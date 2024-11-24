@@ -4,6 +4,22 @@
     justify-content: center;
     flex-wrap: wrap;
 
+    @media only screen and (max-width: 1024px) {
+        gap: 30px;
+    }
+    @media only screen and (max-width: 900px) {
+        gap: 25px;
+    }
+    @media only screen and (max-width: 768px) {
+        gap: 20px;
+    }
+    @media only screen and (max-width: 400px) {
+        gap: 15px;
+    }
+    @media only screen and (max-width: 360px) {
+        gap: 10px;
+    }
+
     .card{
         background-color: var(--bg-highlight);
         box-shadow: 0 4px 10px var(--box-shadow);
@@ -39,4 +55,108 @@
             }
         }
     }
+
+    @media only screen and (max-width: 1024px) {
+        .card {
+            max-width: 500px;
+    
+            .card-img {
+                height: 400px;
+            }
+    
+            .card-content {
+                width: 100%;
+    
+                h3 {
+                    font-size: 1.6rem;
+                }
+        
+                p {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 900px) {
+        .card {
+            max-width: 400px;
+    
+            .card-img {
+                height: 350px;
+            }
+    
+            .card-content {
+                h3 {
+                    font-size: 1.5rem;
+                }
+        
+                p {
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .card {
+            padding: 8px;
+    
+            .card-img {
+             height: 300px;
+            }
+    
+            .card-content {
+                h3 {
+                    font-size: 1.4rem;
+                }
+        
+                p {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 400px) {
+        .card {
+            width: 300px;
+
+            .card-img {
+                height: 250px;
+            }
+    
+            .card-content {
+                h3 {
+                    font-size: 1.2rem;
+                }
+        
+                p {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 360px) {
+        .card {
+            width: 280px;
+            
+            padding: 6px;
+    
+            .card-img {
+                height: 200px;
+            }
+    
+            .card-content {
+                h3 {
+                    font-size: 1rem;
+                }
+        
+                p {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }  
 }

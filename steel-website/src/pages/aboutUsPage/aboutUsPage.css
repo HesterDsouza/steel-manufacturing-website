@@ -187,10 +187,10 @@
         
         .office-slides{
             display: flex;
-            gap: 50px;
+            gap: 30px;
 
             .factory-workers, .employees{
-                width: 500px;
+                width: 480px;
 
                 h3{
                     font-size: 1.8rem;
@@ -261,11 +261,10 @@
 
         .image-wrapper{
             margin: 0 auto;
-            max-width: 60%;
+            max-width: 400px;
 
             img{
                 height: 350px;
-                max-width: 100%;
             }
         }
 
@@ -284,14 +283,6 @@
 
         .slideshow-container.about-us {
             height: 350px;
-
-            .slide{
-                height: 350px;
-
-                img{
-                    height: 350px;
-                }
-            }
         }
     }
     
@@ -327,7 +318,7 @@
         }
 
         .team .team-cards {
-            gap: 30px;
+            gap: 20px;
 
             .team-card img {
                 height: 250px;
@@ -345,6 +336,14 @@
         .slideshow-container.about-us {
             height: 300px;
             width: 400px;
+
+            .slide{
+                height: 300px;
+
+                img{
+                    height: 300px;
+                }
+            }
         }
     }
     
@@ -508,6 +507,14 @@
 
             p {
                 font-size: 0.9rem;
+            }
+        }
+
+        .goals{
+            .goal-content{
+                .goal{
+                    flex-basis: 250px;
+                }
             }
         }
 

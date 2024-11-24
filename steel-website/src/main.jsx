@@ -9,7 +9,7 @@ import ProductsAndTechnologyPage from './pages/productsAndTechnologyPage/Product
 import ContactPage from './pages/contactPage/ContactPage.jsx';
 import ProductDetail from './pages/productDetail/ProductDetail.jsx';
 import ServicePage from './pages/servicePage/ServicePage.jsx';
-// import App from './App.jsx'
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -45,7 +45,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
-    {/* <App /> */}
+    <HelmetProvider>
+      <RouterProvider router={router} />
+    </HelmetProvider>
   </StrictMode>,
 )

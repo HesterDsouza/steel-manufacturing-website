@@ -53,12 +53,12 @@ const AboutUsPage = () => {
             </div>
             <div className="office-slides">
                 <div className="factory-workers">
-                    <SlideShow images={workers} class_name="about-us"/>
                     <h3>Our Factory and Workers</h3>
+                    <SlideShow images={workers} class_name="about-us"/>
                 </div>
                 <div className="employees">
-                    <SlideShow images={employees} class_name="about-us"/>
                     <h3>Our Employees</h3>
+                    <SlideShow images={employees} class_name="about-us"/>
                 </div>
             </div>
         </section>        

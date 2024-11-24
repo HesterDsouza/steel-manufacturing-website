@@ -83,11 +83,7 @@
         .image-wrapper {
           height: 200px;
     
-          .slide {
-            img {
-              object-fit: cover;
-            }
-    
+          .slide {    
             .caption {
               font-size: 1.4rem;
               bottom: 25%;

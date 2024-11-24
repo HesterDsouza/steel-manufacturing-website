@@ -2,6 +2,7 @@ import InfoCard from "../../components/infoCard/InfoCard";
 import SlideShow from "../../components/slideshow/SlideShow";
 import "./homePage.css"
 import { useEffect, useRef, useState } from "react"
+// import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
   const [activeSlides, setActiveSlides] = useState(Array(8).fill(0));
