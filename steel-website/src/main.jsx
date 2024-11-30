@@ -10,6 +10,7 @@ import ContactPage from './pages/contactPage/ContactPage.jsx';
 import ProductDetail from './pages/productDetail/ProductDetail.jsx';
 import ServicePage from './pages/servicePage/ServicePage.jsx';
 import { HelmetProvider } from 'react-helmet-async';
+import SearchResultsPage from './pages/searchResultsPage/SearchResultsPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <ContactPage />
+      },
+      {
+        path: '/search-results',
+        element: <SearchResultsPage />
       },
     ]
   }

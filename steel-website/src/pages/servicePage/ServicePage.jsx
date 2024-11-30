@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import Contact from "../../components/contact/Contact";
+import HeroSection from "../../components/heroSection/HeroSection";
 
 const ServicePage = () => {
 
@@ -65,12 +66,7 @@ const ServicePage = () => {
 
   return (
     <div className="servicePage">
-        <section className="hero-section">
-          <div className="hero-content">
-              <h1>Services</h1>
-              <p>Precision, quality, and craftsmanship in every project, tailored to bring your vision to life.</p>
-          </div>
-      </section>
+      <HeroSection title="Services" subTitle="Precision, quality, and craftsmanship in every project, tailored to bring your vision to life."/>
       <section className="expertise">
         <h2>Our Expertise</h2>
         <p>

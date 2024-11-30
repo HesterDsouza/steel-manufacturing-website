@@ -1,9 +1,49 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useEffect, useState } from "react";
 import "./navbar.css"
+import { fetchProducts } from "../../api";
 
 const Navbar = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchLoading, setSearchLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState("");
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getProducts = async() => {
+      try {
+        const {data} = await fetchProducts();
+        setProducts(data)
+      } catch (error) {
+        console.error("Error fetching products", error);
+      }
+    }
+
+    getProducts();
+  }, [])
+
+  const handleSearch = async() => {
+    const trimmedQuery = searchQuery.trim();
+
+    if(!trimmedQuery || trimmedQuery.length === 0 || trimmedQuery.length > 50 || /[^a-zA-Z\s]/.test(trimmedQuery)){
+      setError("Please enter words between 1 and 50 chracters");
+      return;
+    }
+
+    setSearchLoading(true);
+    setError("");
+
+    try {
+      navigate(`/search-results?query=${trimmedQuery}`)
+    } catch (error) {
+      setError("Error searching products");
+      console.error("Error searching products: ", error)
+    } finally {
+      setSearchLoading(false)
+    }
+  }
 
   return (
     <header className="navbar">
@@ -17,9 +57,21 @@ const Navbar = () => {
         </div>
       </div>
       <div className="search-nav">
-        <div className="searchbar">
-          <input type="text" placeholder="Search"/>
-          <button>Search</button>
+        <div className="search">
+          <div className="searchbar">
+            <input 
+              type="text" 
+              placeholder="Search"
+              value={searchQuery}
+              minLength={1}
+              maxLength={50}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button onClick={handleSearch} disabled={searchLoading}>
+              {searchLoading ? "Searching..." : "Search"}
+            </button>
+          </div>
+          {error && <p className="searchError">{error}</p>}
         </div>
         <nav className="nav-links">
           <ul className="links-list">
@@ -33,16 +85,11 @@ const Navbar = () => {
               <Link to="/services">Services</Link>
               <div className="services-dropdown">
                 <ul>
-                  <li><Link to="/products-and-technology/railings">Steel Railings</Link></li>
-                  <li><Link to="/products-and-technology/canopies">Canopies</Link></li>
-                  <li><Link to="/products-and-technology/railings">Tables</Link></li>
-                  <li><Link to="/products-and-technology/railings">Racks</Link></li>
-                  <li><Link to="/products-and-technology/railings">Chairs</Link></li>
-                  <li><Link to="/products-and-technology/railings">Panels &amp; Arches</Link></li>
-                  <li><Link to="/products-and-technology/railings">Interior Fit-Out</Link></li>
-                  <li><Link to="/products-and-technology/railings">Steel Gratings</Link></li>
-                  <li><Link to="/products-and-technology/railings">Glass Work</Link></li>
-                  <li><Link to="/products-and-technology/railings">Artisan Ceilings</Link></li>
+                  {products.map((product) => (
+                    <li key={product._id}>
+                      <Link to={`/products-and-technology/${product._id}`}>{product.title}</Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </li>

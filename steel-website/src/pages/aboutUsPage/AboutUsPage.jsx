@@ -1,6 +1,7 @@
 import SlideShow from "../../components/slideshow/SlideShow"
 import "./aboutUsPage.css"
 import Contact from "../../components/contact/Contact";
+import HeroSection from "../../components/heroSection/HeroSection";
 
 const AboutUsPage = () => {
 
@@ -9,12 +10,7 @@ const AboutUsPage = () => {
 
   return (
     <div className="aboutUsPage">
-        <section className="hero-section">
-            <div className="hero-content">
-                <h1>About Us</h1>
-                <p>Crafting Excellence in Steel and Beyond</p>
-            </div>
-        </section>
+        <HeroSection title="About Us" subTitle="Crafting Excellence in Steel and Beyond"/>
         <section className="company-overview">
             <h2>Our Story</h2>
             <div className="content-wrapper">

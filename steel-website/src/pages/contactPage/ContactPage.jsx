@@ -1,8 +1,7 @@
 import "./contactPage.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import HeroSection from "../../components/heroSection/HeroSection";
 
 const ContactPage = () => {
 
@@ -57,14 +56,7 @@ const ContactPage = () => {
   }
   return (
     <div className="contact-page">
-      <section className="hero-section">
-          <div className="hero-content">
-              <h1>Contact Us</h1>
-              <p>Reach Out to Build, Innovate, and Transform Together.</p>
-          </div>
-      </section>
-      
-      {/* Contact Form */}
+      <HeroSection title="Contact Us" subTitle="Reach Out to Build, Innovate, and Transform Together."/>
       <section className="contact-form-section">
         <h3>Send Us a Message</h3>
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -97,42 +89,6 @@ const ContactPage = () => {
           }
         </form>
       </section>
-
-        {/* Company Details */}
-        {/* <section className="company-details-section">
-          <div className="company-details">
-            <h3>Our Contact Details</h3>
-            <div className="contact-info">
-              <p><FontAwesomeIcon icon={faPhone} /> + 966 56 983 6636</p>
-              <p>
-                <FontAwesomeIcon icon={faEnvelope} />
-                <a href="mailto:simon.pinto@abstract.qa">simon.pinto@abstract.qa</a>
-              </p>
-            </div>
-            <address>
-              <p>Headquarters: 5066 Al-kharj 16285-85931</p>
-              <p>Postal Code: 16285</p>
-              <p>Cr. No.: 100241115881445</p>
-              <p>Tin No.: 3123715103</p>
-              <p>MARWA LIGHT INDUSTRIES NO. 321, AL KHARJ, AL RIYADH,</p>
-              <p>KINGDOM OF SAUDI ARABIA</p>
-            </address>
-          </div>
-        </section> */}
-
-      {/* Map */}
-      {/* <section className="map-section">
-        <h3>Find Us Here</h3>
-        <div className="map-container">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3627.980807160583!2d46.80288087514287!3d24.589858578106952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f09b80e4b6e5b%3A0xd579d4d40b8ca38d!2s5066%20Al%20Kharj%20Rd%2C%20Al%20Aziziyah%2C%20Riyadh%2014513%2C%20Saudi%20Arabia!5e0!3m2!1sen!2sin!4v1730285639215!5m2!1sen!2sin" 
-            allowFullScreen="" 
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Company Location">
-          </iframe>
-        </div>
-      </section> */}
     </div>
   );
 };

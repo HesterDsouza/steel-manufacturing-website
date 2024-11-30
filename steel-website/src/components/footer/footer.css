@@ -5,7 +5,7 @@
     justify-content: center;
     background-color: var(--bg-highlight2);
     color: var(--text-primary);
-    padding: 20px 0;
+    padding: 20px 5px;
     gap: 10px;
 
     .company-details{
@@ -157,6 +157,52 @@
         }
     }
 
+    @media only screen and (max-width: 900px){
+        .company-details{
+            .logo img{
+                height: 60px;
+            }
+
+            .company-name{
+                h2, .arabic-name{
+                    font-size: 1.8rem;
+                }
+            }
+        }
+        .other-details{
+            .left{
+                .address p{
+                    font-size: 1.4rem;
+                }
+
+                .contact{
+                    .phone-email {
+                        gap: 8px;
+
+                        p{
+                            font-size: 1.4rem;
+
+                            .icon{
+                                font-size: 1.5rem;
+                            }
+
+                            .email-link{
+                                font-size: 1.4rem;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .right{
+                .map-container iframe{
+                    width: 500px;
+                    height: 300px;
+                }
+            }
+        }
+    }
+
     @media only screen and (max-width: 768px) {
         .company-details {
           .logo img {
@@ -164,12 +210,8 @@
           }
     
           .company-name {
-            h2 {
+            h2, .arabic-name {
               font-size: 1.8rem;
-            }
-    
-            .arabic-name {
-              font-size: 2rem;
             }
           }
         }
@@ -192,8 +234,8 @@
                   .icon {
                     font-size: 1.6rem;
                   }
-    
-                  .email-link {
+
+                  .email-link{
                     font-size: 1.4rem;
                   }
                 }
@@ -203,9 +245,149 @@
     
           .right {
                 .map-container iframe {
-                max-width: 300px;
-                height: 200px;
+                max-width: 400px;
+                height: 250px;
                 }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 420px) {
+        .other-details .right .map-container iframe{
+            width: 350px;
+            height: 200px;
+        }
+    }
+    
+    @media only screen and (max-width: 400px) {
+        .company-details{
+            .logo img{
+                height: 50px;
+            }
+
+            .company-name{
+                h2, .arabic-name{
+                    font-size: 1.6rem;
+                }
+            }
+        }
+        .other-details{
+            gap: 10px;
+
+            .left{
+                .address p{
+                    font-size: 1.2rem;
+                }
+
+                .contact .phone-email{
+                    gap: 5px;
+
+                    p {
+                        font-size: 1.2rem;
+
+                        .icon{
+                            font-size: 1.4rem;
+                        }
+
+                        .email-link{
+                            font-size: 1.2rem;
+                        }
+                    }
+
+                }
+            }
+            .right .map-container iframe{
+                width: 300px;
+                height: 180px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 360px){
+        .company-details{
+            .logo img{
+                height: 40px;
+            }
+
+            .company-name{
+                h2, .arabic-name{
+                    font-size: 1.4rem;
+                }
+            }
+        }
+        .other-details{
+            gap: 8px;
+
+            .left{
+                .address p{
+                    font-size: 1.1rem;
+                }
+
+                .contact .phone-email{
+                    gap: 5px;
+
+                    p{
+                        font-size: 1.1rem;
+
+                        .icon{
+                            font-size: 1.2rem;
+                        }
+
+                        .email-link{
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
+
+            .right .map-container iframe{
+                width: 250px;
+                height: 150px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 300px){
+        .company-details{
+            .logo img{
+                height: 30px;
+            }
+
+            .company-name{
+                h2, .arabic-name{
+                    font-size: 1.2rem;
+                }
+            }
+        }
+
+        .other-details{
+            gap: 5px;
+
+            .left{
+                .address p{
+                    font-size: 1rem;
+                }
+
+                .contact .phone-email{
+                    gap: 5px;
+
+                    p{
+                        font-size: 1rem;
+
+                        .icon{
+                            font-size: 1.1rem;
+                        }
+
+                        .email-link{
+                            font-size: 1rem;
+                        }
+                    }
+                }
+            }
+
+            .right .map-container iframe{
+                width: 200px;
+                height: 120px;
             }
         }
     }

@@ -1,0 +1,223 @@
+.searchResultsPage{
+    padding: 10px 0;
+
+    .results{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 5px 15px;
+        margin-bottom: 10px;
+
+        .result, .productRange {
+            font-size: 1.8rem;
+            margin: 0;
+    
+            .big{
+                font-size: 2rem;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+            }
+        }
+    }
+
+    .error{
+        font-size: 1.8rem;
+        font-weight: 500;
+        padding: 5px 15px;
+    }
+
+    .cards-container.searchPage{
+        margin-bottom: 15px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 10px 20px;
+
+        .card{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .card-img{
+                height: 250px;
+            }
+
+            .card-content{
+                h3{
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .pagination{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;
+        gap: 10px;
+
+        button{
+            font-size: 1.6rem;
+            font-weight: 600;
+            padding: 8px 12px;
+            border: 1px solid var(--dark-blue-hover);
+            background-color: var(--dark-blue);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: background-color 0.4s ease-in-out;
+
+            &:hover{
+                background-color: var(--dark-blue-hover);
+            }
+
+            &:disabled{
+                background-color: var(--dark-blue-faded);
+                cursor: not-allowed;
+            }
+
+            &.active{
+                color: var(--dark-blue);
+                background-color: var(--text-primary);
+                border-color: var(--text-primary);
+            }
+        }
+
+        .ellipsis{
+            font-size: 1.6rem;
+            color: var(--text-secondary);
+            padding: 0 5px;
+        }
+    }
+
+    @media (max-width: 1024px) {
+        padding: 8px 0;
+
+        .cards-container.searchPage{
+            grid-template-columns: repeat(3, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .pagination button{
+            font-size: 1.5rem;
+        }
+    }
+
+    @media (max-width: 900px) {
+        padding: 6px 0;
+
+        .results{
+            gap: 10px;
+            padding: 4px 12px;
+    
+            .result, .productRange {
+                font-size: 1.6rem;
+        
+                .big{
+                    font-size: 1.8rem;
+                }
+            }
+        }
+    
+        .error{
+            font-size: 1.6rem;
+            padding: 4px 12px;
+        }
+
+        .cards-container.searchPage{
+            padding: 8px 16px;
+
+            .card .card-img{
+                height: 200px;
+            }
+        }
+
+        .pagination{
+            gap: 8px;
+            margin: 10px 0;
+
+            button{
+                font-size: 1.4rem;
+            }
+
+            .ellipsis{
+                font-size: 1.4rem;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .results{
+            .result, .productRange{
+                font-size: 1.4rem;
+
+                .big{
+                    font-size: 1.6rem;
+                }
+            }
+        }
+
+        .error{
+            font-size: 1.6rem;
+        }
+
+        .cards-container.searchPage{
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+            .card{
+                .card-img{
+                    height: 180px;
+                }
+
+                .card-content p {
+                    font-size: 1.3rem;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 400px) {
+        padding: 5px 0;
+
+        .results{
+            .result, .productRange{
+                font-size: 1.2rem;
+
+                .big{
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .cards-container.searchPage{
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+            .card{
+                .card-img{
+                    height: 150px;
+                }
+
+                .card-content p {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 360px) {
+        .cards-container.searchPage{
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .pagination{
+            button{
+                font-size: 1.2rem;
+            }
+
+            .ellipsis{
+                font-size: 1.2rem;
+            }
+        }
+    }
+}

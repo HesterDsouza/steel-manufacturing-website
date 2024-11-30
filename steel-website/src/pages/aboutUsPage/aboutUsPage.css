@@ -4,38 +4,8 @@
     line-height: 1.6;
     padding: 10px 0;
 
-    @media only screen and (max-width: 900px){
-        font-size: 1.4rem;
-    }
-
-    @media only screen and (max-width: 768px){
-        font-size: 1.2rem;
-    }
-
-    .hero-section{
-        background: linear-gradient(155deg, var(--dark-blue) 0%, var(--dark-blue) 45%, var(--steel-gray) 85%, var(--steel-gray) 100%);
-        /* background-color: var(--logo-blue); */
-        color: #fff;
-        padding: 60px 20px;
-        text-align: center;
-        margin-bottom: 40px;
-
-        .hero-content{
-            h1{
-                font-size: 3.6rem;
-                margin: 0;
-            }
-
-            p{
-                font-size: 2rem;
-                margin: 10px 0 0;
-                font-weight: 500;
-            }
-        }
-    }
-
     .company-overview, .goals, .values, .impact, .team{
-        margin: 40px 0;
+        margin: 20px 0;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -118,7 +88,6 @@
             li{
                 background-color: var(--bg-dark);
                 padding: 20px;
-                /* box-shadow: 0 4px 10px var(--box-shadow); */
                 border-radius: 8px;
                 flex:  1 1 400px;
                 min-width: 300px;
@@ -156,7 +125,6 @@
             .team-card{
                 background-color: var(--bg-dark);
                 padding: 10px;
-                /* box-shadow: 0 4px 10px var(--box-shadow); */
                 border-radius: 10px;
                 max-width: 280px;
                 transition: transform 0.5s ease;
@@ -196,49 +164,24 @@
                     font-size: 1.8rem;
                     color: var(--gold-brass);
                 }
-            }
 
-            .slideshow-container{
-                &.about-us{
-                    width: 100%;
-                    margin: auto;
-                    max-height: 400px;
-
-                    @media only screen and (max-width: 520px){
-                        width: 350px;
-                        height: 250px;
-
-                        .slide{
-                            height: 250px;
-                            
-                            img{
-                                height: 250px;
-                                width: 350px;
-                            }
+                .slideshow-container{
+                    &.about-us{
+                        width: 100%;
+                        margin: auto;
+                        max-height: 400px;
+            
+                        .slide-arrow{
+                            display: none;
                         }
-                    }
-        
-                    .slide-arrow{
-                        display: none;
                     }
                 }
             }
+
         }
     }
 
     @media only screen and (max-width: 1024px) {
-        .hero-section {
-            padding: 50px 15px;
-
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-
-            .hero-content p {
-                font-size: 1.8rem;
-            }
-        }
-
         .company-overview,
         .goals,
         .values,
@@ -268,16 +211,18 @@
             }
         }
 
-        .team .team-cards {
-            gap: 40px;
-        }
+        .team {
+            .team-cards{
+                gap: 40px;
+            }
 
-        .team .office-slides {
-            flex-direction: column;
-            align-items: center;
-
-            .factory-workers, .employees {
-                width: 450px;
+            .office-slides {
+                flex-direction: column;
+                align-items: center;
+    
+                .factory-workers, .employees {
+                    width: 450px;
+                }
             }
         }
 
@@ -287,17 +232,7 @@
     }
     
     @media only screen and (max-width: 900px) {
-        .hero-section {
-            padding: 40px 15px;
-
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-
-            .hero-content p {
-                font-size: 1.6rem;
-            }
-        }
+        font-size: 1.4rem;
 
         .company-overview,
         .goals,
@@ -320,12 +255,18 @@
         .team .team-cards {
             gap: 20px;
 
-            .team-card img {
-                height: 250px;
-            }
+            .team-card {
+                img{
+                    height: 250px;
+                }
 
-            h3 {
-                font-size: 1.8rem;
+                h3 {
+                    font-size: 1.8rem;
+                }
+
+                p{
+                    font-size: 1.5rem;
+                }
             }
         }
 
@@ -348,17 +289,7 @@
     }
     
     @media only screen and (max-width: 768px) {
-        .hero-section {
-            padding: 30px 10px;
-
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
-
-            .hero-content p {
-                font-size: 1.4rem;
-            }
-        }
+        font-size: 1.2rem;
 
         .company-overview,
         .goals,
@@ -384,18 +315,40 @@
                 flex-wrap: nowrap;
                 flex-direction: column;
     
-                .team-card img {
-                    height: 200px;
-                }
-    
-                h3 {
-                    font-size: 1.6rem;
+                .team-card {
+                    img{
+                        height: 200px;
+                    }
+
+                    h3 {
+                        font-size: 1.6rem;
+                    }
+
+                    p{
+                        font-size: 1.4rem;
+                    }
                 }
             }
 
             .office-slides{
                 .factory-workers, .employees{
                     width: 380px;
+
+                    .slideshow-container.about-us{
+                        @media only screen and (max-width: 520px){
+                            width: 350px;
+                            height: 250px;
+    
+                            .slide{
+                                height: 250px;
+                                
+                                img{
+                                    height: 250px;
+                                    width: 350px;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -419,18 +372,6 @@
     }
     
     @media only screen and (max-width: 400px) {
-        .hero-section {
-            padding: 20px 10px;
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-        }
-
         .company-overview,
         .goals,
         .values,
@@ -453,18 +394,38 @@
             .team-cards{
                 gap: 15px;
     
-                .team-card img {
-                    height: 180px;
-                }
-    
-                h3 {
-                    font-size: 1.4rem;
-                }
+                .team-card {
+                    img{
+                        height: 180px;
+                    }
+
+                    h3 {
+                        font-size: 1.4rem;
+                    }
+
+                    p{
+                        font-size: 1.2rem;
+                    }
+                }    
             }
 
             .office-slides{
                 .factory-workers, .employees{
                     width: 300px;
+
+                    .slideshow-container.about-us{
+                        width: 330px;
+                        height: 220px;
+
+                        .slide{
+                            height: 220px;
+                            
+                            img{
+                                height: 220px;
+                                width: 330px;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -478,24 +439,8 @@
             max-width: 300px;
         }
     }
-}
 
-@media only screen and (max-width: 360px) {
-    .aboutUsPage {
-        font-size: 0.9rem;
-
-        .hero-section {
-            padding: 15px 5px;
-
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-        }
-
+    @media only screen and (max-width: 360px) {    
         .company-overview,
         .goals,
         .values,
@@ -504,12 +449,12 @@
             h2 {
                 font-size: 1.4rem;
             }
-
+    
             p {
                 font-size: 0.9rem;
             }
         }
-
+    
         .goals{
             .goal-content{
                 .goal{
@@ -517,29 +462,81 @@
                 }
             }
         }
-
+    
         .image-wrapper img {
             height: 150px;
         }
-
-        .team .team-cards {
-            gap: 10px;
-
-            .team-card img {
-                height: 150px;
+    
+        .team{
+            .team-cards{
+                gap: 10px;
+        
+                .team-card {
+                    img{
+                        height: 150px;
+                    }
+        
+                    h3 {
+                        font-size: 1.2rem;
+                    }
+        
+                    p{
+                        font-size: 1rem;
+                    }
+                }
             }
-
-            h3 {
-                font-size: 1.2rem;
+    
+            .office-slides{
+                .factory-workers, .employees{
+                    .slideshow-container.about-us{
+                        width: 300px;
+                        height: 200px;
+    
+                        .slide{
+                            height: 200px;
+                            
+                            img{
+                                height: 200px;
+                                width: 300px;
+                            }
+                        }
+                    }
+                }
             }
         }
-
+    
         .values .values-list li {
             min-width: 180px;
         }
-
+    
         .slideshow-container.about-us {
             height: 150px;
         }
-    }    
+        
+        @media only screen and (max-width: 316px){
+            .team .office-slides{
+                .factory-workers, .employees{
+                    width: 280px;
+
+                    h3{
+                        font-size: 1.6rem;
+                    }
+
+                    .slideshow-container.about-us{
+                        width: 250px;
+                        height: 180px;
+    
+                        .slide{
+                            height: 180px;
+                            
+                            img{
+                                height: 180px;
+                                width: 250px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

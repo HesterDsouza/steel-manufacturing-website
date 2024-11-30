@@ -1,27 +1,6 @@
 .productsAndTechnologyPage{
     padding: 10px 0;
 
-    .hero-section{
-        background: linear-gradient(155deg, var(--dark-blue) 0%, var(--dark-blue) 45%, var(--steel-gray) 85%, var(--steel-gray) 100%);
-        color: #fff;
-        padding: 60px 20px;
-        text-align: center;
-        margin-bottom: 40px;
-
-        .hero-content{
-            h1{
-                font-size: 3.6rem;
-                margin: 0;
-            }
-
-            p{
-                font-size: 2rem;
-                margin: 10px 0 0;
-                font-weight: 500;
-            }
-        }
-    }
-
     .products-section, .tech-section{
         margin: 20px 0;
         text-align: center;
@@ -44,20 +23,6 @@
     }
 
     @media only screen and (max-width: 1024px) {
-        .hero-section {
-            padding: 40px 15px;
-    
-            .hero-content {
-                h1 {
-                    font-size: 3rem;
-                }
-        
-                p {
-                    font-size: 1.8rem;
-                }
-            }
-        }
-    
         .products-section, .tech-section {
             h2 {
                 font-size: 2.2rem;
@@ -76,20 +41,6 @@
     }
     
     @media only screen and (max-width: 900px) {
-        .hero-section {
-            padding: 35px 10px;
-    
-            .hero-content {
-            h1 {
-                font-size: 2.8rem;
-            }
-    
-            p {
-                font-size: 1.6rem;
-            }
-            }
-        }
-    
         .products-section, .tech-section {
             gap: 10px;
     
@@ -100,23 +51,9 @@
     }
     
     @media only screen and (max-width: 768px) {
-        .hero-section {
-            padding: 30px 10px;
-    
-            .hero-content {
-            h1 {
-                font-size: 2.6rem;
-            }
-    
-            p {
-                font-size: 1.4rem;
-            }
-            }
-        }
-    
         .products-section, .tech-section {
             h2 {
-            font-size: 1.8rem;
+                font-size: 1.8rem;
             }
         }
     
@@ -145,20 +82,6 @@
     }
     
     @media only screen and (max-width: 400px) {
-        .hero-section {
-            padding: 20px 8px;
-            
-            .hero-content {
-                h1 {
-                    font-size: 2.4rem;
-                }
-                
-                p {
-                    font-size: 1.3rem;
-                }
-            }
-        }
-        
         .products-section, .tech-section {
             h2 {
                 font-size: 1.6rem;
@@ -167,26 +90,11 @@
     
         .products-section .cards-container .card.products {
             font-size: 1.2rem;
-
             width: 250px;
         }
     }
     
     @media only screen and (max-width: 360px) {
-        .hero-section {
-            padding: 15px 5px;
-    
-            .hero-content {
-                h1 {
-                    font-size: 2rem;
-                }
-        
-                p {
-                    font-size: 1.2rem;
-                }
-            }
-        }
-    
         .products-section, .tech-section {
             h2 {
                 font-size: 1.4rem;
@@ -196,5 +104,5 @@
         .products-section .cards-container .card.products {
             font-size: 1rem;
         }
-    }  
+    }
 }

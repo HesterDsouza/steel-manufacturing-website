@@ -2,51 +2,46 @@ import DetailsCard from "../../components/detailsCard/DetailsCard"
 import { useParams } from "react-router-dom"
 import "./productDetail.css"
 import Contact from "../../components/contact/Contact"
+import { useEffect, useState } from "react"
+import { fetchProduct } from "../../api"
+import HeroSection from "../../components/heroSection/HeroSection"
 
 const ProductDetail = () => {
 
   const {productId} = useParams()
+  const [productDetails, setProductDetails] = useState([])
+  const [productTitle, setProductTitle] = useState("")
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState("")
 
-  const products = {
-    railings: [
-      {
-        image: "/products/railings/railing1.JPG",
-        description: "Black metal railings of a white spiral staircase, showcasing a modern and elegant design."
-      },
-      {
-        image: "/products/railings/railing2.JPG",
-        description: "Intricate metal railings of a stairway featuring geometric designs, showcasing modern craftsmanship and artistic detail."
-      },
-    ],
-    canopies: [
-      {
-        image: "/products/canopies/canopy1.JPG",
-        description: "A modern Nespresso kiosk showcasing coffee machines and capsules with prominent branding and a decorative coffee-themed wall."
-      },
-      {
-        image: "/products/canopies/canopy2.JPG",
-        description: "A rectangular, open café kiosk with a wooden structure, metal grids, hanging lights, and seating around a counter."
-      },
-    ],
-  }
+  useEffect(()=>{
+    const getProductDetails = async() => {
+      try {
+        const {data} = await fetchProduct(productId);
+        setProductTitle(data.title)
+        setProductDetails(data.details)
+      } catch (error) {
+        setError("Product not found or failed to load");
+        console.error("Error fetching product: ", error);
+      } finally {
+        setLoading(false)
+      }
+    };
 
-  const productDetails = products[productId.toLowerCase()];
+    getProductDetails();
+  },[productId]);
 
-  if(!productDetails){
-    return <p>Product not found</p>
-  }
-
-  const productTitle = productId.charAt(0).toUpperCase() + productId.slice(1)
+  if(loading) return <p>Loading...</p>
+  if(error) return <p>{error}</p>
 
   const collections = productDetails.map((item) => ({
     image: item.image,
-    title: "",
-    description: item.description,
+    description: item.description
   }))
 
   return (
     <div className="productDetail">
-        <h1>{productTitle}</h1>
+        <HeroSection title={productTitle}/>
         <DetailsCard collections={collections} class_name="product-detail"/>
         <Contact />
     </div>

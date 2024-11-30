@@ -1,23 +1,5 @@
 .productDetail{
-    padding: 10px 12px;
-    
-    @media only screen and (max-width: 1024px){
-        padding: 8px 10px;
-    }
-
-    @media only screen and (max-width: 900px){
-        padding: 6px 8px;
-    }
-
-    @media only screen and (max-width: 400px){
-        padding: 5px;
-    }
-
-    h1{
-        font-size: 2.8rem;
-        color: var(--logo-blue);
-        text-align: center;
-    }
+    padding: 10px 0px;
 
     .cards-container{
         margin-bottom: 30px;
@@ -29,7 +11,9 @@
         }
     }
 
-    @media only screen and (max-width: 1024px) {        
+    @media only screen and (max-width: 1024px) { 
+        padding: 8px 0;
+
         h1 {
             font-size: 2.6rem;
         }
@@ -54,6 +38,8 @@
     }
     
     @media only screen and (max-width: 900px) {
+        padding: 6px 0;
+
         h1 {
             font-size: 2.4rem;
         }
@@ -101,6 +87,8 @@
     }
     
     @media only screen and (max-width: 400px) {
+        padding: 5px 0;
+
         h1 {
             font-size: 2rem;
         }
