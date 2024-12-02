@@ -114,8 +114,9 @@ const SearchResultsPage = () => {
                     <button 
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
+                        className="pageNavBtn"
                     >
-                        <FontAwesomeIcon icon={faChevronLeft}/>
+                        <FontAwesomeIcon className="pageNavIcon" icon={faChevronLeft}/>
                     </button>
                     {paginationRange.map((page, index) => 
                         page === "..." ? (
@@ -123,7 +124,7 @@ const SearchResultsPage = () => {
                                 ...
                             </span>
                         ) : (
-                            <button key={index} onClick={() => handlePageChange(page)}>
+                            <button key={index} onClick={() => handlePageChange(page)} className={currentPage === page ? "active" : ""}>
                                 {page}
                             </button>
                         )
@@ -131,8 +132,9 @@ const SearchResultsPage = () => {
                     <button 
                         onClick={() => handlePageChange(currentPage + 1)} 
                         disabled={currentPage === totalPages}
+                        className="pageNavBtn"
                     >
-                        <FontAwesomeIcon icon={faChevronRight} />
+                        <FontAwesomeIcon className="pageNavIcon" icon={faChevronRight} />
                     </button>
                 </div>
             </>

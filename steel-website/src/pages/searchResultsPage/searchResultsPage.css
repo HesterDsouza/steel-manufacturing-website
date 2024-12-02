@@ -64,7 +64,7 @@
             padding: 8px 12px;
             border: 1px solid var(--dark-blue-hover);
             background-color: var(--dark-blue);
-            color: var(--text-primary);
+            color: #fff;
             cursor: pointer;
             transition: background-color 0.4s ease-in-out;
 
@@ -79,8 +79,13 @@
 
             &.active{
                 color: var(--dark-blue);
-                background-color: var(--text-primary);
-                border-color: var(--text-primary);
+                background-color: #fff;
+                border-color: var(--dark-blue);
+            }
+
+            .pageNavIcon{
+                height: 14px;
+                width: 14px;
             }
         }
 

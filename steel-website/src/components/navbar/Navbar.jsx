@@ -2,6 +2,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react";
 import "./navbar.css"
 import { fetchProducts } from "../../api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -45,6 +47,11 @@ const Navbar = () => {
     }
   }
 
+  const clearSearch = () => {
+    setSearchQuery("");
+    setError("");
+  }
+
   return (
     <header className="navbar">
       <div className="logo-title">
@@ -67,7 +74,10 @@ const Navbar = () => {
               maxLength={50}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button onClick={handleSearch} disabled={searchLoading}>
+            {searchQuery && (
+              <FontAwesomeIcon className="clearSearch" onClick={clearSearch} icon={faClose}/>
+            )}
+            <button className="search-btn" onClick={handleSearch} disabled={searchLoading}>
               {searchLoading ? "Searching..." : "Search"}
             </button>
           </div>

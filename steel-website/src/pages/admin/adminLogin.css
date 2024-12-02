@@ -1,0 +1,65 @@
+.adminLogin{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    
+    .login h1{
+        font-size: 2.4rem;
+        font-weight: 600;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        background-color: var(--bg-highlight);
+        padding: 20px;
+        max-width: 500px;
+        width: 100%;
+
+        .formFields{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+
+            .formField{
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                gap: 10px;
+
+                label, input{
+                    font-size: 1.6rem;
+                }
+
+                input{
+                    background-color: transparent;
+                    border: 1px solid var(--steel-gray);
+                    color: var(--text-primary);
+                    width: 100%;
+                    padding: 10px;
+                }
+            }
+        }
+
+
+        button{
+            font-size: 1.8rem;
+            background-color: var(--dark-blue);
+            color: #fff;
+            padding: 6px 10px;
+            border: none;
+            width: 75%;
+            border-radius: 10px;
+            transition: background-color 0.3s ease-in-out;
+
+            &:hover{
+                background-color: var(--dark-blue-hover);
+                cursor: pointer;
+            }
+        }
+    }
+}

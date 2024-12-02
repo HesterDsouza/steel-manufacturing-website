@@ -17,7 +17,7 @@ const DetailsCard = ({ class_name = "", collections}) => {
   )
 }
 
-DetailsCard.propTypes ={
+DetailsCard.propTypes = {
     class_name: PropTypes.string,
     collections: PropTypes.arrayOf(PropTypes.object).isRequired
 }

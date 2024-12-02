@@ -1,0 +1,47 @@
+.adminLayout{
+    header{
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--bg-highlight);
+
+        .logo img{
+            width: 100%;
+            height: 120px;
+            object-fit: fill;
+        }
+
+        h1{
+            font-size: 2.8rem;
+        }
+
+        nav{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+
+            a, button{
+                font-size: 1.6rem;
+            }
+
+            a:hover{
+                text-decoration: underline;
+            }
+
+            button{
+                border: none;
+                border-radius: 8px;
+                background-color: var(--dark-blue);
+                color: #fff;
+                padding: 6px 12px;
+                transition: background-color 0.3s ease-in-out;
+
+                &:hover{
+                    background-color: var(--dark-blue-hover);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

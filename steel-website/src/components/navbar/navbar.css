@@ -58,8 +58,10 @@
             width: 100%;
             display: flex;
             gap: 5px;
+            position: relative;
   
             input{
+                flex: 1;
                 width: 90%;
                 height: 45px;
                 padding: 10px 5px;
@@ -69,7 +71,15 @@
                 font-size: 1.6rem;
             }
 
-            button{
+            .clearSearch{
+              position: absolute;
+              right: 110px;
+              top: 15px;
+              font-size: 1.8rem;
+              cursor: pointer;
+            }
+
+            .search-btn{
                 border: none;
                 outline: none;
                 background-color: var(--dark-blue);
@@ -182,8 +192,14 @@
             }
             
             .searchbar{
-                input, button{
+                input, .search-btn{
                     font-size: 1.4rem;
+                }
+
+                .clearSearch{
+                  font-size: 1.6rem;
+                  top: 16px;
+                  right: 100px;
                 }
             }
           }
@@ -238,9 +254,15 @@
           }
 
           .searchbar{
-              input, button{
-                  font-size: 1.2rem;
-              }
+            input, .search-btn{
+                font-size: 1.2rem;
+            }
+
+            .clearSearch{
+              font-size: 1.4rem;
+              top: 17px;
+              right: 90px;
+            }
           }
         }
 
@@ -289,8 +311,13 @@
             }
 
             .searchbar {
-              input, button {
+              input, .search-btn {
                 font-size: 1.1rem;
+              }
+
+              .clearSearch{
+                font-size: 1.3rem;
+                right: 85px;
               }
             }
           }
@@ -359,12 +386,16 @@
         gap: 20px;
   
         .search .searchbar {
-          input, button {
+          input, .search-btn {
               height: 28px;
-              font-size: 1.1rem;
+          }
+
+          .clearSearch{
+            top: 7px;
+            right: 70px;
           }
   
-          button {
+          .search-btn {
               padding: 5px 10px;
           }
         }
@@ -419,13 +450,20 @@
           .searchError{
             font-size: 1rem;
           }
+          
           .searchbar {    
-            input, button {
+            input, .search-btn {
               height: 25px;
               font-size: 1rem;
             }
+
+            .clearSearch{
+              font-size: 1.2rem;
+              right: 65px;
+              top: 7px;
+            }
       
-            button {
+            .search-btn {
               padding: 4px 8px;
             }
           }
@@ -481,22 +519,6 @@
 
     .search-nav {
       gap: 10px;
-  
-      .searchbar {
-        width: 95%;
-        margin: 0 auto;
-  
-        input {
-          height: 28px;
-          font-size: 1rem;
-        }
-  
-        button {
-          height: 28px;
-          font-size: 1rem;
-          padding: 4px 8px;
-        }
-      }
   
       .nav-links {
         padding: 5px 3px;

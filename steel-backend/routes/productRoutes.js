@@ -1,10 +1,11 @@
 import express from "express"
 import Product from "../models/Product.js";
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
 // Add new Product
-router.post("/", async(req, res) => {
+router.post("/", auth, async(req, res) => {
     const { title, images, description, details } = req.body;
 
     if(!title || !images || !details) 
@@ -97,7 +98,7 @@ router.get("/:id", async(req, res) => {
 })
 
 // Update Product
-router.put("/:id", async(req, res) => {
+router.put("/:id", auth, async(req, res) => {
     const { title, images, description, details } = req.body;
 
     try {
@@ -115,7 +116,7 @@ router.put("/:id", async(req, res) => {
 })
 
 // Delete Product
-router.delete("/:id", async(req, res) => {
+router.delete("/:id", auth, async(req, res) => {
     try {
         const deletedProduct = await Product.findByIdAndDelete(req.params.id);
 

@@ -38,8 +38,8 @@
   --burgundy-faded: #a5002183;
   /* highlights */
   --box-shadow: #4b4b4b8b;
-  --bg-highlight: #f9f9f9;
-  --bg-highlight2: #f4f4f4;
+  --bg-highlight: #d5d5d5;
+  --bg-highlight2: #cccccc;
 }
 
 *{
