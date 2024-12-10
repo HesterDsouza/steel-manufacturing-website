@@ -59,8 +59,8 @@ const Navbar = () => {
           <img src="/logo.png" alt="logo" />
         </div>
         <div className="header-title">
-          <h1>Establishment AHMAD MOHAMED AHMAD AL-MUHANNADI FOR DECORATION</h1>
-          <h1 className="arabic-title">المؤسسة أحمد محمد أحمد المهندي للديكور</h1>
+          <h1>Future Structures</h1>
+          <h1 className="arabic-title">الهياكل المستقبلية</h1>
         </div>
       </div>
       <div className="search-nav">

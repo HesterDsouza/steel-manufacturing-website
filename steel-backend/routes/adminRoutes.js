@@ -38,7 +38,7 @@ router.post("/create-admin", async(req,res) => {
 router.post('/login', async(req, res) => {
     const { email, password } = req.body;
 
-    if(!JWT_SECRET) return res.status(500).json({ message: "JWT secret key not defined!"})
+    // if(!JWT_SECRET) return res.status(500).json({ message: "JWT secret key not defined!"})
 
     try{
         const admin = await Admin.findOne({ email });
@@ -47,8 +47,16 @@ router.post('/login', async(req, res) => {
         const isMatch = await bcrypt.compare(password, admin.password);
         if(!isMatch) return res.status(401).json({ message: 'Invalid credentials'});
 
-        const token = jwt.sign({ id: admin._id }, JWT_SECRET, {expiresIn: '1d'});
-        if(!token) return res.status(500).json({ message: 'Failed to generate token' });
+        const token = jwt.sign({ id: admin._id }, JWT_SECRET, {expiresIn: '2h'});
+        const refreshToken = jwt.sign({ id: admin._id }, JWT_SECRET, {expiresIn: '7d'});
+
+        res.cookie('refreshToken', refreshToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'strict'
+        })
+        
+        // if(!token) return res.status(500).json({ message: 'Failed to generate token' });
 
         res.json({ message: "Login Successful", token })
     } catch(error) {
@@ -56,5 +64,20 @@ router.post('/login', async(req, res) => {
         res.status(500).json({ message: "Server Error", error });
     } 
 });
+
+router.post("/refresh-token", (req, res) => {
+    const { refreshToken } = req.cookies;
+
+    if(!refreshToken) return res.status(401).json({ message: "Unauthorized", error: "No refresh token found" });
+
+    try {
+        const decoded = jwt.verify(refreshToken, JWT_SECRET);
+        const newAccessToken = jwt.sign({ id: decoded.id }, JWT_SECRET, {expiresIn: '2h'});
+        res.json({ token: newAccessToken });
+    } catch (error) {
+        console.error("Refresh Token Error: ", error);
+        res.status(401).json({ message: "Unauthorized", error });
+    }
+})
 
 export default router;

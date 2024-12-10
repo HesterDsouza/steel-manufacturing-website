@@ -1,12 +1,26 @@
 import { useEffect } from "react";
 import "./adminLayout.css"
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import {ToastContainer} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdminLayout = () => {
+    const navigate = useNavigate();
+    // const location = useLocation();
+
     const handleLogout = () => {
         localStorage.removeItem('token');
-        window.location.href = '/admin/login';
+        navigate('/admin/login');
     };
+
+    useEffect(() => {
+      const validateToken = () => {
+        const token = localStorage.getItem("token");
+        if (!token) navigate("/admin/login")
+      }
+
+      validateToken();
+    }, [navigate])
 
     useEffect(() => {
         const applyTheme = () => {
@@ -21,8 +35,6 @@ const AdminLayout = () => {
         //  Listen for system theme changes
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         mediaQuery.addEventListener('change', applyTheme);
-    
-        // Cleanup listener
         return () => {
           mediaQuery.removeEventListener('change', applyTheme);
         };
@@ -42,6 +54,11 @@ const AdminLayout = () => {
                 </button>
             </nav>
         </header>
+        <ToastContainer 
+          position="top-right" autoClose={3000} hideProgressBar={false}
+          newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss
+          draggable pauseOnHover
+        />
         <main>
             <Outlet />
         </main>

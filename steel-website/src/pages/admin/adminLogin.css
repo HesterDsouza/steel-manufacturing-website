@@ -45,6 +45,11 @@
             }
         }
 
+        .error{
+            color: var(--burgundy);
+            font-size: 1.8rem;
+            text-align: center;
+        }
 
         button{
             font-size: 1.8rem;

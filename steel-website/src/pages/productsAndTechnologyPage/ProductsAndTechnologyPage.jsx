@@ -89,9 +89,9 @@ const ProductsAndTechnologyPage = () => {
       <section className="products-section">
         <h2>Our Products</h2>
         <div className="cards-container">
-          {products.map((product, index) => (
+          {products.map((product) => (
             <InfoCard 
-            key={index}
+            key={product._id}
             title={product.title}
             images={product.images}
             description={product.description}

@@ -1,6 +1,7 @@
 import express from "express"
 import Product from "../models/Product.js";
 import auth from "../middleware/auth.js";
+import multer from "multer";
 
 const router = express.Router();
 
@@ -20,6 +21,35 @@ router.post("/", auth, async(req, res) => {
         res.status(201).json({ message: "Product added successfully", product: newProduct });
     } catch (error) {
         res.status(422).json({ message: "Error adding product", error})
+    }
+})
+
+// Multer Storage
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, './uploads');
+    },
+    filename: (req, file, cb) => {
+        const safeFileName = file.originalname.replace(/[^a-z0-9.]/gi, '_').toLowerCase();
+        cb(null, `${Date.now()}_${safeFileName}`);
+    }
+})
+
+// Multer Image upload middleware
+const upload = multer({
+    storage: storage, limits: { fileSize: 2 * 1024 * 1024}
+})
+
+// Image upload route
+router.post("/uploads", auth, upload.array("images", 4), (req, res) => {
+    try {
+        if(!req.files || req.files.length === 0)
+            return res.status(400).json({ message: "No files were uploaded" });
+        const urls = req.files.map((file) => `/uploads/${file.filename}`);
+        res.status(200).json({ urls })
+    } catch (error) {
+        console.error("Error uploading image:", error)
+        res.status(500).json({ message: "Error uploading image", error})
     }
 })
 

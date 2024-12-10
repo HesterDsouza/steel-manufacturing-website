@@ -70,7 +70,7 @@ const ServicePage = () => {
       <section className="expertise">
         <h2>Our Expertise</h2>
         <p>
-          At Establishment Ahmad Mohamed Ahmad Al-Muhannadi for Decoration, we bring decades of experience to the table, ensuring every project is executed with utmost precision, professionalism, and care. 
+          At Future Structures, we bring decades of experience to the table, ensuring every project is executed with utmost precision, professionalism, and care. 
           Our expertise spans a diverse range of services and materials, allowing us to cater to a wide array of client needs. Whether you are seeking functional solutions or artistic designs, 
           we have the capabilities to deliver exceptional results that exceed expectations.
         </p>
