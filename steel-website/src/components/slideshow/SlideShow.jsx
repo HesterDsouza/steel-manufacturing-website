@@ -27,8 +27,8 @@ const SlideShow = ({ images, class_name = "" }) => {
             <img src={src} alt={`Slide ${index + 1}`} />
           </div>
         ))}
-        <FontAwesomeIcon className="slide-arrow prev" icon={faChevronLeft} onClick={() => changeSlide(-1)} aria-label="Previous Slide" role="button"/>
-        <FontAwesomeIcon className="slide-arrow next" icon={faChevronRight} onClick={() => changeSlide(1)} aria-label="Next Slide" role="button"/>
+        <FontAwesomeIcon tabIndex={0} className="slide-arrow prev" icon={faChevronLeft} onKeyDown={(e) => e.key === "Enter" && changeSlide(-1)} onClick={() => changeSlide(-1)} aria-label="Previous Slide" role="button"/>
+        <FontAwesomeIcon tabIndex={0} className="slide-arrow next" icon={faChevronRight} onKeyDown={(e) => e.key === "Enter" && changeSlide(1)} onClick={() => changeSlide(1)} aria-label="Next Slide" role="button"/>
       </section>
   )
 }

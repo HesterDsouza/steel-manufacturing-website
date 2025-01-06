@@ -5,7 +5,7 @@ import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom"
 import RootLayout from './layouts/rootLayout/RootLayout.jsx';
 import HomePage from './pages/homePage/HomePage.jsx';
 import AboutUsPage from './pages/aboutUsPage/AboutUsPage.jsx';
-import ProductsAndTechnologyPage from './pages/productsAndTechnologyPage/ProductsAndTechnologyPage.jsx';
+import ProductsPage from './pages/productsPage/ProductsPage.jsx';
 import ContactPage from './pages/contactPage/ContactPage.jsx';
 import ProductDetail from './pages/productDetail/ProductDetail.jsx';
 import ServicePage from './pages/servicePage/ServicePage.jsx';
@@ -13,20 +13,23 @@ import { HelmetProvider } from 'react-helmet-async';
 import SearchResultsPage from './pages/searchResultsPage/SearchResultsPage.jsx';
 import AdminLayout from './layouts/adminLayout/AdminLayout.jsx';
 import AdminLogin from './pages/admin/AdminLogin.jsx';
-import AdminPage from './pages/admin/adminPage.jsx';
+import AdminPage from './pages/admin/AdminPage.jsx';
+import TechnologyPage from './pages/technologyPage/TechnologyPage.jsx';
 
 const adminLoader = () => {
   const token = localStorage.getItem('token');
   return !token ? redirect("/admin/login") : null
 }
+
 const router = createBrowserRouter([
   {
     element: <RootLayout />,
     children: [
       { path: '/', element: <HomePage /> },
       { path: '/about-us', element: <AboutUsPage /> },
-      { path: '/products-and-technology', element: <ProductsAndTechnologyPage /> },
-      { path: '/products-and-technology/:productId', element: <ProductDetail /> },
+      { path: '/products', element: <ProductsPage /> },
+      { path: '/products/:productId', element: <ProductDetail /> },
+      { path: '/technology', element: <TechnologyPage /> },
       { path: '/services', element: <ServicePage /> },
       { path: '/contact', element: <ContactPage /> },
       { path: '/search-results', element: <SearchResultsPage /> },

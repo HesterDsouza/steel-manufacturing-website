@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./adminLayout.css"
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import {ToastContainer} from "react-toastify"
+import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
+import UpdateTabTitle from "../../components/UpdateTabTitle";
 
 const AdminLayout = () => {
     const navigate = useNavigate();
-    // const location = useLocation();
+    const [toastTheme, setToastTheme] = useState("dark");
 
     const handleLogout = () => {
         localStorage.removeItem('token');
@@ -14,19 +15,11 @@ const AdminLayout = () => {
     };
 
     useEffect(() => {
-      const validateToken = () => {
-        const token = localStorage.getItem("token");
-        if (!token) navigate("/admin/login")
-      }
-
-      validateToken();
-    }, [navigate])
-
-    useEffect(() => {
         const applyTheme = () => {
           const isDarkmode = window.matchMedia('(prefers-color-scheme: dark)').matches;
           const theme = isDarkmode ? 'dark' : 'light';
           document.documentElement.setAttribute('data-theme', theme);
+          setToastTheme(theme);
         };
     
         // Apply theme on page load
@@ -42,27 +35,30 @@ const AdminLayout = () => {
 
   return (
     <div className="adminLayout">
-        <header>
-            <div className="logo">
-                <img src="/logo.png" alt="logo" />
-            </div>
-            <h1>Admin Panel</h1>
-            <nav>
-                <Link to="/">Back to Website</Link>
-                <button className="logout" onClick={handleLogout}>
-                    Logout
-                </button>
-            </nav>
-        </header>
-        <ToastContainer 
-          position="top-right" autoClose={3000} hideProgressBar={false}
-          newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss
-          draggable pauseOnHover
-        />
-        <main>
-            <Outlet />
-        </main>
-    </div>
+      <UpdateTabTitle />
+      <ToastContainer 
+        position="top-right" autoClose={4000} hideProgressBar={false}
+        newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss
+        draggable pauseOnHover theme={toastTheme}
+      />
+      <header>
+          <div className="logo">
+            <Link to="/" target="_blank">
+              <img src="/logo.png" alt="logo" />
+            </Link>
+          </div>
+          <h1 tabIndex={0}>Admin Panel</h1>
+          <nav>
+            <Link to="/" target="_blank">Back to Website</Link>
+            <button className="logout" onClick={handleLogout}>
+              Logout
+            </button>
+          </nav>
+      </header>
+      <main>
+          <Outlet />
+      </main>
+  </div>
   )
 }
 

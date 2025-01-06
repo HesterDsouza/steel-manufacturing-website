@@ -1,12 +1,35 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { toast } from "react-toastify";
 
 const api = axios.create({ baseURL: import.meta.env.VITE_BACKEND_API_URL});
+
+let sessionTimeOut = null;
+
+const tokenExpiry = (token) => {
+    const decoded = jwtDecode(token);
+    const currentTime = Math.floor(Date.now() / 1000);
+    const timeLeft = decoded.exp - currentTime;
+
+    if(timeLeft > 0 && !sessionTimeOut){
+        sessionTimeOut = setTimeout(() => {
+            toast.info(`Login Session has expired. You will be redirected to Login Page`, {autoClose: 4000, hideProgressBar: false});
+            localStorage.removeItem("token");
+            sessionTimeOut = null;
+            setTimeout(() => {
+                window.location.href = "/admin/login"
+            }, 4000)
+        }, timeLeft * 1000)
+    }
+}
 
 // Request Interceptor: Attach token to headers
 api.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
-    if(token) config.headers.Authorization = `Bearer ${token}`
+    if(token) {
+        config.headers.Authorization = `Bearer ${token}`
+        tokenExpiry(token);
+    }
     return config;
 })
 
@@ -24,16 +47,13 @@ api.interceptors.response.use(
                 return api(originalRequest);
             } catch (error) {
                 console.error("Refresh Token Error:", error);
-                localStorage.removeItem("token");
-                // window.location.href = "/admin/login"
-                const navigate = useNavigate();
-                navigate("/admin/login")
             }
         }
         return Promise.reject(error);
     }
 )
 
+// API Functions
 // get all products
 export const fetchProducts = () => api.get('/products');
 
@@ -57,9 +77,15 @@ export const uploadImages = async( files ) => {
     const formData = new FormData();
     files.forEach((file) => formData.append("images", file));
 
-    const { data } = await api.post("/products/uploads", formData, {
-        headers: { "Content-Type" : "multipart/form-data" },
-    });
-
-    return data.urls;
+    try {
+        const { data } = await api.post("/products/uploads", formData, {
+            headers: { "Content-Type" : "multipart/form-data" },
+        });
+    
+        return data.urls;
+    } catch (error) {
+        console.error("Error uploading images:", error);
+        toast.error("Failed to upload images.");
+        throw error;
+    }
 }

@@ -6,7 +6,7 @@
         text-align: center;
         width: max-content;
         position: absolute;
-        top: 500px;
+        top: 520px;
         left: 40px;
         padding: 5px;
         background: linear-gradient(135deg, transparent 25%, var(--steel-gray) 100%);
@@ -114,7 +114,7 @@
     
     @media only screen and (max-width: 1024px){
         .hero-overlay{
-            top: 425px;
+            top: 410px;
             left: 45px;
     
             h1{
@@ -162,10 +162,6 @@
     }
 
     @media only screen and (max-width: 900px){
-        .hero-overlay{
-            top: 425px;
-        }
-
         .values{
             .value-boxes{
                 .value-box{
@@ -187,14 +183,18 @@
 
     @media only screen and (max-width: 884px) {
       .hero-overlay{
-        top: 530px;
+        top: 540px;
       }
     }
 
     @media only screen and (max-width: 768px) {
         .hero-overlay {
-          top: 510px;
+          top: 490px;
           left: 30px;
+
+          @media (max-width: 548px) {
+            top: 510px;            
+          }
 
           h1{
             font-size: 1.8rem;
@@ -251,13 +251,13 @@
                 ul {
                   left: 15px;
       
-                  li {
-                    font-size: 1.4rem;
-                  }
+                li {
+                  font-size: 1.4rem;
                 }
               }
             }
           }
+        }
       }
     }
 
@@ -278,7 +278,6 @@
 
     @media only screen and (max-width: 436px){
       .hero-overlay{
-        top: 530px;
         left: 15px;
 
         h1{
@@ -293,7 +292,7 @@
         
     @media only screen and (max-width: 400px){
       .hero-overlay {
-        top: 490px;
+        top: 470px;
         left: 10px;
 
         h1{
@@ -308,7 +307,7 @@
 
     @media only screen and (max-width: 384px) {
       .hero-overlay {
-        top: 500px;
+        top: 480px;
         left: 8px;
         padding: 2px;
   
@@ -324,12 +323,10 @@
 
     @media only screen and (max-width: 360px) {
         .hero-overlay {
-          top: 480px;
-          left: 5px;
-          padding: 1px;
+          top: 460px;
     
           h1 {
-            font-size: 1.35rem;
+            font-size: 1.4rem;
           }
 
           p{

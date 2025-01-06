@@ -6,6 +6,7 @@ import HeroSection from "../../components/heroSection/HeroSection"
 import DetailsCard from "../../components/detailsCard/DetailsCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { Helmet } from "react-helmet-async";
 
 const SearchResultsPage = () => {
     const location = useLocation();
@@ -30,7 +31,6 @@ const SearchResultsPage = () => {
             setLoading(true);
             try {
                 const { data } = await searchProducts(queryParam, currentPage, limit);
-                console.log(data);
                 setSearchResults(data.products);
                 setTotalRecords(data.totalRecords)
                 setTotalPages(data.totalPages);
@@ -92,26 +92,37 @@ const SearchResultsPage = () => {
 
   return (
     <div className="searchResultsPage">
+        <Helmet>
+            <title>Search Results for &apos;&apos;{query || 'unknown'}&apos;&apos; - Future Structures</title>
+            <meta
+            name="description"
+            content={`Find the best products matching your search for '${query || 'unknown'}' on Future Structures. Browse through our extensive catalog and discover high-quality solutions for your projects.`}
+            />
+            <meta name="keywords" content={`${query}, products, search results, Future Structures`} />
+            <meta name="author" content="Future Structures" />
+            <link rel="canonical" href={`https://www.futurestructures.com/search?query=${query || 'unknown'}&page=${currentPage}`} />
+        </Helmet>
         <HeroSection title={`Product search results for '${query || "unknown"}'`} />
         <div className="results">
-            <p className="result">
+            <p tabIndex={0} className="result">
                 Found <span className="big">{totalRecords}</span> result{totalRecords === 1 ? "" : "s"}
             </p>
             {totalRecords >= 1 && (
                 <>
-                    <p className="productRange">
+                    <p tabIndex={0} className="productRange">
                         Displaying <span className="big">{startRecord} - {endRecord}</span> of <span className="big">{totalRecords}</span> results
                     </p>
                 </>
             )}
         </div>
         {loading && <p>Loading...</p>}
-        {error && <p className="error">{error}</p>}
+        {error && <p tabIndex={0} className="error">{error}</p>}
         {!loading && !error && (
             <>
                 <DetailsCard collections={collection} class_name="searchPage"/>
                 <div className="pagination">
-                    <button 
+                    <button
+                        tabIndex={0} 
                         onClick={() => handlePageChange(currentPage - 1)}
                         disabled={currentPage === 1}
                         className="pageNavBtn"
@@ -124,12 +135,14 @@ const SearchResultsPage = () => {
                                 ...
                             </span>
                         ) : (
-                            <button key={index} onClick={() => handlePageChange(page)} className={currentPage === page ? "active" : ""}>
+                            <button
+                                tabIndex={0} key={index} onClick={() => handlePageChange(page)} className={currentPage === page ? "active" : ""}>
                                 {page}
                             </button>
                         )
                     )}
-                    <button 
+                    <button
+                        tabIndex={0} 
                         onClick={() => handlePageChange(currentPage + 1)} 
                         disabled={currentPage === totalPages}
                         className="pageNavBtn"

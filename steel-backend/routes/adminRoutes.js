@@ -76,7 +76,7 @@ router.post("/refresh-token", (req, res) => {
         res.json({ token: newAccessToken });
     } catch (error) {
         console.error("Refresh Token Error: ", error);
-        res.status(401).json({ message: "Unauthorized", error });
+        res.status(401).json({ message: "Unauthorized. Token has expired", error });
     }
 })
 

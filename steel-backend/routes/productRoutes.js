@@ -2,6 +2,7 @@ import express from "express"
 import Product from "../models/Product.js";
 import auth from "../middleware/auth.js";
 import multer from "multer";
+import cloudinary from "../utils/cloudinary.js";
 
 const router = express.Router();
 
@@ -11,6 +12,11 @@ router.post("/", auth, async(req, res) => {
 
     if(!title || !images || !details) 
         return res.status(400).json({ message: "Title, images and details information is necessary" });
+
+    for(const detail of details) {
+        if(!detail.image || !detail.description)
+            return res.status(400).json({ message: "Each detail must have an image and a description" });
+    }
     
     try {
         const newProduct = new Product({
@@ -24,28 +30,34 @@ router.post("/", auth, async(req, res) => {
     }
 })
 
-// Multer Storage
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './uploads');
-    },
-    filename: (req, file, cb) => {
-        const safeFileName = file.originalname.replace(/[^a-z0-9.]/gi, '_').toLowerCase();
-        cb(null, `${Date.now()}_${safeFileName}`);
-    }
-})
-
-// Multer Image upload middleware
+// Multer Storage and Upload
+const storage = multer.memoryStorage()
 const upload = multer({
     storage: storage, limits: { fileSize: 2 * 1024 * 1024}
 })
 
 // Image upload route
-router.post("/uploads", auth, upload.array("images", 4), (req, res) => {
+router.post("/uploads", auth, upload.array("images", 4), async (req, res) => {
     try {
         if(!req.files || req.files.length === 0)
             return res.status(400).json({ message: "No files were uploaded" });
-        const urls = req.files.map((file) => `/uploads/${file.filename}`);
+
+        // Upload file to Cloudinary
+        const uploadToCloudinary = (file) => {
+            return new Promise((resolve, reject) => {
+                const uploadStream = cloudinary.uploader.upload_stream(
+                    {folder: "uploads"},
+                    (error, result) => {
+                        if (error) reject(error)
+                        else resolve(result.secure_url) 
+                    }
+                )
+                uploadStream.end(file.buffer)
+            })
+        }
+        const uploadPromises = req.files.map((file) => uploadToCloudinary(file));            
+        const urls = await Promise.all(uploadPromises);
+
         res.status(200).json({ urls })
     } catch (error) {
         console.error("Error uploading image:", error)
@@ -131,6 +143,14 @@ router.get("/:id", async(req, res) => {
 router.put("/:id", auth, async(req, res) => {
     const { title, images, description, details } = req.body;
 
+    if(!title || !images || !details) 
+        return res.status(400).json({ message: "Title, images and details information is necessary" });
+
+    for(const detail of details) {
+        if(!detail.image || !detail.description)
+            return res.status(400).json({ message: "Each detail must have an image and a description" });
+    }
+
     try {
         const updatedProduct = await Product.findByIdAndUpdate(
             req.params.id,
@@ -148,11 +168,29 @@ router.put("/:id", auth, async(req, res) => {
 // Delete Product
 router.delete("/:id", auth, async(req, res) => {
     try {
-        const deletedProduct = await Product.findByIdAndDelete(req.params.id);
+        const product = await Product.findById(req.params.id);
+        if(!product) return res.status(404).json({ message: "Product not found"});
 
-        if(!deletedProduct) return res.status(404).json({ message: "Product not found" });
+        const allImgs = [...product.images, ...product.details.map(detail => detail.image)];
 
-        res.status(200).json({ message: "Product deleted successfully", product: deletedProduct });
+        // Delete images from Cloudinary
+        const deletedPromises = allImgs.map(async (url) => {
+            const publicId = url.split("/uploads/")[1].split(".")[0].replace(/\?.*$/, "");
+            const fullPublicId = `uploads/${publicId}`
+            console.log(`Deleting image: ${fullPublicId}`);
+            try {
+                const result = await cloudinary.uploader.destroy(fullPublicId, {invalidate: true});
+                return console.log(`Cloudinary delete result: ${JSON.stringify(result)}`);
+            } catch (error) {
+                return console.error(`Error deleting image from Cloudinary: ${error}`);
+            }
+        })
+
+        await Promise.all(deletedPromises);
+
+        await product.deleteOne();
+
+        res.status(200).json({ message: "Product deleted successfully", product});
     } catch (error) {
         res.status(422).json({ message: "Error deleting product", error})
     }

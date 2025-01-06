@@ -10,6 +10,8 @@ const Navbar = () => {
   const [searchLoading, setSearchLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
+  const [dropDownOpen, setDropDownOpen] = useState(false);
+  const [focusedIndex, setFocusedIndex] = useState(-1);
 
   const navigate = useNavigate();
 
@@ -52,15 +54,51 @@ const Navbar = () => {
     setError("");
   }
 
+  const handleDropDownKeyDown = (e) => {
+    if(dropDownOpen) {
+      switch(e.key) {
+        case "ArrowDown":
+          e.preventDefault()
+          setFocusedIndex((prev) => (prev + 1) % products.length);
+          break;
+
+        case "ArrowUp":
+          e.preventDefault()
+          setFocusedIndex((prev) => (prev - 1 + products.length) % products.length);
+          break;
+        
+        case "Enter":
+          e.preventDefault()
+          if(focusedIndex >= 0){
+            const product = products[focusedIndex];
+            navigate(`/products/${product._id}`);
+            setDropDownOpen(false);
+          }
+          break;
+
+        case "Escape":
+          e.preventDefault()
+          setDropDownOpen(false);
+          break;
+
+        default: break;
+      }
+    }
+  }
+
   return (
     <header className="navbar">
       <div className="logo-title">
         <div className="logo">
-          <img src="/logo.png" alt="logo" />
+          <Link to="/">
+            <img src="/logo.png" alt="logo" />
+          </Link>
         </div>
         <div className="header-title">
-          <h1>Future Structures</h1>
-          <h1 className="arabic-title">الهياكل المستقبلية</h1>
+          <Link to="/">
+            <h1>Future Structures</h1>
+            <h1 className="arabic-title">الهياكل المستقبلية</h1>
+          </Link>
         </div>
       </div>
       <div className="search-nav">
@@ -73,11 +111,17 @@ const Navbar = () => {
               minLength={1}
               maxLength={50}
               onChange={(e) => setSearchQuery(e.target.value)}
-            />
+              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+              />
             {searchQuery && (
-              <FontAwesomeIcon className="clearSearch" onClick={clearSearch} icon={faClose}/>
+              <FontAwesomeIcon tabIndex={0} className="clearSearch" onClick={clearSearch} onKeyDown={(e) => e.key === "Enter" && clearSearch} icon={faClose}/>
             )}
-            <button className="search-btn" onClick={handleSearch} disabled={searchLoading}>
+            <button 
+              className="search-btn" 
+              onClick={handleSearch} 
+              disabled={searchLoading}
+              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+            >
               {searchLoading ? "Searching..." : "Search"}
             </button>
           </div>
@@ -89,22 +133,30 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li className="links-list-item">
+              <Link to="/products">Products</Link>
+            </li>
+            <li className="links-list-item">
               <Link to="/about-us">About Us</Link>
             </li>
-            <li className="links-list-item services-container">
-              <Link to="/services">Services</Link>
+            <li className="links-list-item services-container" onKeyDown={handleDropDownKeyDown}>
+              <Link to="/services" aria-expanded={dropDownOpen} aria-controls="services-dropdown">
+                Services
+              </Link>
               <div className="services-dropdown">
                 <ul>
-                  {products.map((product) => (
-                    <li key={product._id}>
-                      <Link to={`/products-and-technology/${product._id}`}>{product.title}</Link>
+                  {products.map((product, index) => (
+                    <li key={product._id}
+                        className={focusedIndex === index ? "focused" : ""}
+                        onFocus={() => setFocusedIndex(index)}                        
+                    >
+                      <Link to={`/products/${product._id}`}>{product.title}</Link>
                     </li>
                   ))}
                 </ul>
               </div>
             </li>
             <li className="links-list-item">
-              <Link to="/products-and-technology">Products & Technology</Link>
+              <Link to="/technology">Technology</Link>
             </li>
             <li className="links-list-item">
               <Link to="/contact">Contact</Link>

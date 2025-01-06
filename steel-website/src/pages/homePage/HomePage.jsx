@@ -2,7 +2,7 @@ import InfoCard from "../../components/infoCard/InfoCard";
 import SlideShow from "../../components/slideshow/SlideShow";
 import "./homePage.css"
 import { useEffect, useRef, useState } from "react"
-// import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet-async";
 
 const HomePage = () => {
   const [activeSlides, setActiveSlides] = useState(Array(8).fill(0));
@@ -69,19 +69,39 @@ const HomePage = () => {
 
   return (
     <div className="homePage">
+      <Helmet>
+        <title>Steel Manufacturer - Building the Future with Innovation</title>
+        <meta
+          name="description"
+          content="Discover our innovative steel solutions. We specialize in stainless steel railings, metal structures, and more. Trusted partners in fabrication and design."
+        />
+        <meta
+          name="keywords"
+          content="steel manufacturing, stainless steel railings, steel solutions, metal structures, fabrication, design, Qatar steel"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="Steel Manufacturer - Building the Future with Innovation" />
+        <meta
+          property="og:description"
+          content="Explore our range of innovative steel solutions including stainless steel railings, metal structures, and advanced fabrication technology."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:image" content="/logo2.png" />
+      </Helmet>
       <SlideShow images={slides}/>
       <div className="hero-overlay">
-          <h1>Building the Future with Steel Innovation</h1>
-          <p>Your Trusted Partner in Fabrication, Design &amp; Installation</p>
+          <h1 tabIndex={0}>Building the Future with Steel Innovation</h1>
+          <p tabIndex={0}>Your Trusted Partner in Fabrication, Design &amp; Installation</p>
       </div>
       <section className="about-us">
-        <h2>About Us</h2>
-        <p>We are Qatar&apos;s leading provider of steel solutions, operating across multiple countries in selected markets headquarted in Qatar.</p>
-        <p>We are an inclusive and responsible business that is helping to build for a better society.</p>
+        <h2 tabIndex={0}>About Us</h2>
+        <p tabIndex={0}>We are Qatar&apos;s leading provider of steel solutions, operating across multiple countries in selected markets headquarted in Qatar.</p>
+        <p tabIndex={0}>We are an inclusive and responsible business that is helping to build for a better society.</p>
       </section>
       <section className="services">
-        <h2>Our Services</h2>
-        <p>
+        <h2 tabIndex={0}>Our Services</h2>
+        <p tabIndex={0}>
           Our team includes experts in Fabrication &amp; Installation of SS products like:<br />
           Handrail Balustrade, Water feature, Kitchen SS Table, SS Grating with modern machinary &amp; modern technology.
         </p>
@@ -97,57 +117,57 @@ const HomePage = () => {
         </div>
       </section>
       <section className="values">
-        <h2>Our Values</h2>
+        <h2 tabIndex={0}>Our Values</h2>
         <div className="value-boxes">
           <div className="value-box">
             <div className="value-img">
-              <img src="/customer-commitment.jpg" alt="customer commitment" />
+              <img tabIndex={0} src="/customer-commitment.jpg" alt="customer commitment" />
             </div>
             <div className="value-content">
-              <h3>Customer Commitment</h3>
+              <h3 tabIndex={0}>Customer Commitment</h3>
               <ul>
-                <li>We help you, our customers, to be successful in your business</li>
-                <li>We strive to understand your needs and your customers&apos; needs</li>
-                <li>We are here to help our customers turn their visions into reality</li>
+                <li tabIndex={0}>We help you, our customers, to be successful in your business</li>
+                <li tabIndex={0}>We strive to understand your needs and your customers&apos; needs</li>
+                <li tabIndex={0}>We are here to help our customers turn their visions into reality</li>
               </ul>
             </div>
           </div>
           <div className="value-box">
             <div className="value-img">
-              <img src="/ethics.jpg" alt="company ethics" />
+              <img tabIndex={0} src="/ethics.jpg" alt="company ethics" />
             </div>
             <div className="value-content">
-              <h3>Ethical and Transparent</h3>
+              <h3 tabIndex={0}>Ethical and Transparent</h3>
               <ul>
-                <li>Our business ethos is to maintain a high degree of integrity and transparency</li>
-                <li>We never accept shortcuts</li>
-                <li>Everyone can speak their mind</li>
+                <li tabIndex={0}>Our business ethos is to maintain a high degree of integrity and transparency</li>
+                <li tabIndex={0}>We never accept shortcuts</li>
+                <li tabIndex={0}>Everyone can speak their mind</li>
               </ul>
             </div>
           </div>
           <div className="value-box">
             <div className="value-img">
-              <img src="/care-for-life.jpg" alt="care for life" />
+              <img tabIndex={0} src="/care-for-life.jpg" alt="care for life" />
             </div>
             <div className="value-content">
-              <h3>Care for Life</h3>
+              <h3 tabIndex={0}>Care for Life</h3>
               <ul>
-                <li>We work safely, or not at all</li>
-                <li>We never walk on by if unsafe practices are being observed</li>
-                <li>We support health and well being</li>
+                <li tabIndex={0}>We work safely, or not at all</li>
+                <li tabIndex={0}>We never walk on by if unsafe practices are being observed</li>
+                <li tabIndex={0}>We support health and well being</li>
               </ul>
             </div>
           </div>
           <div className="value-box">
             <div className="value-img">
-              <img src="/be-better.jpg" alt="be better" />
+              <img tabIndex={0} src="/be-better.jpg" alt="be better" />
             </div>
             <div className="value-content">
-              <h3>Be Better</h3>
+              <h3 tabIndex={0}>Be Better</h3>
               <ul>
-                <li>We always strive to better ourselves</li>
-                <li>We take pride in quality and innovation</li>
-                <li>We leverage diversity to deliver the optimal solutions</li>
+                <li tabIndex={0}>We always strive to better ourselves</li>
+                <li tabIndex={0}>We take pride in quality and innovation</li>
+                <li tabIndex={0}>We leverage diversity to deliver the optimal solutions</li>
               </ul>
             </div>
           </div>

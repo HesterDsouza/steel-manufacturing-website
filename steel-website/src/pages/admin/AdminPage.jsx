@@ -10,7 +10,7 @@ const AdminPage = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const [confirmDialog, setConfirmDialog] = useState(false);
     const [formData, setFormData] = useState({
-      id: "", title: "", images: [], description: [], details: []
+      id: "", title: "", images: [], description: "", details: []
     });
     const [isEditing, setIsEditing] = useState(false);
     const [productToDelete, setProductToDelete] = useState(null);
@@ -22,7 +22,7 @@ const AdminPage = () => {
           const sanitizedData = data.map((product) => ({
             ...product,
             images: product.images || [],
-            description: product.description || [],
+            description: product.description || "",
           }))
           setProducts(sanitizedData.reverse());
         } catch (error) {
@@ -36,11 +36,8 @@ const AdminPage = () => {
     const handleDialogOpen = (product = null) => {
       if(product){
         setFormData({
-          id: product._id,
-          title: product.title,
-          images: product.images,
-          description: product.description,
-          details: product.details
+          id: product._id, title: product.title, images: product.images,
+          description: product.description, details: product.details
         });
         setIsEditing(true);
       } else {
@@ -61,10 +58,6 @@ const AdminPage = () => {
       setFormData((prev) => ({...prev, [name]: value}));
     }
 
-    const handleArrayChange = (key, value) => {
-      setFormData((prev) => ({...prev, [key]: value}));
-    }
-
     const handleDetailsChange = (index, field, value) => {
       const updateDetails = [...formData.details];
       updateDetails[index][field] = value;
@@ -81,19 +74,17 @@ const AdminPage = () => {
       const updateDetails = [...formData.details.filter((_,i) => i !== index)];
       setFormData((prev) => ({...prev, details: updateDetails}));
     }
-
     
     const handleDeleteProduct = async() => {
       try {
         if(productToDelete){
           await deleteProduct(productToDelete._id);
           setProducts((prev) => prev.filter((product) => product._id !== productToDelete._id));
-          setProductToDelete(null);
-          setConfirmDialog(false)
+          setProductToDelete(null); setConfirmDialog(false)
         } toast.success("Product deleted")
       } catch (error) {
         console.error("Error deleting product", error);
-        toast.error("Error deleting product")
+        toast.error(`Error deleting product: ${error.response.data.message}`)
       }
     };
     
@@ -114,18 +105,14 @@ const AdminPage = () => {
           if(!validTypes.includes(file.type)){
             console.error(`${file.name} is not a valid image type.`)
             return false;
-          }
-          
+          }          
           if(file.size > 2*1024*1024){
             console.error(`${file.name} exceeds 2MB limit`)
             return false;
-          }
-          
+          }          
           return true;
-        })
-        
-        if(validFiles.length === 0) return;
-        
+        })        
+        if(validFiles.length === 0) return;        
         const uploadedURLs = await uploadImages(validFiles);
         console.log(uploadedURLs)
         if(detailIndex !== null) {
@@ -137,12 +124,11 @@ const AdminPage = () => {
           setFormData((prev) => ({
             ...prev, [key]: [...prev[key], ...uploadedURLs]
           }))
-          toast.success("Product Images uploaded")
-        }
-        
+          uploadedURLs.length > 1 ? toast.success("Product Images uploaded") : toast.success("Product Image uploaded")
+        }        
       } catch (error) {
         console.error("Error uploading image: ", error)
-        toast.error("Error uploading image")
+        toast.error(`${error.response.data.message} - Please login again`)
       }
     }
     
@@ -159,11 +145,13 @@ const AdminPage = () => {
 
     const handleFormSubmit = async() => {
       try {
+        if(formData.details.length === 0) {
+          toast.error("Please add at least one detail before submitting")
+          return;
+        }
         const productData = {
-          title: formData.title, 
-          images: formData.images, 
-          description: formData.description, 
-          details: formData.details
+          title: formData.title, images: formData.images, 
+          description: formData.description, details: formData.details
         }
 
         if(isEditing){
@@ -179,10 +167,9 @@ const AdminPage = () => {
         }
         handleDialogClose();
       } catch (error) {
-        console.error(isEditing ? "Error updating product" 
-                                : "Error adding product", error);
-        isEditing ? toast.error("Error updating product")
-          : toast.error("Error adding product")
+        console.error(isEditing ? "Error updating product" : "Error adding product", error);
+        isEditing ? toast.error(`Error updating product: ${error.response.data.message}`)
+          : toast.error(`Error adding product: ${error.response.data.message}`)
       }
     };
 
@@ -191,8 +178,7 @@ const AdminPage = () => {
         <h1>Admin Dashboard</h1>
         <div className="dataTable">
           <Button startIcon={<Add />} onClick={() => handleDialogOpen()}
-            className="addProductBtn"
-          >
+            className="addProductBtn">
             Add Product
           </Button>
           <TableContainer component={Paper}>
@@ -210,7 +196,7 @@ const AdminPage = () => {
                   <TableRow key={product._id}>
                     <TableCell>{product.title}</TableCell>
                     <TableCell>{(product.images || []).join(", ")}</TableCell>
-                    <TableCell>{(product.description || []).join(", ")}</TableCell>
+                    <TableCell>{product.description || ""}</TableCell>
                     <TableCell>
                       <div className="btnRow">
                         <IconButton onClick={() => handleDialogOpen(product)}>
@@ -226,9 +212,7 @@ const AdminPage = () => {
               </TableBody>
             </Table>
           </TableContainer>
-          <Dialog open={openDialog} onClose={handleDialogClose}
-            className="custom-dialog"
-          >
+          <Dialog open={openDialog} onClose={handleDialogClose} className="custom-dialog">
             <DialogTitle className="custom-dialog-title">
               {isEditing ? "Edit Product" : "Add Product"}
             </DialogTitle>
@@ -237,14 +221,7 @@ const AdminPage = () => {
                 className="custom-dialog-textField"
                 margin="dense" label="Title" name="title"
                 fullWidth value={formData.title}
-                onChange={handleFormChange}
-              />
-              <TextField
-                className="custom-dialog-textField"
-                margin="dense" label="Images" name="title"
-                fullWidth value={formData.images.join(", ")}
-                onChange={(e) => handleArrayChange("images", e.target.value.split(",").map((s) => s.trim()))}
-              />
+                onChange={handleFormChange}/>
               <div className="imagePreview">
                 <div className="info">
                   <p>Upload (upto 4) images:</p>
@@ -266,16 +243,14 @@ const AdminPage = () => {
               <TextField
                 className="custom-dialog-textField"
                 margin="dense" label="Description" name="description"
-                fullWidth value={formData.description.join(", ")}
-                onChange={(e) => handleArrayChange("description", e.target.value.split(",").map((s) => s.trim()))}
-              />
+                fullWidth value={formData.description}
+                onChange={handleFormChange}/>
               <h4 className="custom-dialog-subTitle">Details</h4>
               {formData.details.map((detail, index) => (
                 <div key={index}>
                   <div className="imagePreview">
                     <input name="images" type="file" accept="image/*"
-                      onChange={(e) => handleFileUpload(Array.from(e.target.files), "details.image", index)}
-                    />
+                      onChange={(e) => handleFileUpload(Array.from(e.target.files), "details.image", index)}/>
                     {detail.image && (
                       <div className="imageContainer">
                         <img src={detail.image} alt={`Detail Image ${index + 1}`}/>
@@ -289,8 +264,7 @@ const AdminPage = () => {
                     className="custom-dialog-textField" 
                     margin="dense" label="Product Description" fullWidth 
                     value={detail.description}
-                    onChange={(e) => handleDetailsChange(index, "description", e.target.value)}
-                  />
+                    onChange={(e) => handleDetailsChange(index, "description", e.target.value)}/>
                   <Button className="rmDetail-btn" variant="contained" color="error" onClick={() => removeDetail(index)}>
                     Remove Detail
                   </Button>
