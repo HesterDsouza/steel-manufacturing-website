@@ -1,11 +1,11 @@
 import "./contactPage.css";
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import HeroSection from "../../components/heroSection/HeroSection";
 import PhoneInput from "react-phone-number-input"
 import "react-phone-number-input/style.css";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
+import { submitContactForm } from "../../api";
 
 const ContactPage = () => {
 
@@ -36,18 +36,21 @@ const ContactPage = () => {
       return false;
     }
 
-    const cleanedPhone = formData.phone?.replace(/^\+\d{1,4}/,"");
-
-    if(cleanedPhone && !/^\d{8,15}$/.test(cleanedPhone)){
-      toast.error("Invalid phone number");
-      return false;
+    // Using regex logic
+    if(formData.phone){
+      const cleanedPhone = formData.phone.replace(/[^\d]/g, "");
+  
+      if(!/^\d{6,15}$/.test(cleanedPhone)){
+        toast.error("Invalid phone number");
+        return false;
+      }
     }
     
     if(!formData.message.trim()){
       toast.error("Message is required.");
       return false;
     } else if (formData.message.length > 500){
-      toast.error("Message is too long");
+      toast.error("Message is too long. Please limit the content to 500 characters.");
     }
 
     return true;
@@ -61,33 +64,19 @@ const ContactPage = () => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if(!validateform()) return;
 
-    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      to_name: "Mr. Simon Pinto",
-      message: formData.message,
-      phone: formData.phone
+    try {
+      const response = await submitContactForm(formData);
+      toast.success(response.data.message)
+      setFormData({name: "", email: "", phone: "", message: ""});
+    } catch (error) {
+      console.error("Failed to sumbit form", error)
+      toast.error("Something went wrong! Please use the email link in the footer to reach us directly.")
     }
-
-    emailjs.send(serviceId, templateId, templateParams, publicKey)
-    .then((response) => {
-      console.log("Message sent successfully!", response.status, response.text);
-      toast.success("Thank you for your message! We'll get back to you soon.");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-    },
-    (error) => {
-      console.error("Failed to send message", error);
-      toast.error("Something went wrong! Please use the footer link to reach us directly.")
-    })
   }
   
   return (
@@ -104,7 +93,7 @@ const ContactPage = () => {
         <h3 tabIndex={0}>Send Us a Message</h3>
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-item">
-            <label htmlFor="name">Full Name: <span style={{color: "var(--burgundy", fontSize: "1.2em"}}>*</span></label>
+            <label htmlFor="name">Name: <span style={{color: "var(--burgundy", fontSize: "1.2em"}}>*</span></label>
             <input 
               type="text" id="name" name="name"
               value={formData.name} placeholder="Enter your name"
@@ -123,7 +112,7 @@ const ContactPage = () => {
                id="phone" name="phone"
                placeholder="Enter phone number"
                value={formData.phone} defaultCountry="SA"
-               onChange={(value) => setFormData({...formData, phone: value})}
+               onChange={(value) => setFormData({...formData, phone: value || ""})}
             />
           </div>
           <div className="form-item">
@@ -134,7 +123,6 @@ const ContactPage = () => {
               placeholder="Type a Message and we will get back to you..." 
             ></textarea>
           </div>
-
           <button type="submit" className="submit-button">Submit</button>
         </form>
       </section>

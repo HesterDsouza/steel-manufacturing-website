@@ -1,0 +1,152 @@
+.userQueries{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    padding: 0 10px;
+
+    .queryCard{
+        background-color: var(--bg-highlight2);
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px var(--box-shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        transition: box-shadow 0.2s ease;
+
+        &:hover{
+            box-shadow: 0px 4px 8px var(--box-shadow);
+        }
+
+        .queryCardContent{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            p {
+                margin: 0;
+                font-size: 1.4rem;
+                display: flex;
+                gap: 5px;
+                
+                strong{
+                    color: var(--logo-blue);
+                    font-size: 1.4rem;
+                }
+            }
+        }
+
+        .queryCardBtns{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .updateBtn,
+            .deleteBtn {
+                font-family: "Montserrat";
+                padding: 8px 12px;
+                border: none;
+                font-size: 1.2rem;
+                font-weight: 600;
+                cursor: pointer;
+                border-radius: 6px;
+                transition: background-color 0.3s ease;
+            }
+    
+            .updateBtn{
+                background-color: var(--dark-blue);
+                 
+                &:hover{
+                    background-color: var(--dark-blue-hover);
+                }
+            }
+        }
+    }
+
+    .noQuery{
+        font-size: 1.6rem;
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+
+    @media screen and (max-width: 900px) {
+        gap: 15px;
+
+        .queryCard {
+            .queryCardContent p {
+                font-size: 1.3rem;
+    
+                strong{
+                    font-size: 1.3rem;
+                }
+            }
+
+            .queryCardBtns {
+                .updateBtn, .deleteBtn {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-columns: repeat(1, minmax(250px, 1fr));
+
+        .queryCard{
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        gap: 12px;
+
+        .queryCard{
+            padding: 12px;
+
+            .queryCardContent p {
+                font-size: 1.2rem;
+
+                strong{
+                    font-size: 1.2rem;
+                }
+            }
+
+            .queryCardBtns{
+                gap: 8px;
+    
+                .updateBtn, .deleteBtn {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 431px) {
+        padding: 0 5px;
+
+        .queryCard{
+            flex-direction: column;
+
+            .queryCardContent p {
+                font-size: 1.1rem;
+
+                strong{
+                    font-size: 1.1rem;
+                }
+            }
+
+            .queryCardBtns{
+                .updateBtn, .deleteBtn{
+                    padding: 8px 10px;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+}

@@ -1,210 +1,83 @@
 .adminPage{
-    padding: 10px;
-
-    h1{
-        font-size: 2.4rem;
-    }
-
-    .dataTable{
-        background-color: var(--bg-highlight);
-        padding: 10px;
+    .tabs{
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        justify-content: space-around;
         align-items: center;
-        border-radius: 10px;
-        
-        .addProductBtn{
-            font-family: "Montserrat", sans-serif;
-            align-self: start;
-            font-size: 1.2rem;
-            font-weight: 600;
+        margin-bottom: 10px;
+        padding: 15px 10px 0px 10px;
+        gap: 10px;
+
+        button{
+            padding: 12px 15px;
+            font-size: 1.6rem;
+            color: var(--text-primary);
             background-color: var(--dark-blue);
-            color: #fff;
-            transition: background-color 0.4s ease-in-out;
-            
-            &:hover{
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            transition: background-color 0.5s ease;
+
+            &:hover, &:focus{
                 background-color: var(--dark-blue-hover);
             }
-        }
-        
-        .MuiPaper-root{
-            background-color: var(--bg);
-            color: var(--text-primary);
-            border-radius: 10px;
-            padding-bottom: 15px;
-            
-            .MuiTable-root{
-                table-layout: fixed;
-                width: 100%;
-                
-                .MuiTableHead-root.css-1a7iywq-MuiTableHead-root{    
-                    .MuiTableRow-root .MuiTableCell-root{
-                        font-family: "Montserrat", sans-serif;
-                        color: var(--text-primary);
-                        font-size: 1.4rem;
-                        font-weight: 600;
-                        text-align: center;
-                        white-space: nowrap;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        padding: 20px 0;
-                    }
-                }
-                
-                .MuiTableBody-root.css-gmh7jj-MuiTableBody-root{
-                    .MuiTableRow-root {
-                        .MuiTableCell-root{
-                            font-family: "Montserrat", sans-serif;
-                            color: var(--text-primary);
-                            font-size: 1.2rem;
-                            max-width: 500px;
-                            text-align: center;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            padding: 15px 0;
-                        }
-                        
-                        .btnRow{
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            gap: 5px;
-                            
-                            .MuiButtonBase-root{
-                                color: var(--text-primary);
-                                
-                                svg{
-                                    height: 1.6rem;
-                                    width: 1.6rem;
-                                }    
-                            }
-                        }
-                    }
-                }
+
+            &:active{
+                transform: scale(0.98);
+            }
+
+            &.active{
+                background-color: transparent;
+                font-weight: bold;
+            }
+
+            &:not(&.active){
+                color: #fff;
             }
         }
     }
-}
 
-.custom-dialog{
-    .MuiDialog-container.MuiDialog-scrollPaper.css-19do60a-MuiDialog-container{
-        .css-10d30g3-MuiPaper-root-MuiDialog-paper{
-            background-color: var(--bg-highlight);
-            max-width: 600px;
-            width: 100%;
-            
-            .custom-dialog-title{
-                background-color: var(--bg-highlight2);
-                color: var(--text-primary) !important;
-                font-family: "Montserrat", sans-serif;
-                font-size: 1.8rem !important;
-            }
-        
-            .custom-dialog-content{
-                background-color: var(--bg-highlight2);
-                color: var(--text-primary) !important;
-                scrollbar-width: none;
-        
-                .custom-dialog-textField{
-                    label, input{
-                        color: var(--text-primary);
-                        font-size: 1.4rem;
-                        font-family: "Montserrat", sans-serif;
-                    }
-        
-                    fieldset{
-                        border-color: var(--text-secondary);
-                    }        
-                }
-        
-                .imagePreview{
-                    display: flex;
-                    flex-direction: column;
-                    gap: 5px;
-        
-                    input, p{
-                        font-size: 1.2rem;
-                    }
-        
-                    input{
-                        width: max-content;
-                    }
+    .tab-content{
+        padding: 5px;
+        position: relative;
+        width: 100%;
+        transition: visibility 0.5s ease, opacity 0.5s ease;
 
-                    .imagesHeader{
-                        font-size: 1.4rem;
-                    }
+        &.fade-in{
+            opacity: 1;
+            visibility: visible;
+        }
 
-                    .imageContainer{
-                        max-width: 300px;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 5px;
+        &.fade-out{
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
 
-                        img{
-                            width: 100%;
-                            height: 200px;
-                            object-fit: cover;
-                            border-radius: 8px;
-                        }
+    @media screen and (max-width: 1024px){
+        .tabs{
+            gap: 8px;
 
-                        .delBtn{
-                            font-size: 1rem;
-                            width: max-content;
-                            margin-bottom: 10px;
-                            font-family: "Montserrat", sans-serif;
-                            font-weight: 600;
-                        }
-                    }
-                }
-        
-                .custom-dialog-subTitle{
-                    font-size: 1.6rem;
-                }
-
-                .rmDetail-btn, .addDetail-btn{
-                    margin: 5px 0;
-                    font-size: 1rem;
-                    font-family: "Montserrat", sans-serif;
-                    font-weight: 600;
-                }
-            }
-            
-            .custom-dialog-actions{
-                background-color: var(--bg-highlight);
-                display: flex;
-                justify-content: space-between;
-                
-                button{
-                    font-weight: 600;
-                    font-family: "Montserrat", sans-serif;
-                }
+            button{
+                padding: 11px 14px;
             }
         }
     }
-}
 
-.confirm-delete-dialog {
-    .MuiDialog-container.MuiDialog-scrollPaper.css-19do60a-MuiDialog-container {
-        .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-10d30g3-MuiPaper-root-MuiDialog-paper {
-            background-color: var(--bg-highlight);
-            padding: 5px;
-            
-            .confirm-delete-dialog-title{
-                font-family: "Montserrat", sans-serif;
+    @media screen and (max-width: 768px){
+        .tabs button{
+            width: max-content;
+            padding: 9px 12px;
+            font-size: 1.5rem;
+        }
+    }
+
+    @media screen and (max-width: 400px){
+        .tabs{
+            gap: 5px;
+
+            button{
                 font-size: 1.4rem;
-                color: var(--text-primary);
-            }
-            
-            .confirm-delete-dialog-actions{
-                display: flex;
-                justify-content: space-between;
-                
-                .confirm-delete-dialog-btn{
-                    font-family: "Montserrat", sans-serif;
-                    font-size: 1.2rem;
-                }
             }
         }
     }

@@ -70,7 +70,7 @@ const HomePage = () => {
   return (
     <div className="homePage">
       <Helmet>
-        <title>Steel Manufacturer - Building the Future with Innovation</title>
+        <title>Future Structures - Building the Future with Innovation</title>
         <meta
           name="description"
           content="Discover our innovative steel solutions. We specialize in stainless steel railings, metal structures, and more. Trusted partners in fabrication and design."

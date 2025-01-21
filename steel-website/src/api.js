@@ -89,3 +89,18 @@ export const uploadImages = async( files ) => {
         throw error;
     }
 }
+
+// sumbit query via form
+export const submitContactForm = (formData) => api.post('/contact', formData);
+
+// fetch all queries
+export const fetchUserQueries = () => api.get('/contact');
+
+// fetch single query
+export const fetchUserQuery = (id) => api.get(`/contact/${id}`);
+
+// update query status
+export const updateQueryStatus = (id, status) => api.put(`/contact/${id}`, {status});
+
+// delete query
+export const deleteQuery = (id) => api.delete(`/contact/${id}`);

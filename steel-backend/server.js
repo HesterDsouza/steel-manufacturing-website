@@ -4,7 +4,7 @@ import cors from "cors";
 import { CONFIG } from "./config.js";
 import adminRoutes from "./routes/adminRoutes.js"
 import productRoutes from "./routes/productRoutes.js"
-// import contactRoutes from "./routes/contactRoutes.js"
+import contactRoutes from "./routes/contactRoutes.js"
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGO_URI)
 // Routes
 app.use("/api/admin", adminRoutes);
 app.use("/api/products", productRoutes);
-// app.use("/api/contact", contactRoutes);
+app.use("/api/contact", contactRoutes);
 
 // Handling undefined routes
 app.use((req, res) => {
