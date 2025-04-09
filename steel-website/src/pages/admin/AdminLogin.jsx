@@ -43,7 +43,7 @@ const AdminLogin = () => {
                         required/>
                 </div>
             </div>
-            <button>Login</button>
+            <button type="submit">Login</button>
         </form>
     </div>
   )

@@ -3,10 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     background-color: var(--bg-highlight2);
     color: var(--text-primary);
     padding: 20px 5px;
-    gap: 10px;
 
     .company-details{
         display: flex;
@@ -68,7 +68,7 @@
                         margin: 10px auto;
                         color: var(--text-primary);
 
-                        .email-link{
+                        .email-link, .snapLink{
                             font-size: 1.8rem;
                             
                             &:hover{
@@ -111,6 +111,17 @@
         }
     }
 
+    .copyright{
+        p{
+            font-size: 1.4rem;
+
+            a{
+                font-size: 1.4rem;
+                color: var(--gold-brass);
+            }
+        }
+    }
+
     @media only screen and (max-width: 1024px){
         .company-details{
             .logo img{
@@ -134,7 +145,7 @@
                 }
 
                 .contact{
-                    .phone-email{
+                    .phone-email, .social-icons{
                         gap: 15px;
 
                         p{
@@ -176,7 +187,7 @@
                 }
 
                 .contact{
-                    .phone-email {
+                    .phone-email, .social-icons {
                         gap: 8px;
 
                         p{
@@ -186,7 +197,7 @@
                                 font-size: 1.5rem;
                             }
 
-                            .email-link{
+                            .email-link, .snapLink{
                                 font-size: 1.4rem;
                             }
                         }
@@ -235,7 +246,7 @@
                     font-size: 1.6rem;
                   }
 
-                  .email-link{
+                  .email-link, .snapLink{
                     font-size: 1.4rem;
                   }
                 }
@@ -279,7 +290,7 @@
                     font-size: 1.2rem;
                 }
 
-                .contact .phone-email{
+                .contact .phone-email, .contact .social-icons{
                     gap: 5px;
 
                     p {
@@ -289,7 +300,7 @@
                             font-size: 1.4rem;
                         }
 
-                        .email-link{
+                        .email-link, .snapLink{
                             font-size: 1.2rem;
                         }
                     }
@@ -323,7 +334,7 @@
                     font-size: 1.1rem;
                 }
 
-                .contact .phone-email{
+                .contact .phone-email, .contact .social-icons{
                     gap: 5px;
 
                     p{
@@ -333,7 +344,7 @@
                             font-size: 1.2rem;
                         }
 
-                        .email-link{
+                        .email-link, .snapLink{
                             font-size: 1.1rem;
                         }
                     }
@@ -368,7 +379,7 @@
                     font-size: 1rem;
                 }
 
-                .contact .phone-email{
+                .contact .phone-email, .contact .social-icons{
                     gap: 5px;
 
                     p{
@@ -378,7 +389,7 @@
                             font-size: 1.1rem;
                         }
 
-                        .email-link{
+                        .email-link, .snapLink{
                             font-size: 1rem;
                         }
                     }

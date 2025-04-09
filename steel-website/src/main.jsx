@@ -15,6 +15,7 @@ import AdminLayout from './layouts/adminLayout/AdminLayout.jsx';
 import AdminLogin from './pages/admin/AdminLogin.jsx';
 import AdminPage from './pages/admin/AdminPage.jsx';
 import TechnologyPage from './pages/technologyPage/TechnologyPage.jsx';
+import CreateAdmin from './pages/admin/CreateAdmin.jsx';
 
 const adminLoader = () => {
   const token = localStorage.getItem('token');
@@ -39,7 +40,8 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       { path: "/admin/login", element: <AdminLogin /> },
-      { path: "/admin/dashboard", element: <AdminPage />, loader: adminLoader }
+      { path: "/admin/dashboard", element: <AdminPage />, loader: adminLoader },
+      { path: "/admin/create-admin", element: <CreateAdmin />, loader: adminLoader }
     ]
   }
 ])

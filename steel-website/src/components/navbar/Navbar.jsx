@@ -54,6 +54,26 @@ const Navbar = () => {
     setError("");
   }
 
+  const toggleDropDown = () => {
+    setDropDownOpen(!dropDownOpen);
+  }
+
+  const closeDropDown = () => {
+    setDropDownOpen(false)
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if(!e.target.closest(".services-container")) closeDropDown();
+    }
+
+    document.addEventListener("mousedown", handleClickOutside)
+
+    return() => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [])
+
   const handleDropDownKeyDown = (e) => {
     if(dropDownOpen) {
       switch(e.key) {
@@ -138,7 +158,7 @@ const Navbar = () => {
             <li className="links-list-item">
               <Link to="/about-us">About Us</Link>
             </li>
-            <li className="links-list-item services-container" onKeyDown={handleDropDownKeyDown}>
+            <li className="links-list-item services-container" onKeyDown={handleDropDownKeyDown} onClick={toggleDropDown}>
               <Link to="/services" aria-expanded={dropDownOpen} aria-controls="services-dropdown">
                 Services
               </Link>

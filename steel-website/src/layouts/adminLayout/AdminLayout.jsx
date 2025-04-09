@@ -42,18 +42,18 @@ const AdminLayout = () => {
         draggable pauseOnHover theme={toastTheme}
       />
       <header>
-          <div className="logo">
-            <Link to="/" target="_blank">
-              <img src="/logo.png" alt="logo" />
-            </Link>
-          </div>
-          <h1 tabIndex={0}>Admin Panel</h1>
-          <nav>
-            <Link to="/" target="_blank">Back to Website</Link>
-            <button className="logout" onClick={handleLogout}>
-              Logout
-            </button>
-          </nav>
+        <div className="logo">
+          <Link to="/" target="_blank">
+            <img src="/logo.png" alt="logo" />
+          </Link>
+        </div>
+        <h1 tabIndex={0}>Admin Panel</h1>
+        <nav>
+          <Link to="/" target="_blank">Back to Website</Link>
+          <button className="logout" onClick={handleLogout}>
+            Logout
+          </button>
+        </nav>
       </header>
       <main>
           <Outlet />

@@ -1,6 +1,8 @@
 import "./footer.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faSnapchat } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -27,12 +29,30 @@ const Footer = () => {
           </address>
           <div className="contact">
             <div className="phone-email">
-              <p tabIndex={0}><FontAwesomeIcon className="icon" icon={faPhone}/> + 966 56 983 6636</p>
+              <div className="phone">
+                <p tabIndex={0}><FontAwesomeIcon className="icon" icon={faPhone}/> + 966 504768135</p>
+                <p tabIndex={0}><FontAwesomeIcon className="icon" icon={faPhone}/> + 966 566062558</p>
+                <p tabIndex={0}><FontAwesomeIcon className="icon" icon={faPhone}/> + 974 50445945</p>
+              </div>
+              <div className="email">
+                <p>
+                  <FontAwesomeIcon className="icon" icon={faEnvelope}/>
+                  <a tabIndex={0} href="mailto:simon.pinto@abstract.qa" className="email-link">
+                    simon.pinto@abstract.qa
+                  </a>
+                </p>
+                <p>
+                  <FontAwesomeIcon className="icon" icon={faEnvelope}/>
+                  <a tabIndex={0} href="mailto:simon@abstractgroup.me" className="email-link">
+                    simon@abstractgroup.me
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div className="social-icons">
               <p>
-                <FontAwesomeIcon className="icon" icon={faEnvelope}/>
-                <a tabIndex={0} href="mailto:simon.pinto@abstract.qa" className="email-link">
-                  simon.pinto@abstract.qa
-                </a>
+                <FontAwesomeIcon className="icon" icon={faSnapchat}/>
+                <a tabIndex={0} target="_blank" rel="noopener noreferrer" className="snapLink" href="https://www.snapchat.com/add/futurestr24">futurestr24</a>
               </p>
             </div>
           </div>
@@ -49,6 +69,9 @@ const Footer = () => {
             </iframe>
           </div>
         </div>
+      </div>
+      <div className="copyright">
+        <p tabIndex={0}>© 2025 All rights Reserved. <Link to="/">Future Structures.</Link></p>
       </div>
     </footer>
   )
