@@ -45,11 +45,15 @@
         background-color: var(--bg-highlight);
               
         .cards{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(4, auto);
-            gap: 20px;
-            justify-items: center;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(4, auto);
+          gap: 20px;
+          justify-items: center;
+
+          .card.homepage{
+            cursor: pointer;
+          }
         }
     }
 

@@ -125,6 +125,8 @@ const Navbar = () => {
         <div className="search">
           <div className="searchbar">
             <input 
+              id="search"
+              name="search"
               type="text" 
               placeholder="Search"
               value={searchQuery}
@@ -149,9 +151,9 @@ const Navbar = () => {
         </div>
         <nav className="nav-links">
           <ul className="links-list">
-            <li className="links-list-item">
+            {/* <li className="links-list-item">
               <Link to="/">Home</Link>
-            </li>
+            </li> */}
             <li className="links-list-item">
               <Link to="/products">Products</Link>
             </li>

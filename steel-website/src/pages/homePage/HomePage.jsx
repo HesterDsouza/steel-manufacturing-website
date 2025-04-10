@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import InfoCard from "../../components/infoCard/InfoCard";
 import SlideShow from "../../components/slideshow/SlideShow";
 import "./homePage.css"
@@ -7,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 const HomePage = () => {
   const [activeSlides, setActiveSlides] = useState(Array(8).fill(0));
   const seviceIntervals = useRef([]);
+  const navigate  = useNavigate();
   
   const slides = ["/grinding.jpg", "/welding.jpg", "/lazer-cutting.jpg", "/welding2.jpg", "/lazer-welding.jpg", "/welding3.jpg", "/lazer-cutting2.jpg"];
 
@@ -112,6 +114,8 @@ const HomePage = () => {
               title={service.title}
               images={service.images}
               description={service.captions}
+              onClick={() => navigate("/products")}
+              class_name="homepage"
             />
           ))}
         </div>
