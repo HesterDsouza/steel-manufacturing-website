@@ -58,6 +58,14 @@
         margin: 20px 0;
         gap: 10px;
 
+        &.rtl{
+            direction: rtl;
+
+            &.pageNavIcon{
+                transform: rotateY(180deg);
+            }
+        }
+
         button{
             font-size: 1.6rem;
             font-weight: 600;

@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "title": "نتائج البحث عن '{{query}}' - الهياكل المستقبلية",
+    "description": "اعثر على أفضل المنتجات المطابقة لبحثك عن '{{query}}' في الهياكل المستقبلية. تصفح كتالوجنا الواسع واكتشف الحلول عالية الجودة لمشاريعك.",
+    "keywords": "{{query}}, منتجات, نتائج البحث, الهياكل المستقبلية",
+    "author": "الهياكل المستقبلية",
+    "canonical": "https://www.futurestructures.com/search?query={{query}}&page={{page}}"
+  },
+  "hero": {
+    "title": "نتائج البحث عن المنتج '{{query}}'"
+  },
+  "results": {
+    "found": "تم العثور على {{count}} نتيجة{{plural}}",
+    "displaying": "عرض {{start}} - {{end}} من أصل {{total}} نتيجة",
+    "error": "عذرًا، لا يوجد ما تبحث عنه.",
+    "loading": "جارٍ التحميل..."
+  },
+  "pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "ellipsis": "..."
+  },
+  "defaults": {
+    "unknown": "غير معروف",
+    "noDescription": "لا يوجد وصف متاح"
+  }
+}

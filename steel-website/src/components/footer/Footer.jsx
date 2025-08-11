@@ -3,8 +3,11 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { faSnapchat } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const {t} = useTranslation("components")
+
   return (
     <footer className="footer">
       <div className="company-details">
@@ -12,19 +15,25 @@ const Footer = () => {
           <img src="/logo.png" alt="logo" />
         </div>
         <div className="company-name">
-          <h2 tabIndex={0}>Future Structures</h2>
-          <h2 tabIndex={0} className="arabic-name">الهياكل المستقبلية</h2>
+          <div>
+            <h2 tabIndex={0}>{t("footer.company.abstract")}</h2>
+            <h2 tabIndex={0} className="arabic-name">{t("footer.company.abstract_arabic")}</h2>
+          </div>
+          <div>
+            <h2 tabIndex={0}>{t("footer.company.future_structures")}</h2>
+            <h2 tabIndex={0} className="arabic-name">{t("footer.company.future_structures_arabic")}</h2>
+          </div>
         </div>
       </div>
       <div className="other-details">
         <div className="left">
           <address className="address">
             <p tabIndex={0}>
-              Headquarters: 5066 Al-kharj 16285-85931
-              Postal Code: 16285<br/>
-              Cr. No.: 100241115881445
-              Tin No.: 3123715103<br/>
-              MARWA LIGHT INDUSTRIES NO. 321, AL KHARJ, AL RIYADH, <br/>KINGDOM OF SAUDI ARABIA
+              {t("footer.address.line1")}&nbsp;&nbsp;
+              {t("footer.address.line2")}<br/>
+              {t("footer.address.line3")}&nbsp;&nbsp;
+              {t("footer.address.line4")}<br/>
+              {t("footer.address.line5")}
             </p>
           </address>
           <div className="contact">
@@ -71,7 +80,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright">
-        <p tabIndex={0}>© 2025 All rights Reserved. <Link to="/">Future Structures.</Link></p>
+        <p tabIndex={0}>{t("footer.copyright.text")} <Link to="/"> {t("footer.copyright.link")}</Link></p>
       </div>
     </footer>
   )

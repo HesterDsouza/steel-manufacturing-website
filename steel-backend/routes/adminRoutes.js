@@ -5,7 +5,7 @@ import Admin from '../models/Admin.js';
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET;
-const password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.)(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+const password_regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[.@$!%*?&])[A-Za-z\d.@$!%*?&]{8,16}$/;
 
 router.post("/create-admin", async(req,res) => {
     const {email, password} = req.body;
@@ -31,14 +31,12 @@ router.post("/create-admin", async(req,res) => {
         res.status(201).json({message: 'Admin created successfully'});
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Server Error", error});
+        res.status(500).json({ message: "Error creating admin", error});
     }
 })
 
 router.post('/login', async(req, res) => {
     const { email, password } = req.body;
-
-    // if(!JWT_SECRET) return res.status(500).json({ message: "JWT secret key not defined!"})
 
     try{
         const admin = await Admin.findOne({ email });
@@ -56,9 +54,7 @@ router.post('/login', async(req, res) => {
             sameSite: 'strict'
         })
         
-        // if(!token) return res.status(500).json({ message: 'Failed to generate token' });
-
-        res.json({ message: "Login Successful", token })
+        res.status(200).json({ message: "Login Successful", token })
     } catch(error) {
         console.error("Login Error: ", error)
         res.status(500).json({ message: "Server Error", error });

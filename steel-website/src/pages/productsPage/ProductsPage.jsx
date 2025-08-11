@@ -6,12 +6,15 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "../../api";
 import HeroSection from "../../components/heroSection/HeroSection";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 const ProductsPage = () => {
   
   const navigate = useNavigate();
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);  
+  const [loading, setLoading] = useState(true);
+  
+  const {t, i18n} = useTranslation("pages")
   
   useEffect(() => {
     const getProducts = async() => {
@@ -32,7 +35,9 @@ const ProductsPage = () => {
     navigate(`/products/${id}`)
   }
 
-  if(loading) return <p>Loading...</p>;
+  if(loading) return <p>{t("productsPage.loading")}</p>;
+
+  const lang = i18n.language;
 
   return (
     <div className="productsPage">
@@ -56,16 +61,16 @@ const ProductsPage = () => {
         <meta property="og:url" content={window.location.href} />
         <meta property="og:image" content="/logo2.png" />
       </Helmet>
-      <HeroSection title="Products" subTitle="Engineered for Strength, Designed for Excellence"/>
+      <HeroSection title={t("productsPage.hero.title")} subTitle={t("productsPage.hero.subtitle")}/>
       <section className="products-section">
-        <h2 tabIndex={0}>Our Products</h2>
+        <h2 tabIndex={0}>{t("productsPage.productsSection.heading")}</h2>
         <div className="cards-container">
           {products.map((product) => (
             <InfoCard 
             key={product._id}
-            title={product.title}
+            title={product.title?.[lang] || ""}
             images={product.images}
-            description={product.description ? [product.description] : []}
+            description={product.description?.[lang] ? [product.description[lang]] : []}
             class_name="products"
             onClick={() => handleCardClick(product._id)}
             onKeyDown={(e) => e.key === "Enter" && handleCardClick(product._id)}

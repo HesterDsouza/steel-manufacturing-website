@@ -58,62 +58,60 @@
     }
 
     .values{
-        .value-boxes{
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
 
-            .value-box:nth-of-type(2), .value-box:nth-of-type(4){
-                flex-direction: row-reverse;
+      .value-box:nth-of-type(2), .value-box:nth-of-type(4){
+        flex-direction: row-reverse;
+      }
+
+      .value-box{
+        display: flex;
+        align-items: start;
+        justify-content: space-around;
+        gap: 5px;
+
+        .value-img{
+            width: 600px;
+
+            img{
+              width: 100%;
+              height: 350px;
+              object-fit: cover;
+              border-radius: 8px;
+              transition: transform 0.5s ease;
+
+              &:hover{
+                  transform: scale(1.05);
+              }
+            }
+          }
+
+          .value-content{
+            text-align: left;
+
+            h3{
+                color: var(--gold-brass);
+                font-size: 2rem;
             }
 
-            .value-box{
-                display: flex;
-                align-items: start;
-                justify-content: space-around;
-                gap: 5px;
-
-                .value-img{
-                    width: 600px;
-
-                    img{
-                        width: 100%;
-                        height: 350px;
-                        object-fit: cover;
-                        border-radius: 8px;
-                        transition: transform 0.5s ease;
-
-                        &:hover{
-                            transform: scale(1.05);
-                        }
-                    }
-                }
-
-                .value-content{
-                    text-align: left;
-
-                    h3{
-                        color: var(--gold-brass);
-                        font-size: 2rem;
-                    }
-
-                    ul{
-                        display: flex;
-                        flex-direction: column;
-                        gap: 10px;
-                        list-style-type: disc;
-                        position: relative;
-                        left: 20px;
-                        padding-right: 5px;
-                        
-                        li{
-                            color: var(--logo-blue);
-                            font-size: 1.8rem;
-                        }
-                    }
-                }
+            ul{
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              list-style-type: disc;
+              position: relative;
+              left: 20px;
+              padding-right: 5px;
+                
+              li{
+                color: var(--logo-blue);
+                font-size: 1.8rem;
+              }
             }
-        }
+          }
+      }
     }
     
     @media only screen and (max-width: 1024px){

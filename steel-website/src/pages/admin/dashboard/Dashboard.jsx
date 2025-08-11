@@ -10,7 +10,9 @@ const Dashboard = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const [confirmDialog, setConfirmDialog] = useState(false);
     const [formData, setFormData] = useState({
-      id: "", title: "", images: [], description: "", details: []
+      id: "", 
+      title: {en: "", ar: ""}, images: [], 
+      description: {en: "", ar: ""}, details: []
     });
     const [isEditing, setIsEditing] = useState(false);
     const [productToDelete, setProductToDelete] = useState(null);
@@ -21,8 +23,13 @@ const Dashboard = () => {
             const { data } = await fetchProducts();
             const sanitizedData = data.map((product) => ({
               ...product,
+              title: product.title || {en: "", ar: ""},
               images: product.images || [],
-              description: product.description || "",
+              description: product.description || {en: "", ar: ""},
+              details: (product.details || []).map((detail) => ({
+                image: detail.image || "",
+                description: typeof detail.description === "object" ? detail.description : {en: "", ar:""}
+              }))
             }))
             setProducts(sanitizedData.reverse());
           } catch (error) {
@@ -36,13 +43,21 @@ const Dashboard = () => {
     const handleDialogOpen = (product = null) => {
         if(product){
           setFormData({
-            id: product._id, title: product.title, images: product.images,
-            description: product.description, details: product.details
+            id: product._id, 
+            title: product.title || {en: "", ar:""}, 
+            images: product.images || [],
+            description: product.description || {en: "", ar:""}, 
+            details: (product.details || []).map((detail) => ({
+              image: detail.image || "",
+              description: typeof detail.description === "object" ? detail.description : {en: "", ar:""}
+            }))
           });
           setIsEditing(true);
         } else {
           setFormData({
-            id: "", title: "", images: [], description: [], details: []
+            id: "", 
+            title: {en: "", ar: ""}, images: [], 
+            description: {en: "", ar: ""}, details: []
           })
           setIsEditing(false);
         }
@@ -55,18 +70,28 @@ const Dashboard = () => {
   
       const handleFormChange = (e) => {
         const { name, value } = e.target;
-        setFormData((prev) => ({...prev, [name]: value}));
+        const [field, lang] = name.split(".")
+
+        if(lang){
+          setFormData(prev => ({
+            ...prev,
+            [field]: {
+              ...prev[field],
+              [lang]: value
+            }
+          }))
+        } else setFormData(prev => ({...prev, [name]: value}));
       }
   
-      const handleDetailsChange = (index, field, value) => {
+      const handleDetailsChange = (index, lang, value) => {
         const updateDetails = [...formData.details];
-        updateDetails[index][field] = value;
-        setFormData((prev) => ({...prev, details: updateDetails}));
+        updateDetails[index].description[lang] = value;
+        setFormData(prev => ({...prev, details: updateDetails}));
       }
   
       const addDetail = () => {
         setFormData((prev) => ({
-          ...prev, details: [...prev.details, {image: "", description: ""}]
+          ...prev, details: [...prev.details, {image: "", description: {en:"", ar:""}}]
         }))
       }
   
@@ -192,9 +217,9 @@ const Dashboard = () => {
           <TableBody>
             {products.map((product) => (
               <TableRow key={product._id}>
-                <TableCell>{product.title}</TableCell>
+                <TableCell>{product.title?.en} / {product.title?.ar}</TableCell>
                 <TableCell>{(product.images || []).join(", ")}</TableCell>
-                <TableCell>{product.description || ""}</TableCell>
+                <TableCell>{product.description?.en || ""} / {product.description?.ar || ""}</TableCell>
                 <TableCell>
                   <div className="btnRow">
                     <IconButton onClick={() => handleDialogOpen(product)}>
@@ -216,8 +241,13 @@ const Dashboard = () => {
         </DialogTitle>
         <DialogContent className="custom-dialog-content">
           <TextField className="custom-dialog-textField"
-              margin="dense" label="Title" name="title"
-              fullWidth value={formData.title}
+              margin="dense" label="Title (EN)" name="title.en"
+              fullWidth value={formData.title?.en ?? ""}
+              onChange={handleFormChange}
+          />
+          <TextField className="custom-dialog-textField"
+              margin="dense" label="Title (AR)" name="title.ar"
+              fullWidth value={formData.title?.ar ?? ""}
               onChange={handleFormChange}
           />
           <div className="imagePreview">
@@ -239,8 +269,13 @@ const Dashboard = () => {
             ))}
           </div>
           <TextField className="custom-dialog-textField"
-              margin="dense" label="Description" name="description"
-              fullWidth value={formData.description}
+              margin="dense" label="Description (EN)" name="description.en"
+              fullWidth value={formData.description?.en ?? ""}
+              onChange={handleFormChange}
+          />
+          <TextField className="custom-dialog-textField"
+              margin="dense" label="Description (AR)" name="description.ar"
+              fullWidth value={formData.description?.ar ?? ""}
               onChange={handleFormChange}
           />
           <h4 className="custom-dialog-subTitle">Details</h4>
@@ -259,9 +294,14 @@ const Dashboard = () => {
                 )}
             </div>
             <TextField className="custom-dialog-textField" 
-                margin="dense" label="Product Description" fullWidth 
-                value={detail.description}
-                onChange={(e) => handleDetailsChange(index, "description", e.target.value)}
+                margin="dense" label="Product Description (EN)" fullWidth 
+                value={detail.description?.en ?? ""}
+                onChange={(e) => handleDetailsChange(index, "en", e.target.value)}
+            />
+            <TextField className="custom-dialog-textField" 
+                margin="dense" label="Product Description (AR)" fullWidth 
+                value={detail.description?.ar ?? ""}
+                onChange={(e) => handleDetailsChange(index, "ar", e.target.value)}
             />
             <Button className="rmDetail-btn" variant="contained" color="error" onClick={() => removeDetail(index)}>
                 Remove Detail

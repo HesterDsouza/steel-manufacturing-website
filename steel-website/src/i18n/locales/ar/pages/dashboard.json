@@ -1,0 +1,45 @@
+{
+  "buttons": {
+    "addProduct": "إضافة منتج",
+    "editProduct": "تعديل المنتج",
+    "delete": "حذف",
+    "cancel": "إلغاء",
+    "update": "تحديث",
+    "add": "إضافة",
+    "addDetail": "إضافة تفاصيل",
+    "removeDetail": "إزالة التفاصيل"
+  },
+  "table": {
+    "title": "العنوان",
+    "images": "الصور",
+    "description": "الوصف",
+    "actions": "الإجراءات"
+  },
+  "form": {
+    "title": "العنوان",
+    "description": "الوصف",
+    "productDescription": "وصف المنتج",
+    "productImagesNote": "قم برفع ما يصل إلى ٤ صور:",
+    "maxSizeNote": "الحد الأقصى لحجم الملف 2 ميغابايت",
+    "productImages": "صور المنتج:",
+    "details": "التفاصيل"
+  },
+  "toast": {
+    "productAdded": "تمت إضافة المنتج بنجاح",
+    "productUpdated": "تم تحديث المنتج بنجاح",
+    "productDeleted": "تم حذف المنتج",
+    "errorAdding": "حدث خطأ أثناء إضافة المنتج",
+    "errorUpdating": "حدث خطأ أثناء تحديث المنتج",
+    "errorDeleting": "حدث خطأ أثناء حذف المنتج",
+    "addDetailFirst": "يرجى إضافة تفاصيل واحدة على الأقل قبل الإرسال",
+    "imageUpload": "تم رفع صورة المنتج",
+    "imagesUpload": "تم رفع صور المنتج",
+    "detailImageUpload": "تم رفع صورة التفاصيل",
+    "invalidType": "ليست من أنواع الصور المدعومة.",
+    "sizeExceeded": "تتجاوز الحد الأقصى البالغ 2 ميغابايت",
+    "uploadError": "حدث خطأ أثناء رفع الصورة"
+  },
+  "dialogs": {
+    "confirmDeleteTitle": "هل أنت متأكد أنك تريد حذف المنتج '{{product}}'؟"
+  }
+}

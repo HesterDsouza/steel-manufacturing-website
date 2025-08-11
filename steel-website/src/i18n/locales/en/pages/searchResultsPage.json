@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "title": "Search Results for '{{query}}' - Future Structures",
+    "description": "Find the best products matching your search for '{{query}}' on Future Structures. Browse through our extensive catalog and discover high-quality solutions for your projects.",
+    "keywords": "{{query}}, products, search results, Future Structures",
+    "author": "Future Structures",
+    "canonical": "https://www.futurestructures.com/search?query={{query}}&page={{page}}"
+  },
+  "hero": {
+    "title": "Product search results for '{{query}}'"
+  },
+  "results": {
+    "found": "Found {{count}} result{{plural}}",
+    "displaying": "Displaying {{start}} - {{end}} of {{total}} results",
+    "error": "Sorry we do not have what you are looking for.",
+    "loading": "Loading..."
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "ellipsis": "..."
+  },
+  "defaults": {
+    "unknown": "unknown",
+    "noDescription": "No description available"
+  }
+}

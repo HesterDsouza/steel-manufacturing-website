@@ -11,28 +11,29 @@
             padding: 12px 15px;
             font-size: 1.6rem;
             color: var(--text-primary);
-            background-color: var(--dark-blue);
+            background-color: transparent;
             cursor: pointer;
             border: none;
             border-radius: 8px;
             width: 100%;
             transition: background-color 0.5s ease;
-
+            
             &:hover, &:focus{
                 background-color: var(--dark-blue-hover);
             }
-
+            
             &:active{
                 transform: scale(0.98);
             }
-
+            
             &.active{
-                background-color: transparent;
                 font-weight: bold;
+                background-color: var(--dark-blue);
+                color: var(--text-primary-opp);
             }
-
+            
             &:not(&.active){
-                color: #fff;
+                color: var(--text-primary);
             }
         }
     }

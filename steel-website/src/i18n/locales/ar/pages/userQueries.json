@@ -1,0 +1,24 @@
+{
+  "status": {
+    "pending": "قيد الانتظار",
+    "resolved": "تم الحل"
+  },
+  "labels": {
+    "name": "الاسم",
+    "email": "البريد الإلكتروني",
+    "phone": "رقم الهاتف",
+    "message": "الرسالة",
+    "status": "الحالة"
+  },
+  "buttons": {
+    "updateStatus": "تحديث الحالة",
+    "delete": "حذف"
+  },
+  "messages": {
+    "loading": "جاري التحميل...",
+    "noQueries": "لم يتم العثور على استفسارات.",
+    "errorFetching": "حدث خطأ أثناء جلب الاستفسارات",
+    "queryDeleted": "تم حذف الاستفسار بنجاح",
+    "statusUpdated": "تم تحديث حالة الاستفسار"
+  }
+}

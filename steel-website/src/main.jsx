@@ -16,6 +16,8 @@ import AdminLogin from './pages/admin/AdminLogin.jsx';
 import AdminPage from './pages/admin/AdminPage.jsx';
 import TechnologyPage from './pages/technologyPage/TechnologyPage.jsx';
 import CreateAdmin from './pages/admin/CreateAdmin.jsx';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n/i18n.js';
 
 const adminLoader = () => {
   const token = localStorage.getItem('token');
@@ -48,8 +50,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
     <HelmetProvider>
-      <RouterProvider router={router} />
+      <I18nextProvider i18n={i18n}>
+        <RouterProvider router={router} />
+      </I18nextProvider>
     </HelmetProvider>
-  // <StrictMode>
-  // </StrictMode>,
 )

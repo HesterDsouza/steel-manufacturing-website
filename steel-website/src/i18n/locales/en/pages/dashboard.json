@@ -1,0 +1,45 @@
+{
+  "buttons": {
+    "addProduct": "Add Product",
+    "editProduct": "Edit Product",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "update": "Update",
+    "add": "Add",
+    "addDetail": "Add Detail",
+    "removeDetail": "Remove Detail"
+  },
+  "table": {
+    "title": "Title",
+    "images": "Images",
+    "description": "Description",
+    "actions": "Actions"
+  },
+  "form": {
+    "title": "Title",
+    "description": "Description",
+    "productDescription": "Product Description",
+    "productImagesNote": "Upload (up to 4) images:",
+    "maxSizeNote": "Max file size 2MB",
+    "productImages": "Product Images:",
+    "details": "Details"
+  },
+  "toast": {
+    "productAdded": "Product added successfully",
+    "productUpdated": "Product updated successfully",
+    "productDeleted": "Product deleted",
+    "errorAdding": "Error adding product",
+    "errorUpdating": "Error updating product",
+    "errorDeleting": "Error deleting product",
+    "addDetailFirst": "Please add at least one detail before submitting",
+    "imageUpload": "Product Image uploaded",
+    "imagesUpload": "Product Images uploaded",
+    "detailImageUpload": "Detail Image uploaded",
+    "invalidType": "is not a valid image type.",
+    "sizeExceeded": "exceeds 2MB limit",
+    "uploadError": "Error uploading image"
+  },
+  "dialogs": {
+    "confirmDeleteTitle": "Are you sure you want to delete the '{{product}}' product?"
+  }
+}

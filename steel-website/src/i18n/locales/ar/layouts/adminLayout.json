@@ -1,0 +1,19 @@
+{
+  "header": {
+    "title": "لوحة التحكم",
+    "backToWebsite": "العودة إلى الموقع",
+    "logout": "تسجيل الخروج"
+  },
+  "toast": {
+    "defaultSuccess": "تم تنفيذ العملية بنجاح!",
+    "defaultError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "sessionExpired": "انتهت الجلسة. يرجى تسجيل الدخول مرة أخرى."
+  },
+  "logo": {
+    "alt": "شعار Future Structures"
+  },
+  "theme": {
+    "light": "الوضع الفاتح",
+    "dark": "الوضع الداكن"
+  }
+}

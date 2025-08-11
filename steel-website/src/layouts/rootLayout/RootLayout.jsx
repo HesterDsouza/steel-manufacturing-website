@@ -3,17 +3,23 @@ import Navbar from "../../components/navbar/Navbar"
 import Footer from "../../components/footer/Footer"
 import { useEffect, useState } from "react";
 import {Helmet} from "react-helmet-async"
-import UpdateTabTitle from "../../components/UpdateTabTitle.jsx"
+// import UpdateTabTitle from "../../components/UpdateTabTitle.jsx"
 import { ToastContainer } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const RootLayout = () => {
 
   const location = useLocation();
   const [toastTheme, setToastTheme] = useState("dark");
+  const {i18n} = useTranslation();
 
   useEffect(()=>{
     window.scrollTo(0, 0)
   },[location])
+
+  useEffect(() => {
+    document.documentElement.dir = i18n.language === 'ar' ? "rtl" : "ltr"
+  },[i18n])
 
   useEffect(() => {
     const applyTheme = () => {
@@ -38,7 +44,7 @@ const RootLayout = () => {
   return (
     <div className="rootLayout">
       <Helmet>
-        <title>Steel Manufacturer - Fabrication, Design and Installation</title>
+        {/* <title>Steel Manufacturer - Fabrication, Design and Installation</title> */}
         <meta
           name="description"
           content="Your trusted partner in steel fabrication, design, and installation. Explore our innovative solutions for stainless steel railings, metal structures, and more."
@@ -59,7 +65,6 @@ const RootLayout = () => {
         <meta property="og:url" content={window.location.href} />
         <meta property="og:image" content="/logo2.png" />
       </Helmet>
-      <UpdateTabTitle />
       <ToastContainer 
         position="top-right" autoClose={4000} hideProgressBar={false}
         newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss

@@ -21,6 +21,7 @@ const AdminLogin = () => {
             toast.error(error.response.data.message)
         }
     }
+    
   return (
     <div className="adminLogin">
         <div className="login">

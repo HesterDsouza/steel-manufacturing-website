@@ -3,6 +3,7 @@
   /* main */
   --bg: #1a1a1a;
   --text-primary: #f1f1f1;
+  --text-primary-opp: #fff;
   --steel-gray: #747474;
   --dark-blue: #2d4a8a;
   --logo-blue: #00b4e0;
@@ -25,6 +26,7 @@
   /* main */
   --bg: #ffffff;
   --text-primary: #000000;
+  --text-primary-opp: #fff;
   --steel-gray: #4b4b4b;
   --dark-blue: #1f3a93;
   --logo-blue: #0093c0;
@@ -53,6 +55,10 @@ body{
   background-color: var(--bg);
   color: var(--text-primary);
   margin: 0;
+
+  .goog-tooltip, .goog-te-balloon-frame{
+    display: none !important;
+  }
 }
 
 a{

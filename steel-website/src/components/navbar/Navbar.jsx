@@ -4,6 +4,9 @@ import "./navbar.css"
 import { fetchProducts } from "../../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
+import LanguageToggle from "../../utils/LanguageToggle";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n/i18n.js";
 
 const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -14,6 +17,7 @@ const Navbar = () => {
   const [focusedIndex, setFocusedIndex] = useState(-1);
 
   const navigate = useNavigate();
+  const {t} = useTranslation("components");
 
   useEffect(() => {
     const getProducts = async() => {
@@ -32,7 +36,7 @@ const Navbar = () => {
     const trimmedQuery = searchQuery.trim();
 
     if(!trimmedQuery || trimmedQuery.length === 0 || trimmedQuery.length > 50 || /[^a-zA-Z\s]/.test(trimmedQuery)){
-      setError("Please enter words between 1 and 50 chracters");
+      setError(t("navbar.search.error"));
       return;
     }
 
@@ -116,8 +120,14 @@ const Navbar = () => {
         </div>
         <div className="header-title">
           <Link to="/">
-            <h1>Future Structures</h1>
-            <h1 className="arabic-title">الهياكل المستقبلية</h1>
+            <div className="abstract">
+              <h1>{t("navbar.branding.abstract")}</h1>
+              <h1 className="arabic-title">{t("navbar.branding.abstract_arabic")}</h1>
+            </div>
+            <div className="future_structures">
+              <h1>{t("navbar.branding.future_structures")}</h1>
+              <h1 className="arabic-title">{t("navbar.branding.future_structures_arabic")}</h1>
+            </div>
           </Link>
         </div>
       </div>
@@ -128,24 +138,27 @@ const Navbar = () => {
               id="search"
               name="search"
               type="text" 
-              placeholder="Search"
+              placeholder = {t("navbar.search.placeholder")}
               value={searchQuery}
               minLength={1}
               maxLength={50}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              />
+            />
+
             {searchQuery && (
               <FontAwesomeIcon tabIndex={0} className="clearSearch" onClick={clearSearch} onKeyDown={(e) => e.key === "Enter" && clearSearch} icon={faClose}/>
             )}
+
             <button 
               className="search-btn" 
               onClick={handleSearch} 
               disabled={searchLoading}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             >
-              {searchLoading ? "Searching..." : "Search"}
+              {searchLoading ? t("navbar.search.button_loading") : t("navbar.search.button")}
             </button>
+            <LanguageToggle />
           </div>
           {error && <p className="searchError">{error}</p>}
         </div>
@@ -154,34 +167,38 @@ const Navbar = () => {
             {/* <li className="links-list-item">
               <Link to="/">Home</Link>
             </li> */}
-            <li className="links-list-item">
-              <Link to="/products">Products</Link>
-            </li>
-            <li className="links-list-item">
-              <Link to="/about-us">About Us</Link>
-            </li>
-            <li className="links-list-item services-container" onKeyDown={handleDropDownKeyDown} onClick={toggleDropDown}>
-              <Link to="/services" aria-expanded={dropDownOpen} aria-controls="services-dropdown">
-                Services
+            <li className="links-list-item products-container" onKeyDown={handleDropDownKeyDown} onClick={toggleDropDown}>
+              <Link to="/products" aria-expanded={dropDownOpen} aria-controls="products-dropdown">
+                {t("navbar.nav.products")}
               </Link>
-              <div className="services-dropdown">
+              <div className="products-dropdown">
                 <ul>
                   {products.map((product, index) => (
                     <li key={product._id}
                         className={focusedIndex === index ? "focused" : ""}
                         onFocus={() => setFocusedIndex(index)}                        
                     >
-                      <Link to={`/products/${product._id}`}>{product.title}</Link>
+                      <Link to={`/products/${product._id}`}>
+                        {i18n.language === "en" ? product.title?.en : product.title?.ar}
+                      </Link>
                     </li>
                   ))}
                 </ul>
               </div>
             </li>
             <li className="links-list-item">
-              <Link to="/technology">Technology</Link>
+              <Link to="/about-us">{t("navbar.nav.about_us")}</Link>
             </li>
             <li className="links-list-item">
-              <Link to="/contact">Contact</Link>
+              <Link to="/services" >
+                {t("navbar.nav.services")}
+              </Link>
+            </li>
+            <li className="links-list-item">
+              <Link to="/technology">{t("navbar.nav.technology")}</Link>
+            </li>
+            <li className="links-list-item">
+              <Link to="/contact">{t("navbar.nav.contact")}</Link>
             </li>
           </ul>
         </nav>

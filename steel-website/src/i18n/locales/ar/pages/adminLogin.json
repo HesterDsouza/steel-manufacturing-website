@@ -1,0 +1,13 @@
+{
+  "heading": "صفحة تسجيل الدخول",
+  "form": {
+    "emailLabel": "البريد الإلكتروني:",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordLabel": "كلمة المرور:",
+    "passwordPlaceholder": "كلمة المرور",
+    "submitButton": "تسجيل الدخول"
+  },
+  "toast": {
+    "loginFailed": "فشل تسجيل الدخول. يُرجى التحقق من بيانات الاعتماد والمحاولة مرة أخرى."
+  }
+}

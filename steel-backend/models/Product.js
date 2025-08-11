@@ -2,17 +2,30 @@ import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
     title:{
-        type: String,
-        required: true,
-        unique: true
+        en:{
+            type: String,
+            required: true,
+            unique: true
+        },
+        ar:{
+            type: String,
+            required: true,
+            unique: true
+        },
     },
     images: {
         type: [String],
         required: true
     },
     description: {
-        type: String,
-        default: ""
+        en:{
+            type: String,
+            default: ""
+        },
+        ar: {
+            type: String,
+            default: ""
+        }
     },
     details: {
         type: [{
@@ -21,13 +34,23 @@ const productSchema = new mongoose.Schema({
                 required: true
             },
             description: {
-                type: String,
-                required: true
+                en:{
+                    type: String,
+                    required: true
+                },
+                ar: {
+                    type: String,
+                    required: true
+                }
             }
         }]
     }
 });
 
-productSchema.index({ title: "text", description: "text", "details.description" : "text" });
+productSchema.index({ 
+    "title.en": "text", "title.ar": "text", 
+    "description.en": "text", "description.ar": "text", 
+    "details.description.en" : "text", "details.description.ar" : "text" 
+});
 
 export default mongoose.model('Product', productSchema);

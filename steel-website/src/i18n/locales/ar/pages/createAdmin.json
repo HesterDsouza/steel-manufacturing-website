@@ -1,0 +1,15 @@
+{
+  "heading": "إضافة مسؤول",
+  "form": {
+    "emailLabel": "البريد الإلكتروني:",
+    "passwordLabel": "كلمة المرور:",
+    "confirmPasswordLabel": "تأكيد كلمة المرور:",
+    "submitButton": "إنشاء مسؤول"
+  },
+  "toast": {
+    "allFieldsRequired": "جميع الحقول مطلوبة",
+    "passwordsDoNotMatch": "كلمتا المرور غير متطابقتين",
+    "success": "تم إنشاء المسؤول بنجاح",
+    "error": "حدث خطأ أثناء إنشاء المسؤول"
+  }
+}

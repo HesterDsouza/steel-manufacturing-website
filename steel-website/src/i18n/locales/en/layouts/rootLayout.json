@@ -1,0 +1,37 @@
+{
+  "meta": {
+    "description": "Your trusted partner in steel fabrication, design, and installation. Explore our innovative solutions for stainless steel railings, metal structures, and more.",
+    "keywords": "steel manufacturer, stainless steel, fabrication, installation, metal structures, Qatar steel solutions",
+    "viewport": "width=device-width, initial-scale=1.0",
+    "ogTitle": "Steel Manufacturer - Fabrication, Design, and Installation",
+    "ogDescription": "We provide top-quality steel solutions, from stainless steel railings to custom metal structures. Your trusted partner in innovation.",
+    "ogType": "website",
+    "ogImageAlt": "Future Structures Logo"
+  },
+  "layout": {
+    "loading": "Loading content...",
+    "error": "An unexpected error occurred. Please refresh the page or try again later.",
+    "notFound": "The page you’re looking for doesn’t exist."
+  },
+  "toast": {
+    "defaultSuccess": "Action completed successfully!",
+    "defaultError": "Something went wrong. Please try again."
+  },
+  "navbar": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About Us",
+    "services": "Services",
+    "technology": "Technology",
+    "contact": "Contact",
+    "search": "Search",
+    "languageToggle": "Switch Language"
+  },
+  "footer": {
+    "rights": "© 2025 Future Structures. All rights reserved.",
+    "designedBy": "Designed and developed by Hester Dsouza",
+    "emailUs": "Email Us",
+    "location": "Location",
+    "phone": "Phone"
+  }
+}

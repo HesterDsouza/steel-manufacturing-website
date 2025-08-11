@@ -1,0 +1,19 @@
+{
+  "header": {
+    "title": "Admin Panel",
+    "backToWebsite": "Back to Website",
+    "logout": "Logout"
+  },
+  "toast": {
+    "defaultSuccess": "Action completed successfully!",
+    "defaultError": "Something went wrong. Please try again.",
+    "sessionExpired": "Session expired. Please log in again."
+  },
+  "logo": {
+    "alt": "Future Structures Logo"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  }
+}

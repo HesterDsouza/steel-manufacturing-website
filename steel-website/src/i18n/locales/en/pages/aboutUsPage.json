@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "title": "About Us - Crafting Excellence in Steel and Beyond",
+    "description": "Learn about our journey, mission, vision, and values. We specialize in innovative steel solutions, transforming spaces with quality and sustainability.",
+    "keywords": "about us, steel manufacturing, stainless steel solutions, innovative design, sustainability, Qatar steel industry",
+    "ogTitle": "About Us - Crafting Excellence in Steel and Beyond",
+    "ogDescription": "Discover our mission to provide durable and innovative steel solutions while fostering sustainability and excellence in the steel industry."
+  },
+  "hero": {
+    "title": "About Us",
+    "subtitle": "Crafting Excellence in Steel and Beyond"
+  },
+  "story": {
+    "title": "Our Story",
+    "para1": "We are Qatar's leading solutions provider in the steel and construction industry, operating across multiple countries and strategically headquartered in Qatar. Dedicated to inclusivity and responsibility, we build for a better society by embodying the values of work ethics, passion, and performance. Through our work, we aim to create spaces and solutions that truly impact lives and connect communities.",
+    "para2": "Our primary goal is to offer clients an excellent and satisfying experience, delivering unique, tailored solutions that make a meaningful difference. By synergizing people and technology, we ensure safer, more collaborative environments, bringing innovation and progressive solutions to every project."
+  },
+  "team": {
+    "title": "Our Team & Facility",
+    "members": [
+      { "name": "Mr. Simon Pinto", "role": "CEO" },
+      { "name": "Mr. David", "role": "Office Manager" },
+      { "name": "Mr. Christy Kelly", "role": "Company Manager" }
+    ],
+    "sections": {
+      "factory": "Our Factory and Workers",
+      "employees": "Our Employees"
+    }
+  },
+  "goals": {
+    "title": "Our Mission & Vision",
+    "mission": {
+      "title": "Mission",
+      "text": "To transform spaces with durable, aesthetic, and innovative steel solutions, while fostering sustainable practices and upholding the highest standards of quality."
+    },
+    "vision": {
+      "title": "Vision",
+      "text": "To be recognized as the premier steel and decorative solutions provider in the Middle East, renowned for excellence in service, safety, and sustainable innovation."
+    }
+  },
+  "values": {
+    "title": "Our Values",
+    "items": [
+      {
+        "title": "Quality & Excellence",
+        "description": "We strive for precision and excellence in every project, ensuring high standards that our clients can rely on."
+      },
+      {
+        "title": "Integrity",
+        "description": "We conduct our business with transparency and integrity, fostering trust and long-lasting partnerships."
+      },
+      {
+        "title": "Customer Commitment",
+        "description": "Our clients' success is our success. We prioritize their needs and provide tailored solutions to meet their goals."
+      },
+      {
+        "title": "Innovation",
+        "description": "Embracing the latest technologies, we continuously evolve our techniques to deliver cutting-edge solutions."
+      }
+    ]
+  },
+  "impact": {
+    "title": "Our Impact on Society",
+    "description": "Our work contributes meaningfully to society and the environment. Whether we're creating spaces for education, connecting communities through infrastructure, or building hospital environments conducive to healing, our purpose remains steadfast: to provide the right solution for a better society. We're not just a business; we are a responsible organization committed to building for the present and future needs of the communities we serve."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "company": {
+    "abstract": "Abstract",
+    "abstract_arabic": "خلاصة",
+    "future_structures": "Future Structures",
+    "future_structures_arabic": "الهياكل المستقبلية"
+  },
+  "address": {
+    "line1": "Headquarters: 5066 Al-kharj 16285-85931",
+    "line2": "Postal Code: 16285",
+    "line3": "Cr. No.: 100241115881445",
+    "line4": "Tin No.: 3123715103",
+    "line5": "MARWA LIGHT INDUSTRIES NO. 321, AL KHARJ, AL RIYADH, KINGDOM OF SAUDI ARABIA"
+  },
+  "map": {
+    "iframe_title": "Google Map Location"
+  },
+  "copyright": {
+    "text": "© 2025 All rights Reserved. ",
+    "link": "Abstract | Future Structures."
+  }
+}

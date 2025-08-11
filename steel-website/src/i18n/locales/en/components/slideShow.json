@@ -1,0 +1,9 @@
+{
+  "aria": {
+    "previousSlide": "Previous Slide",
+    "nextSlide": "Next Slide"
+  },
+  "altText": {
+    "slideImage": "Slide {{index}}"
+  }
+}

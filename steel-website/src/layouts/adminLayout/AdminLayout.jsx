@@ -3,16 +3,21 @@ import "./adminLayout.css"
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
-import UpdateTabTitle from "../../components/UpdateTabTitle";
+import { useTranslation } from "react-i18next";
 
 const AdminLayout = () => {
     const navigate = useNavigate();
     const [toastTheme, setToastTheme] = useState("dark");
+    const {i18n} = useTranslation();
 
     const handleLogout = () => {
         localStorage.removeItem('token');
         navigate('/admin/login');
     };
+
+     useEffect(() => {
+    document.documentElement.dir = i18n.language === 'ar' ? "rtl" : "ltr"
+  },[i18n])
 
     useEffect(() => {
         const applyTheme = () => {
@@ -35,7 +40,6 @@ const AdminLayout = () => {
 
   return (
     <div className="adminLayout">
-      <UpdateTabTitle />
       <ToastContainer 
         position="top-right" autoClose={4000} hideProgressBar={false}
         newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss

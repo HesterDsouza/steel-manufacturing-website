@@ -1,0 +1,54 @@
+{
+  "meta": {
+    "title": "Technology - Advancing Precision & Excellence",
+    "description": "Explore our cutting-edge technologies that include laser cutters, welders, hydraulic press machines, and more, shaping the future of industrial excellence.",
+    "keywords": "technology, laser cutting machines, welding systems, hydraulic press, metal shearing machines, industrial thread rolling, advanced manufacturing",
+    "ogTitle": "Technology - Advancing Precision & Excellence",
+    "ogDescription": "Discover the technologies driving innovation at our company, including state-of-the-art equipment for manufacturing and industrial applications."
+  },
+  "hero": {
+    "title": "Technology",
+    "subtitle": "Innovating Tomorrow with Precision and Excellence"
+  },
+  "section": {
+    "heading": "Our Technology"
+  },
+  "techs": [
+    {
+      "title": "Compact Precision Laser Cutter",
+      "description": "A compact, high-precision cutter with a front control panel for intricate work on smaller components across industries."
+    },
+    {
+      "title": "Heavy-Duty Laser Cutter",
+      "description": "An open-structure laser cutter for large steel sheets, ideal for extensive cutting in manufacturing and construction."
+    },
+    {
+      "title": "Touchscreen Laser Welder",
+      "description": "A modern, touchscreen-enabled welder with precise controls, designed for high-accuracy welding in automotive and aerospace sectors."
+    },
+    {
+      "title": "Multi-functional Laser Welding System",
+      "description": "Versatile, large-scale laser welder with extensive controls, ideal for complex, high-volume industrial welding tasks."
+    },
+    {
+      "title": "Hydraulic Press Bending Machine",
+      "description": "Powerful hydraulic press for shaping sheet metal, with multiple clamps for precise, repeatable bending."
+    },
+    {
+      "title": "Industrial Metal Shearing Machine",
+      "description": "Heavy-duty shearing machine with precision blades, essential for accurate cutting in metal fabrication."
+    },
+    {
+      "title": "Industrial Thread-Rolling Machine",
+      "description": "Creates threads on cylindrical parts using durable rollers, powered by a motorized system for consistent results."
+    },
+    {
+      "title": "Industrial Conveyor System",
+      "description": "Metal conveyor with motorized drive and safety ladder, facilitating efficient material handling in production."
+    },
+    {
+      "title": "Filtration and Pumping System",
+      "description": "Red cabinet housing filtration and pumping components, essential for fluid management in industrial processes."
+    }
+  ]
+}

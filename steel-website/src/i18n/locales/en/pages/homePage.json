@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "title": "Future Structures - Building the Future with Innovation",
+    "description": "Discover our innovative steel solutions. We specialize in stainless steel railings, metal structures, and more. Trusted partners in fabrication and design.",
+    "keywords": "steel manufacturing, stainless steel railings, steel solutions, metal structures, fabrication, design, Qatar steel",
+    "ogTitle": "Steel Manufacturer - Building the Future with Innovation",
+    "ogDescription": "Explore our range of innovative steel solutions including stainless steel railings, metal structures, and advanced fabrication technology."
+  },
+  "hero": {
+    "title": "Building the Future with Steel Innovation",
+    "subtitle": "Your Trusted Partner in Fabrication, Design & Installation"
+  },
+  "aboutUs": {
+    "title": "About Us",
+    "para1": "We are Qatar's leading provider of steel solutions, operating across multiple countries in selected markets headquarted in Qatar.",
+    "para2": "We are an inclusive and responsible business that is helping to build for a better society."
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Our team includes experts in Fabrication & Installation of SS products like:\nHandrail Balustrade, Water feature, Kitchen SS Table, SS Grating with modern machinary & modern technology.",
+    "items": [
+      {
+        "title": "Stainless Steel Railings",
+        "captions": [
+          "Partioned / Interval Railings",
+          "Staircase Railings",
+          "Public Railings",
+          "Curved Staircase Railings"
+        ]
+      },
+      {
+        "title": "Steel Utilities",
+        "captions": [
+          "Staircases",
+          "SS Bollards",
+          "Spiral Stairase",
+          "Airport Utilities"
+        ]
+      },
+      {
+        "title": "Metal Structures",
+        "captions": [
+          "Artisan Doors",
+          "Decorative Claddings",
+          "SS Canopys",
+          "Custom Design Canopys"
+        ]
+      },
+      {
+        "title": "Glass Partitions / Balustrade",
+        "captions": [
+          "Staircase Glasses",
+          "Glass Cabins",
+          "Glass Door Designs",
+          "Glass Partitions"
+        ]
+      },
+      {
+        "title": "Decorative Arches",
+        "captions": [
+          "Fifa World Cup Entrance",
+          "Arch Lighting",
+          "Fifa World Cup Entrance",
+          "Arch Structure"
+        ]
+      },
+      {
+        "title": "Ceiling",
+        "captions": [
+          "Colourful Ceilings",
+          "SS Ceilings",
+          "Artisan Ceilings",
+          "Custom Design Ceilings"
+        ]
+      },
+      {
+        "title": "Interior Fit-Out",
+        "captions": [
+          "Wadrobes",
+          "Furnishings",
+          "Wall Designs",
+          "Custom Interiors"
+        ]
+      },
+      {
+        "title": "Stainless Steel Gratings",
+        "captions": [
+          "Welded Grating",
+          "Press-Locked Grating",
+          "Swage-Locked Grating",
+          "Riveted Grating"
+        ]
+      }
+    ]
+  },
+  "values": {
+    "title": "Our Values",
+    "items": [
+      {
+        "title": "Customer Commitment",
+        "points": [
+          "We help you, our customers, to be successful in your business",
+          "We strive to understand your needs and your customers' needs",
+          "We are here to help our customers turn their visions into reality"
+        ]
+      },
+      {
+        "title": "Ethical and Transparent",
+        "points": [
+          "Our business ethos is to maintain a high degree of integrity and transparency",
+          "We never accept shortcuts",
+          "Everyone can speak their mind"
+        ]
+      },
+      {
+        "title": "Care for Life",
+        "points": [
+          "We work safely, or not at all",
+          "We never walk on by if unsafe practices are being observed",
+          "We support health and well being"
+        ]
+      },
+      {
+        "title": "Be Better",
+        "points": [
+          "We always strive to better ourselves",
+          "We take pride in quality and innovation",
+          "We leverage diversity to deliver the optimal solutions"
+        ]
+      }
+    ]
+  }
+}

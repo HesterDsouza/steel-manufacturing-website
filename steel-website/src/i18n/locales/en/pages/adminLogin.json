@@ -1,0 +1,13 @@
+{
+  "heading": "Login Page",
+  "form": {
+    "emailLabel": "Email:",
+    "emailPlaceholder": "Email",
+    "passwordLabel": "Password:",
+    "passwordPlaceholder": "Password",
+    "submitButton": "Login"
+  },
+  "toast": {
+    "loginFailed": "Login Failed. Please check your credentials and try again."
+  }
+}

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { fetchProduct } from "../../api"
 import HeroSection from "../../components/heroSection/HeroSection"
 import { Helmet } from "react-helmet-async"
+import { useTranslation } from "react-i18next"
 
 const ProductDetail = () => {
 
@@ -16,15 +17,22 @@ const ProductDetail = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
+  const {t, i18n} = useTranslation("pages");
+  const currentLang = i18n.language || "en"
+
   useEffect(()=>{
     const getProductDetails = async() => {
       try {
         const {data} = await fetchProduct(productId);
-        setProductTitle(data.title)
-        setProductDescription(data.description || "")
-        setProductDetails(data.details || [])
+        setProductTitle(data.title?.[currentLang] || data.title?.en || "")
+        setProductDescription(data.description?.[currentLang] || data.description?.en || "")
+        const processedDetails = (data.details || []).map((item) => ({
+          image: item.image,
+          description: item.description?.[currentLang] || item.description?.en || ""
+        }))
+        setProductDetails(processedDetails)
       } catch (error) {
-        setError("Product not found or failed to load");
+        setError(t("productDetail.error"));
         console.error("Error fetching product: ", error);
       } finally {
         setLoading(false)
@@ -32,9 +40,9 @@ const ProductDetail = () => {
     };
 
     getProductDetails();
-  },[productId]);
+  },[productId, currentLang, t]);
 
-  if(loading) return <p>Loading...</p>
+  if(loading) return <p>{t("productDetail.loading")}</p>
   if(error) return <p>{error}</p>
 
   const collections = productDetails.map((item) => ({

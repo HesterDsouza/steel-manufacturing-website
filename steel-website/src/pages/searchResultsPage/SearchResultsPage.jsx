@@ -1,12 +1,14 @@
 import { useLocation, useNavigate } from "react-router-dom"
 import "./searchResultsPage.css"
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { searchProducts } from "../../api";
 import HeroSection from "../../components/heroSection/HeroSection"
 import DetailsCard from "../../components/detailsCard/DetailsCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import i18n from "../../i18n/i18n.js";
 
 const SearchResultsPage = () => {
     const location = useLocation();
@@ -18,10 +20,42 @@ const SearchResultsPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalRecords, setTotalRecords] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
+    const [maxButtons, setMaxButtons] = useState(7);
+    const [layoutDir, setLayoutDir] = useState(document.documentElement.getAttribute("dir") || "ltr");
     const limit = 12;
 
+    const {t} = useTranslation("pages");
+    const currentLang = i18n.language || "en"
+
     useEffect(() => {
-        const queryParam = new URLSearchParams(location.search).get("query");
+        const calculateButtons = () => {
+            const width = window.innerWidth;
+            if(width > 1024) setMaxButtons(7);
+            else if(width > 768) setMaxButtons(5);
+            else setMaxButtons(3);
+        }
+
+        calculateButtons();
+        window.addEventListener("resize", calculateButtons);
+        return () => window.removeEventListener("resize", calculateButtons);
+    }, [])
+
+    // Detect language/direction changes from Google Translate
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+        setLayoutDir(document.documentElement.getAttribute("dir") || "ltr");
+        });
+
+        observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["dir", "lang", "class"],
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        const queryParam = decodeURIComponent(new URLSearchParams(location.search).get("query") || "");
         const pageParam = new URLSearchParams(location.search).get("page");
         setQuery(queryParam);
         setCurrentPage(Number(pageParam) || 1);
@@ -37,7 +71,7 @@ const SearchResultsPage = () => {
             } catch (error) {
                 setSearchResults([])
                 setTotalRecords(0)
-                setError("Sorry we do not have what you are looking for.")
+                setError(t("searchResultsPage.results.error"))
                 console.error("Error searching product: ", error)
             } finally {
                 setLoading(false)
@@ -45,25 +79,24 @@ const SearchResultsPage = () => {
         }
 
         if(queryParam) fetchResults();
-    }, [location, currentPage])
+    }, [location, currentPage, t])
 
     const startRecord = (currentPage - 1) * limit + 1;
     const endRecord = Math.min(startRecord + limit - 1, totalRecords);
 
     const collection = searchResults.map((result) => ({
-        title: result.title,
-        image: result.details.image,
-        description: result.details.description || "No description available"
+        title: result.title?.[currentLang] || result.title?.en || "No Title",
+        image: result.details?.image || "../../../public/noImage.jpg",
+        description: result.details?.description?.[currentLang] || result.details?.description?.en || "No description available"
     }))
+
 
     const handlePageChange = (page) => {
         if (page >= 1 && page <= totalPages) 
             navigate(`?query=${query}&page=${page}`);
     }
 
-    const generatePageRange = () => {
-        const maxButtons = window.innerWidth > 1024 ? 7 : 
-            window.innerWidth > 768 ? 5 : 3;
+    const paginationRange = useMemo(() => {
         const range = []
         const half = Math.floor(maxButtons / 2);
 
@@ -85,10 +118,8 @@ const SearchResultsPage = () => {
             range.push("...");
         }
 
-        return range
-    };
-
-    const paginationRange = generatePageRange();
+        return range;
+    }, [currentPage, totalPages, maxButtons]);
 
   return (
     <div className="searchResultsPage">
@@ -104,23 +135,68 @@ const SearchResultsPage = () => {
         </Helmet>
         <HeroSection title={`Product search results for '${query || "unknown"}'`} />
         <div className="results">
-            <p tabIndex={0} className="result">
-                Found <span className="big">{totalRecords}</span> result{totalRecords === 1 ? "" : "s"}
-            </p>
+            <p
+                tabIndex={0}
+                className="result"
+                dangerouslySetInnerHTML={{
+                    __html: t("searchResultsPage.results.found", {
+                    count: `<span class="big">${totalRecords}</span>`,
+                    plural: totalRecords === 1 ? "" : "s"
+                    })
+                }}
+            />
             {totalRecords >= 1 && (
                 <>
-                    <p tabIndex={0} className="productRange">
-                        Displaying <span className="big">{startRecord} - {endRecord}</span> of <span className="big">{totalRecords}</span> results
-                    </p>
+                    <p
+                        tabIndex={0}
+                        className="productRange"
+                        dangerouslySetInnerHTML={{
+                            __html: t("searchResultsPage.results.displaying", {
+                            start: `<span class="big">${startRecord}</span>`,
+                            end: `<span class="big">${endRecord}</span>`,
+                            total: `<span class="big">${totalRecords}</span>`
+                            })
+                        }}
+                    />
                 </>
             )}
         </div>
-        {loading && <p>Loading...</p>}
+        {loading && <p>{t("searchResultsPage.results.loading")}</p>}
         {error && <p tabIndex={0} className="error">{error}</p>}
         {!loading && !error && (
             <>
+                <div key={`top-${query}-${currentPage}-${totalPages}-${layoutDir}`} className={`pagination ${layoutDir === "rtl" ? "rtl" : ""}`}>
+                    <button
+                        tabIndex={0} 
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="pageNavBtn"
+                    >
+                        <FontAwesomeIcon className="pageNavIcon" icon={faChevronLeft}/>
+                    </button>
+                    {paginationRange.map((page, index) => 
+                        page === "..." ? (
+                            <span key={index} className="ellipsis">
+                                ...
+                            </span>
+                        ) : (
+                            <button
+                                tabIndex={0} key={index} onClick={() => handlePageChange(page)} className={currentPage === page ? "active" : ""}>
+                                {page}
+                            </button>
+                        )
+                    )}
+                    <button
+                        tabIndex={0} 
+                        onClick={() => handlePageChange(currentPage + 1)} 
+                        disabled={currentPage === totalPages}
+                        className="pageNavBtn"
+                    >
+                        <FontAwesomeIcon className="pageNavIcon" icon={faChevronRight} />
+                    </button>
+                </div>
                 <DetailsCard collections={collection} class_name="searchPage"/>
-                <div className="pagination">
+                <div key={`bottom-${query}-${currentPage}-${totalPages}-${layoutDir}`} className={`pagination ${layoutDir === "rtl" ? "rtl" : ""}`}>
                     <button
                         tabIndex={0} 
                         onClick={() => handlePageChange(currentPage - 1)}

@@ -3,56 +3,27 @@ import Contact from "../../components/contact/Contact"
 import DetailsCard from "../../components/detailsCard/DetailsCard"
 import HeroSection from "../../components/heroSection/HeroSection";
 import "./technologyPage.css"
+import { useTranslation } from "react-i18next";
 
 const TechnologyPage = () => {
 
-    const techs = [
-        {
-          image: "/tech/lazer-cutting-machine1.jpg",
-          title: "Compact Precision Laser Cutter",
-          description: "A compact, high-precision cutter with a front control panel for intricate work on smaller components across industries."
-        },
-        {
-          image: "/tech/lazer-cutting-machine2.jpg",
-          title: "Heavy-Duty Laser Cutter",
-          description: "An open-structure laser cutter for large steel sheets, ideal for extensive cutting in manufacturing and construction."
-        },
-        {
-          image: "/tech/lazer-welding-machine1.jpg",
-          title: "Touchscreen Laser Welder",
-          description: "A modern, touchscreen-enabled welder with precise controls, designed for high-accuracy welding in automotive and aerospace sectors."
-        },
-        {
-          image: "/tech/lazer-welding-machine2.jpg",
-          title: "Multi-functional Laser Welding System",
-          description: "Versatile, large-scale laser welder with extensive controls, ideal for complex, high-volume industrial welding tasks."
-        },
-        {
-          image: "/tech/hyraulic-press-bending-machine.jpg",
-          title: "Hydraulic Press Bending Machine",
-          description: "Powerful hydraulic press for shaping sheet metal, with multiple clamps for precise, repeatable bending."
-        },
-        {
-          image: "/tech/metal-shearing-machine1.jpg",
-          title: "Industrial Metal Shearing Machine",
-          description: "Heavy-duty shearing machine with precision blades, essential for accurate cutting in metal fabrication."
-        },
-        {
-          image: "/tech/thread-rolling-machine1.jpg",
-          title: "Industrial Thread-Rolling Machine",
-          description: "Creates threads on cylindrical parts using durable rollers, powered by a motorized system for consistent results."
-        },
-        {
-          image: "/tech/conveyor-system1.jpg",
-          title: "Industrial Conveyor System",
-          description: "Metal conveyor with motorized drive and safety ladder, facilitating efficient material handling in production."
-        },
-        {
-          image: "/tech/fuel-filteration-pumping-machine1.jpg",
-          title: "Filtration and Pumping System",
-          description: "Red cabinet housing filtration and pumping components, essential for fluid management in industrial processes."
-        }
-      ];
+  const {t} = useTranslation("pages");
+
+  const techImages = [
+    "/tech/lazer-cutting-machine1.jpg",
+    "/tech/lazer-cutting-machine2.jpg",
+    "/tech/lazer-welding-machine1.jpg",
+    "/tech/lazer-welding-machine2.jpg",
+    "/tech/hyraulic-press-bending-machine.jpg",
+    "/tech/metal-shearing-machine1.jpg",
+    "/tech/thread-rolling-machine1.jpg",
+    "/tech/conveyor-system1.jpg",
+    "/tech/fuel-filteration-pumping-machine1.jpg"
+  ];
+
+  const techs = t("technologyPage.techs", {returnObjects: true}).map((tech, index) => (
+    {...tech, image: techImages[index]}
+  ))
 
   return (
     <div className="technologyPage">
@@ -76,9 +47,9 @@ const TechnologyPage = () => {
           <meta property="og:url" content={window.location.href} />
           <meta property="og:image" content="/logo2.png" />
         </Helmet>
-        <HeroSection title="Technology" subTitle="Innovating Tomorrow with Precision and Excellence"/>
+        <HeroSection title={t("technologyPage.hero.title")} subTitle={t("technologyPage.hero.subtitle")}/>
         <section className="tech-section">
-            <h2 tabIndex={0}>Our Technology</h2>
+            <h2 tabIndex={0}>{t("technologyPage.section.heading")}</h2>
             <DetailsCard collections={techs} />
         </section>
         <Contact />

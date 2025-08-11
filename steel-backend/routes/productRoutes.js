@@ -67,9 +67,23 @@ router.post("/uploads", auth, upload.array("images", 4), async (req, res) => {
 
 // Get All Products
 router.get("/", async(req, res) => {
+    const lang = req.query.lang === "ar" ? "ar" : "en"
+
     try {
         const products = await Product.find();
-        res.json(products);
+
+        const translated = products.map(product => ({
+            _id: product._id,
+            title: product.title,
+            description: product.description,
+            images: product.images,
+            details: product.details.map(detail => ({
+                image: detail.image,
+                description: detail.description
+            }))
+        }))
+
+        res.status(200).json(translated);
     } catch (error) {
         res.status(404).json({ message: "Error fetching products", error});
     }
@@ -83,6 +97,7 @@ router.get("/search", async(req, res) => {
         return res.status(400).json({ message: "Invalid search query. Only letters and spaces are allowed." });
 
     try {
+        const lang = req.query.lang === "ar" ? "ar" : "en";
         const regex = new RegExp(query.trim(), "i");
         const skip = (Number(page - 1)) * Number(limit);
 
@@ -91,9 +106,9 @@ router.get("/search", async(req, res) => {
             { 
                 $match: {
                     $or: [
-                        { title: { $regex: regex} },
-                        { description: { $regex: regex} },
-                        { "details.description": { $regex: regex } }
+                        { [`title.${lang}`]: { $regex: regex} },
+                        { [`description.${lang}`]: { $regex: regex} },
+                        { [`details.description.${lang}`]: { $regex: regex } }
                     ]
                 } 
             },

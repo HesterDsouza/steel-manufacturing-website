@@ -1,0 +1,15 @@
+{
+  "heading": "Add Admin",
+  "form": {
+    "emailLabel": "Email:",
+    "passwordLabel": "Password:",
+    "confirmPasswordLabel": "Confirm Password:",
+    "submitButton": "Create Admin"
+  },
+  "toast": {
+    "allFieldsRequired": "All fields are required",
+    "passwordsDoNotMatch": "Passwords do not match",
+    "success": "Admin created successfully",
+    "error": "Error creating admin"
+  }
+}

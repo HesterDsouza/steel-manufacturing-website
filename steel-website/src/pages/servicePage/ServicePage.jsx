@@ -1,16 +1,19 @@
 import "./servicePage.css"
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faVolumeHigh, faVolumeOff } from "@fortawesome/free-solid-svg-icons";
 import Contact from "../../components/contact/Contact";
 import HeroSection from "../../components/heroSection/HeroSection";
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 const ServicePage = () => {
 
   const audioRef = useRef(null);
   const videoRefs = useRef([]);
-  const [isPlaying, setIsPlaying] = useState({});
+  const [isMuted, setIsMuted] = useState({})
+
+  const {t} = useTranslation("pages")
   
   useEffect(()=>{
     const audio = audioRef.current;
@@ -19,49 +22,37 @@ const ServicePage = () => {
     if(audio){
       audio.volume = 0.2;
       audio.loop = true;
+      audio.muted = true
     }
 
-    videoRefCurrent.forEach((video, index) => {
+    videoRefCurrent.forEach((video) => {
       if(video) {
-        video.addEventListener("ended", () => handleVideoEnded(index))
+        video.muted = true
+        video.play().catch(() => {})
       }
     })
-
-    return () => {
-      videoRefCurrent.forEach((video, index) => {
-        if(video) {
-          video.removeEventListener("ended", () => handleVideoEnded(index))
-        }
-      })
-    }
   },[]);
-
-  const handleVideoEnded = (index) => {
-    setIsPlaying((prev) => ({...prev, [index]: false}))
-  }
-
-  const handlePlayPause = (index) => {
+  
+  const handleMuteToggle = (index) => {
     const audio = audioRef.current;
     const video = videoRefs.current[index];
-
+    
     if(video && audio){
-      if(video.paused){
-        video.play();
-        audio.play().catch((err)=>{
+      const currentlyMuted = isMuted[index] ?? true
+      const newMutedState = !currentlyMuted
+
+      video.muted = true
+      audio.muted = newMutedState
+
+      if(!newMutedState){
+        audio.play().catch((err) => {
           console.error("Audio playback issue: ", err)
         })
-        setIsPlaying((prev) => ({...prev, [index]: true}));
+      } else{
+        audio.pause()
       }
-      else{
-        video.pause();
-        // audio.pause();
-        setIsPlaying((prev) => {
-          const updatedState = {...prev, [index]: false};
-          const anyStillPlaying = Object.values(updatedState).some((playing) => playing);
-          if(!anyStillPlaying) audio.pause();
-          return updatedState;
-        });
-      }
+
+      setIsMuted((prev) => ({...prev, [index]: newMutedState}))
     }
   }
 
@@ -87,58 +78,63 @@ const ServicePage = () => {
         <meta property="og:url" content={window.location.href} />
         <meta property="og:image" content="/logo2.png" />
       </Helmet>
-      <HeroSection title="Services" subTitle="Precision, quality, and craftsmanship in every project, tailored to bring your vision to life."/>
+      <HeroSection title={t("servicesPage.hero.title")} subTitle={t("servicesPage.hero.subtitle")}/>
       <section className="expertise">
-        <h2 tabIndex={0}>Our Expertise</h2>
+        <h2 tabIndex={0}>{t("servicesPage.expertise.heading")}</h2>
         <p tabIndex={0}>
-          At Future Structures, we bring decades of experience to the table, ensuring every project is executed with utmost precision, professionalism, and care. 
-          Our expertise spans a diverse range of services and materials, allowing us to cater to a wide array of client needs. Whether you are seeking functional solutions or artistic designs, 
-          we have the capabilities to deliver exceptional results that exceed expectations.
+          {t("servicesPage.expertise.description")}
         </p>
         <ul>
-          <li tabIndex={0}><strong>Stainless Steel:</strong> Renowned for its durability and sleek appearance, stainless steel is ideal for railings, decorative pieces, and custom architectural elements. Our team is skilled in crafting bespoke solutions that marry functionality and style.</li>
-          <li tabIndex={0}><strong>Black Iron Steel:</strong> Combining strength with versatility, black iron steel is perfect for robust structures, industrial projects, and decorative accents with a contemporary edge.</li>
-          <li tabIndex={0}><strong>Decorative Steel:</strong> We excel in creating intricate designs and patterns on steel, turning simple materials into works of art that enhance interior and exterior spaces.</li>
-          <li tabIndex={0}><strong>Galvanized Steel:</strong> Our galvanized steel services provide corrosion-resistant solutions for long-lasting installations, ensuring reliability and performance in any environment.</li>
-          <li tabIndex={0}><strong>Aluminum & Brass:</strong> Lightweight yet durable, aluminum and brass are ideal for projects requiring a touch of elegance, including custom fittings, panels, and artistic decor.</li>
-          <li tabIndex={0}><strong>Design & Prototyping:</strong> From concept to reality, our design and prototyping services help clients visualize their projects before production, ensuring precision and alignment with their vision.</li>
-          <li tabIndex={0}><strong>Paint & Powder Coating:</strong> Our finishing services provide a wide range of color and texture options, enhancing the aesthetics and durability of metal surfaces.</li>
-          <li tabIndex={0}><strong>Assembly & Installation:</strong> We provide end-to-end solutions, including seamless assembly and installation, ensuring every project is delivered with impeccable precision and attention to detail.</li>
+          {t("servicesPage.expertise.items", {returnObjects: true}).map((item, index) => (
+            <li tabIndex={0} key={index}>
+              <strong>{item.title}:</strong>&nbsp;&nbsp;{item.description}
+            </li>
+          ))}
         </ul>
       </section>
       <section className="video-showcase">
-        <h2 tabIndex={0}>Craftsmanship in Action</h2>
-        <p tabIndex={0}>Witness our skilled artisans bring steel to life through precision, dedication, and expertise.</p>
+        <h2 tabIndex={0}>{t("servicesPage.videos.heading")}</h2>
+        <p tabIndex={0}>{t("servicesPage.videos.description")}</p>
         <div className="video-grid">
           {[
-            {videoSrc: "/videos/container.mp4", text: "Skillful Assembly"},
-            {videoSrc: "/videos/crafting.mp4", text: "Skilled Craftsmanship"},
+            { videoSrc: "/videos/container.mp4" },
+            { videoSrc: "/videos/crafting.mp4" },
           ].map((item, index) => (
             <div className="video-container" key={index}>
               <div className="video-player">
-                <video tabIndex={0} ref={(vid) => (videoRefs.current[index] = vid)} muted >
+                <video
+                  tabIndex={0}
+                  ref={(vid) => (videoRefs.current[index] = vid)}
+                  muted
+                  autoPlay
+                  loop
+                >
                   <source src={item.videoSrc} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                <FontAwesomeIcon className="video-btn" tabIndex={0} onKeyDown={(e) => e.key === "Enter" && handlePlayPause(index)} onClick={() => handlePlayPause(index)} icon={ isPlaying[index] ? faPause : faPlay}/>
+                <FontAwesomeIcon
+                  className="video-btn"
+                  tabIndex={0}
+                  onKeyDown={(e) => e.key === "Enter" && handleMuteToggle(index)}
+                  onClick={() => handleMuteToggle(index)}
+                  icon={isMuted[index] ? faVolumeHigh : faVolumeOff}
+                />
                 <audio ref={audioRef}>
-                  <source src="/audios/bg-tunes3.mp3" type="audio/mp3"/>
+                  <source src="/audios/bg-tunes3.mp3" type="audio/mp3" />
                 </audio>
               </div>
-              <p tabIndex={0}>{item.text}</p>
+              <p tabIndex={0}>{t(`servicesPage.videos.items.${index}.text`)}</p>
             </div>
           ))}
         </div>
       </section>
       <section className="commitment">
-        <h2 tabIndex={0}>Our Commitment to Excellence</h2>
+        <h2 tabIndex={0}>{t("servicesPage.commitment.heading")}</h2>
         <p tabIndex={0}>
-          Our commitment to excellence is at the heart of everything we do. We work closely with our clients to understand their unique requirements, translating ideas into reality with unparalleled craftsmanship. 
-          From large-scale industrial installations to bespoke decorative projects, our team is dedicated to delivering results that not only meet but exceed expectations.
+          {t("servicesPage.commitment.para1")}
         </p>
         <p tabIndex={0}>
-          We pride ourselves on staying ahead of industry trends, adopting the latest technologies and techniques to ensure our services remain cutting-edge. 
-          Our team includes highly skilled craftsmen, engineers, and designers who collaborate seamlessly to produce extraordinary outcomes.
+          {t("servicesPage.commitment.para2")}
         </p>
       </section>
       <Contact />

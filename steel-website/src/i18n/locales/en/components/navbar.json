@@ -1,0 +1,21 @@
+{
+  "branding": {
+    "abstract": "Abstract",
+    "abstract_arabic": "خلاصة",
+    "future_structures": "Future Structures",
+    "future_structures_arabic": "الهياكل المستقبلية"
+  },
+  "search": {
+    "placeholder": "Search",
+    "button": "Search",
+    "button_loading": "Searching...",
+    "error": "Please enter words between 1 and 50 characters"
+  },
+  "nav": {
+    "products": "Products",
+    "about_us": "About Us",
+    "services": "Services",
+    "technology": "Technology",
+    "contact": "Contact"
+  }
+}

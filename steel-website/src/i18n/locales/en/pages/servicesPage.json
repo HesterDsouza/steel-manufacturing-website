@@ -1,0 +1,68 @@
+{
+  "meta": {
+    "title": "Services - Expert Metal Crafting & Engineering",
+    "description": "Explore our exceptional metal crafting and engineering services, including stainless steel, galvanized steel, and more. Precision and quality in every project.",
+    "keywords": "metal crafting, engineering services, stainless steel, galvanized steel, decorative steel, design prototyping, industrial installation",
+    "ogTitle": "Services - Expert Metal Crafting & Engineering",
+    "ogDescription": "Discover our wide range of services, from industrial metal crafting to custom design and installation. Tailored solutions for all your needs."
+  },
+  "hero": {
+    "title": "Services",
+    "subtitle": "Precision, quality, and craftsmanship in every project, tailored to bring your vision to life."
+  },
+  "expertise": {
+    "heading": "Our Expertise",
+    "description": "At Future Structures, we bring decades of experience to the table, ensuring every project is executed with utmost precision, professionalism, and care. Our expertise spans a diverse range of services and materials, allowing us to cater to a wide array of client needs. Whether you are seeking functional solutions or artistic designs, we have the capabilities to deliver exceptional results that exceed expectations.",
+    "items": [
+      {
+        "title": "Stainless Steel",
+        "description": "Renowned for its durability and sleek appearance, stainless steel is ideal for railings, decorative pieces, and custom architectural elements. Our team is skilled in crafting bespoke solutions that marry functionality and style."
+      },
+      {
+        "title": "Black Iron Steel",
+        "description": "Combining strength with versatility, black iron steel is perfect for robust structures, industrial projects, and decorative accents with a contemporary edge."
+      },
+      {
+        "title": "Decorative Steel",
+        "description": "We excel in creating intricate designs and patterns on steel, turning simple materials into works of art that enhance interior and exterior spaces."
+      },
+      {
+        "title": "Galvanized Steel",
+        "description": "Our galvanized steel services provide corrosion-resistant solutions for long-lasting installations, ensuring reliability and performance in any environment."
+      },
+      {
+        "title": "Aluminum & Brass",
+        "description": "Lightweight yet durable, aluminum and brass are ideal for projects requiring a touch of elegance, including custom fittings, panels, and artistic decor."
+      },
+      {
+        "title": "Design & Prototyping",
+        "description": "From concept to reality, our design and prototyping services help clients visualize their projects before production, ensuring precision and alignment with their vision."
+      },
+      {
+        "title": "Paint & Powder Coating",
+        "description": "Our finishing services provide a wide range of color and texture options, enhancing the aesthetics and durability of metal surfaces."
+      },
+      {
+        "title": "Assembly & Installation",
+        "description": "We provide end-to-end solutions, including seamless assembly and installation, ensuring every project is delivered with impeccable precision and attention to detail."
+      }
+    ]
+  },
+  "videos": {
+    "heading": "Craftsmanship in Action",
+    "description": "Witness our skilled artisans bring steel to life through precision, dedication, and expertise.",
+    "items": [
+      {
+        "text": "Skillful Assembly"
+      },
+      {
+        "text": "Skilled Craftsmanship"
+      }
+    ]
+  },
+  "commitment": {
+    "heading": "Our Commitment to Excellence",
+    "para1": "Our commitment to excellence is at the heart of everything we do. We work closely with our clients to understand their unique requirements, translating ideas into reality with unparalleled craftsmanship. From large-scale industrial installations to bespoke decorative projects, our team is dedicated to delivering results that not only meet but exceed expectations.",
+    "para2": "We pride ourselves on staying ahead of industry trends, adopting the latest technologies and techniques to ensure our services remain cutting-edge. Our team includes highly skilled craftsmen, engineers, and designers who collaborate seamlessly to produce extraordinary outcomes."
+  }
+}

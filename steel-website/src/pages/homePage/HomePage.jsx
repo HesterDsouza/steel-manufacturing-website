@@ -4,54 +4,40 @@ import SlideShow from "../../components/slideshow/SlideShow";
 import "./homePage.css"
 import { useEffect, useRef, useState } from "react"
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
   const [activeSlides, setActiveSlides] = useState(Array(8).fill(0));
   const seviceIntervals = useRef([]);
   const navigate  = useNavigate();
+  const {t} = useTranslation("pages")
   
   const slides = ["/grinding.jpg", "/welding.jpg", "/lazer-cutting.jpg", "/welding2.jpg", "/lazer-welding.jpg", "/welding3.jpg", "/lazer-cutting2.jpg"];
 
   const services = [
     {
-      title: "Stainless Steel Railings",
       images: ["/services-slides/ss-railing1.jpg", "/services-slides/ss-railing2.jpg", "/services-slides/ss-railing3.jpg", "/services-slides/ss-railing4.jpg"],
-      captions: ["Partioned / Interval Railings", "Staircase Railings", "Public Railings", "Curved Staircase Railings"]
     },
     {
-      title: "Steel Utilities",
       images: ["/services-slides/ss-utilities1.jpg", "/services-slides/ss-utilities2.jpg", "/services-slides/ss-utilities3.jpg", "/services-slides/ss-utilities4.jpg"],
-      captions: ["Staircases", "SS Bollards", "Spiral Stairase", "Airport Utilities"]
     },
     {
-      title: "Metal Structures",
       images: ["/services-slides/metal-structure1.jpg", "/services-slides/metal-structure2.jpg", "/services-slides/metal-structure3.jpg", "/services-slides/metal-structure4.jpg"],
-      captions: ["Artisan Doors", "Decorative Claddings", "SS Canopys", "Custom Design Canopys"]
     },
     {
-      title: "Glass Partitions / Balustrade",
       images: ["/services-slides/glass-work1.jpg", "/services-slides/glass-work2.jpg", "/services-slides/glass-work3.jpg", "/services-slides/glass-work4.jpg"],
-      captions: ["Staircase Glasses", "Glass Cabins", "Glass Door Designs", "Glass Partitions"]
     },
     {
-      title: "Decorative Arches",
       images: ["/services-slides/decorative-arch1.jpg", "/services-slides/decorative-arch2.jpg", "/services-slides/decorative-arch3.jpg", "/services-slides/decorative-arch4.jpg"],
-      captions: ["Fifa World Cup Entrance", "Arch Lighting", "Fifa World Cup Entrance", "Arch Structure"]
     },
     {
-      title: "Ceiling",
       images: ["/services-slides/ceiling1.jpg", "/services-slides/ceiling2.jpg", "/services-slides/ceiling3.jpg","/services-slides/ceiling4.jpg"],
-      captions: ["Colourful Ceilings", "SS Ceilings", "Artisan Ceilings", "Custom Design Ceilings"]
     },
     {
-      title: "Interior Fit-Out",
       images: ["/services-slides/interior-fit-out1.jpg", "/services-slides/interior-fit-out2.jpg", "/services-slides/interior-fit-out3.jpg", "/services-slides/interior-fit-out4.jpg"],
-      captions: ["Wadrobes", "Furnishings", "Wall Designs", "Custom Interiors"]
     },
     {
-      title: "Stainless Steel Gratings",
       images: ["/services-slides/ss-grating1.jpg", "/services-slides/ss-grating2.jpg", "/services-slides/ss-grating3.jpg", "/services-slides/ss-grating4.jpg"],
-      captions: ["Welded Grating", "Press-Locked Grating", "Swage-Locked Grating", "Riveted Grating"]
     }
   ];
 
@@ -93,27 +79,24 @@ const HomePage = () => {
       </Helmet>
       <SlideShow images={slides}/>
       <div className="hero-overlay">
-          <h1 tabIndex={0}>Building the Future with Steel Innovation</h1>
-          <p tabIndex={0}>Your Trusted Partner in Fabrication, Design &amp; Installation</p>
+          <h1 tabIndex={0}>{t("homePage.hero.title")}</h1>
+          <p tabIndex={0}>{t("homePage.hero.subtitle")}</p>
       </div>
       <section className="about-us">
-        <h2 tabIndex={0}>About Us</h2>
-        <p tabIndex={0}>We are Qatar&apos;s leading provider of steel solutions, operating across multiple countries in selected markets headquarted in Qatar.</p>
-        <p tabIndex={0}>We are an inclusive and responsible business that is helping to build for a better society.</p>
+        <h2 tabIndex={0}>{t("homePage.aboutUs.title")}</h2>
+        <p tabIndex={0}>{t("homePage.aboutUs.para1")}</p>
+        <p tabIndex={0}>{t("homePage.aboutUs.para2")}</p>
       </section>
       <section className="services">
-        <h2 tabIndex={0}>Our Services</h2>
-        <p tabIndex={0}>
-          Our team includes experts in Fabrication &amp; Installation of SS products like:<br />
-          Handrail Balustrade, Water feature, Kitchen SS Table, SS Grating with modern machinary &amp; modern technology.
-        </p>
+        <h2 tabIndex={0}>{t("homePage.services.title")}</h2>
+        <p tabIndex={0}>{t("homePage.services.description")}</p>
         <div className="cards">
           {services.map((service, index) => (
             <InfoCard 
               key={index}
-              title={service.title}
+              title={t(`homePage.services.items.${index}.title`)}
               images={service.images}
-              description={service.captions}
+              description={t(`homePage.services.items.${index}.captions`, { returnObjects: true })}
               onClick={() => navigate("/products")}
               class_name="homepage"
             />
@@ -121,61 +104,22 @@ const HomePage = () => {
         </div>
       </section>
       <section className="values">
-        <h2 tabIndex={0}>Our Values</h2>
-        <div className="value-boxes">
-          <div className="value-box">
+        <h2 tabIndex={0}>{t("homePage.values.title")}</h2>
+        {t("homePage.values.items", { returnObjects: true }).map((value, index) => (
+          <div className="value-box" key={index}>
             <div className="value-img">
-              <img tabIndex={0} src="/customer-commitment.jpg" alt="customer commitment" />
+              <img tabIndex={0} src={`/value_img_${index + 1}.jpg`} alt={value.title} />
             </div>
             <div className="value-content">
-              <h3 tabIndex={0}>Customer Commitment</h3>
+              <h3 tabIndex={0}>{value.title}</h3>
               <ul>
-                <li tabIndex={0}>We help you, our customers, to be successful in your business</li>
-                <li tabIndex={0}>We strive to understand your needs and your customers&apos; needs</li>
-                <li tabIndex={0}>We are here to help our customers turn their visions into reality</li>
+                {value.points.map((point, i) => (
+                  <li tabIndex={0} key={i}>{point}</li>
+                ))}
               </ul>
             </div>
           </div>
-          <div className="value-box">
-            <div className="value-img">
-              <img tabIndex={0} src="/ethics.jpg" alt="company ethics" />
-            </div>
-            <div className="value-content">
-              <h3 tabIndex={0}>Ethical and Transparent</h3>
-              <ul>
-                <li tabIndex={0}>Our business ethos is to maintain a high degree of integrity and transparency</li>
-                <li tabIndex={0}>We never accept shortcuts</li>
-                <li tabIndex={0}>Everyone can speak their mind</li>
-              </ul>
-            </div>
-          </div>
-          <div className="value-box">
-            <div className="value-img">
-              <img tabIndex={0} src="/care-for-life.jpg" alt="care for life" />
-            </div>
-            <div className="value-content">
-              <h3 tabIndex={0}>Care for Life</h3>
-              <ul>
-                <li tabIndex={0}>We work safely, or not at all</li>
-                <li tabIndex={0}>We never walk on by if unsafe practices are being observed</li>
-                <li tabIndex={0}>We support health and well being</li>
-              </ul>
-            </div>
-          </div>
-          <div className="value-box">
-            <div className="value-img">
-              <img tabIndex={0} src="/be-better.jpg" alt="be better" />
-            </div>
-            <div className="value-content">
-              <h3 tabIndex={0}>Be Better</h3>
-              <ul>
-                <li tabIndex={0}>We always strive to better ourselves</li>
-                <li tabIndex={0}>We take pride in quality and innovation</li>
-                <li tabIndex={0}>We leverage diversity to deliver the optimal solutions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        ))}
       </section>
     </div>
   )

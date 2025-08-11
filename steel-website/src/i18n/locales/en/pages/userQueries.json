@@ -1,0 +1,24 @@
+{
+  "status": {
+    "pending": "Pending",
+    "resolved": "Resolved"
+  },
+  "labels": {
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "status": "Status"
+  },
+  "buttons": {
+    "updateStatus": "Update Status",
+    "delete": "Delete"
+  },
+  "messages": {
+    "loading": "Loading...",
+    "noQueries": "No queries found.",
+    "errorFetching": "Error fetching queries",
+    "queryDeleted": "Query deleted successfully",
+    "statusUpdated": "Query status updated"
+  }
+}

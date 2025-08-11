@@ -6,6 +6,7 @@ import "react-phone-number-input/style.css";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet-async";
 import { submitContactForm } from "../../api";
+import { useTranslation } from "react-i18next";
 
 const ContactPage = () => {
 
@@ -16,23 +17,25 @@ const ContactPage = () => {
     message: "",
   });
 
+  const {t} = useTranslation("pages");
+
   const validateform = () => {
     if(!formData.name.trim()){
-      toast.error("Name is required");
+      toast.error(t("contactPage.formSection.fields.name.error.required"));
       return false
     } else if (formData.name.length > 50){
-      toast.error("Name is too long");
+      toast.error(t("contactPage.formSection.fields.name.error.length"));
       return false;
     } else if (!/^[a-zA-Z\s.'-]+$/.test(formData.name)){
-      toast.error("Name can only contain letters, spaces, apostrophes, periods, and hyphens")
+      toast.error(t("contactPage.formSection.fields.name.error.format"))
       return false
     }
 
     if (!formData.email.trim()){
-      toast.error("Email is required.")
+      toast.error(t("contactPage.formSection.fields.email.error.required"))
       return false;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      toast.error("Invalid email address");
+      toast.error(t("contactPage.formSection.fields.email.error.format"));
       return false;
     }
 
@@ -41,16 +44,16 @@ const ContactPage = () => {
       const cleanedPhone = formData.phone.replace(/[^\d]/g, "");
   
       if(!/^\d{6,15}$/.test(cleanedPhone)){
-        toast.error("Invalid phone number");
+        toast.error(t("contactPage.formSection.fields.phone.error.format"));
         return false;
       }
     }
     
     if(!formData.message.trim()){
-      toast.error("Message is required.");
+      toast.error(t("contactPage.formSection.fields.message.error.required"));
       return false;
     } else if (formData.message.length > 500){
-      toast.error("Message is too long. Please limit the content to 500 characters.");
+      toast.error(t("contactPage.formSection.fields.email.error.length"));
     }
 
     return true;
@@ -71,11 +74,12 @@ const ContactPage = () => {
 
     try {
       const response = await submitContactForm(formData);
-      toast.success(response.data.message)
+      console.log(response.data.message)
+      toast.success(t("contactPage.formSection.toast.success"))
       setFormData({name: "", email: "", phone: "", message: ""});
     } catch (error) {
       console.error("Failed to sumbit form", error)
-      toast.error("Something went wrong! Please use the email link in the footer to reach us directly.")
+      toast.error(t("contactPage.formSection.toast.error"))
     }
   }
   
@@ -88,42 +92,42 @@ const ContactPage = () => {
         <meta name="author" content="Future Structures" />
         <link rel="canonical" href="https://www.futurestructures.com/contact" />
       </Helmet>
-      <HeroSection title="Contact Us" subTitle="Reach Out to Build, Innovate, and Transform Together."/>
+      <HeroSection title={t("contactPage.hero.title")} subTitle={t("contactPage.hero.subtitle")}/>
       <section className="contact-form-section">
-        <h3 tabIndex={0}>Send Us a Message</h3>
+        <h3 tabIndex={0}>{t("contactPage.formSection.heading")}</h3>
         <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-item">
-            <label htmlFor="name">Name: <span style={{color: "var(--burgundy", fontSize: "1.2em"}}>*</span></label>
+            <label htmlFor="name">{t("contactPage.formSection.fields.name.label")} <span style={{color: "var(--burgundy", fontSize: "1.2em"}}>*</span></label>
             <input 
               type="text" id="name" name="name"
-              value={formData.name} placeholder="Enter your name"
+              value={formData.name} placeholder={t("contactPage.formSection.fields.name.placeholder")}
               onChange={handleChange} required
             />
           </div>
           <div className="form-item">
-            <label htmlFor="email">Email Address: <span style={{color: "var(--burgundy", fontSize: "1.2em"}}>*</span></label>
+            <label htmlFor="email">{t("contactPage.formSection.fields.email.label")} <span style={{color: "var(--burgundy", fontSize: "1.2em"}}>*</span></label>
             <input 
-              type="email" id="email" name="email" placeholder="Enter your email address"
+              type="email" id="email" name="email" placeholder={t("contactPage.formSection.fields.email.placeholder")}
               value={formData.email} onChange={handleChange} required />
           </div>
           <div className="form-item">
-            <label htmlFor="phone">Phone Number:</label>
+            <label htmlFor="phone">{t("contactPage.formSection.fields.phone.label")}</label>
             <PhoneInput 
                id="phone" name="phone"
-               placeholder="Enter phone number"
+               placeholder={t("contactPage.formSection.fields.phone.placeholder")}
                value={formData.phone} defaultCountry="SA"
                onChange={(value) => setFormData({...formData, phone: value || ""})}
             />
           </div>
           <div className="form-item">
-            <label htmlFor="message">Message: <span style={{color: "var(--burgundy", fontSize: "1.2em"}}>*</span></label>
+            <label htmlFor="message">{t("contactPage.formSection.fields.message.label")} <span style={{color: "var(--burgundy", fontSize: "1.2em"}}>*</span></label>
             <textarea 
               id="message" name="message" value={formData.message} 
               onChange={handleChange} rows="5" required
-              placeholder="Type a Message and we will get back to you..." 
+              placeholder={t("contactPage.formSection.fields.message.placeholder")} 
             ></textarea>
           </div>
-          <button type="submit" className="submit-button">Submit</button>
+          <button type="submit" className="submit-button">{t("contactPage.formSection.submit")}</button>
         </form>
       </section>
     </div>

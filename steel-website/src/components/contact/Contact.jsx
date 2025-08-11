@@ -1,17 +1,19 @@
 import { Link } from "react-router-dom"
 import "./contact.css"
+import { useTranslation } from "react-i18next"
 
 const Contact = () => {
+  const {t} = useTranslation("components")
+
   return (
     <section className="contact-section">
-        <h2 tabIndex={0}>Let&apos;s Work Together</h2>
+        <h2 tabIndex={0}>{t("contact.section.heading")}</h2>
         <p tabIndex={0}>
-          If you&apos;re looking for exceptional craftsmanship, innovative designs, and reliable service, look no further. Contact us today to discuss your project and explore how we can bring your vision to life.
-          Whether it&apos;s a small custom piece or a large industrial project, our team is ready to turn your ideas into reality.
+          {t("contact.section.paragraph")}
         </p>
         <Link to="/contact">
           <button className="contact-button">
-            Contact Us
+            {t("contact.section.button")}
           </button>
         </Link>
       </section>

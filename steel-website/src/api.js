@@ -55,7 +55,7 @@ api.interceptors.response.use(
 
 // API Functions
 // get all products
-export const fetchProducts = () => api.get('/products');
+export const fetchProducts = (lang) => api.get(`/products?lang=${lang}`);
 
 // get single product
 export const fetchProduct = (id) => api.get(`/products/${id}`);

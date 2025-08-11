@@ -7,15 +7,21 @@ import { parsePhoneNumber } from "libphonenumber-js/min"
 
 const UserQueries = () => {
     const [queries, setQueries] = useState([])
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState("");
 
     useEffect(() => {
         const fetchQueries = async() => {
+            setError("");
+            setLoading(true);
             try {
                 const response = await fetchUserQueries();
                 setQueries(response.data)
             } catch (error) {
                 console.error("Error fetching queries: ", error)
                 toast.error(error.response.data.message)
+            } finally {
+                setLoading(false)
             }
         }
 
@@ -58,7 +64,9 @@ const UserQueries = () => {
     
   return (
     <div className="userQueries">
-        {queries.length>0 ? (queries.map((query) => (
+        {loading && <p>Loading...</p>}
+        {error && <p tabIndex={0}>{error}</p>}
+        {!loading && !error && queries.length>0 ? (queries.map((query) => (
             <div key={query._id} className="queryCard">
                 <div className="queryCardContent">
                     <p><strong>Name:</strong>{query.name}</p>
