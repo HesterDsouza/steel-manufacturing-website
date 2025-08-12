@@ -80,6 +80,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyright">
+        <p><Link to="/privacy-policy">Privacy Policy</Link></p>
         <p tabIndex={0}>{t("footer.copyright.text")} <Link to="/"> {t("footer.copyright.link")}</Link></p>
       </div>
     </footer>

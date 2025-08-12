@@ -18,6 +18,7 @@ import TechnologyPage from './pages/technologyPage/TechnologyPage.jsx';
 import CreateAdmin from './pages/admin/CreateAdmin.jsx';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n/i18n.js';
+import PrivacyPolicy from './components/privacyPolicy/PrivacyPolicy.jsx';
 
 const adminLoader = () => {
   const token = localStorage.getItem('token');
@@ -36,6 +37,7 @@ const router = createBrowserRouter([
       { path: '/services', element: <ServicePage /> },
       { path: '/contact', element: <ContactPage /> },
       { path: '/search-results', element: <SearchResultsPage /> },
+      { path: '/privacy-policy', element: <PrivacyPolicy />}
     ]
   },
   {

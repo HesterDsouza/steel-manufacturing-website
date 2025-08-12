@@ -8,6 +8,7 @@ import footer_en from "./locales/en/components/footer.json";
 import contact_en from "./locales/en/components/contact.json";
 import detailsCard_en from "./locales/en/components/detailsCard.json";
 import slideshow_en from "./locales/en/components/slideshow.json";
+import privacyPolicy_en from "./locales/en/components/privacyPolicy.json"
 
 // EN - Layouts
 import rootLayout_en from "./locales/en/layouts/rootLayout.json";
@@ -33,6 +34,7 @@ import footer_ar from "./locales/ar/components/footer.json";
 import contact_ar from "./locales/ar/components/contact.json";
 import detailsCard_ar from "./locales/ar/components/detailsCard.json";
 import slideshow_ar from "./locales/ar/components/slideshow.json";
+import privacyPolicy_ar from "./locales/ar/components/privacyPolicy.json"
 
 // AR - Layouts
 import rootLayout_ar from "./locales/ar/layouts/rootLayout.json";
@@ -64,6 +66,7 @@ i18n
           contact: contact_en,
           detailsCard: detailsCard_en,
           slideshow: slideshow_en,
+          privacyPolicy: privacyPolicy_en,
         },
         layouts: {
           rootLayout: rootLayout_en,
@@ -91,6 +94,7 @@ i18n
           contact: contact_ar,
           detailsCard: detailsCard_ar,
           slideshow: slideshow_ar,
+          privacyPolicy: privacyPolicy_ar,
         },
         layouts: {
           rootLayout: rootLayout_ar,

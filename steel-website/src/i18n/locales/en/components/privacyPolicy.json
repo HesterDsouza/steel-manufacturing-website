@@ -1,0 +1,44 @@
+{
+  "title": "Privacy Policy - Abstract Future Structures",
+  "metaDescription": "Privacy policy for Abstract Future Structures explaining how we handle your personal data submitted through our contact form.",
+
+  "heading": "Privacy Policy",
+  "intro": "At Abstract Future Structures, we respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard the information you provide to us.",
+
+  "section1.title": "1. Information We Collect",
+  "section1.text1": "When you use our Contact page, we may collect the following details:",
+  "section1.list": ["Name", "Phone number", "Email address"],
+  "section1.text2": "We do not collect any other personal data through this website.",
+
+  "section2.title": "2. How We Use Your Information",
+  "section2.text1": "The information you provide is used solely for:",
+  "section2.list": [
+    "Responding to your inquiries.",
+    "Communicating with you about our services.",
+    "Providing quotes or additional information you request."
+  ],
+  "section2.text2": "We do not sell, rent, or trade your personal data with third parties.",
+
+  "section3.title": "3. Data Storage & Security",
+  "section3.text": "We take reasonable measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, please note that no method of transmission over the Internet is 100% secure.",
+
+  "section4.title": "4. Sharing of Information",
+  "section4.text": "We will only share your personal information:",
+  "section4.list": [
+    "If required by law.",
+    "To comply with legal processes.",
+    "To protect our rights or property."
+  ],
+
+  "section5.title": "5. Your Rights",
+  "section5.text1": "You have the right to:",
+  "section5.list": [
+    "Request access to the personal information we hold about you.",
+    "Ask for corrections if your information is inaccurate.",
+    "Request deletion of your information."
+  ],
+  "section5.text2": "To exercise these rights, please contact us at any of the phone numbers or email address mentioned in the bottom of the page.",
+
+  "section6.title": "6. Changes to This Privacy Policy",
+  "section6.text": "We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated “Effective Date.”"
+}
