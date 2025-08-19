@@ -2,7 +2,8 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 
-const api = axios.create({ baseURL: import.meta.env.VITE_BACKEND_API_URL});
+// const api = axios.create({ baseURL: import.meta.env.VITE_BACKEND_API_URL});
+const api = axios.create({ baseURL: import.meta.env.VITE_REACT_APP_API_URL});
 
 let sessionTimeOut = null;
 
@@ -54,6 +55,8 @@ api.interceptors.response.use(
 )
 
 // API Functions
+
+// Products
 // get all products
 export const fetchProducts = (lang) => api.get(`/products?lang=${lang}`);
 
@@ -90,6 +93,7 @@ export const uploadImages = async( files ) => {
     }
 }
 
+// Queries
 // sumbit query via form
 export const submitContactForm = (formData) => api.post('/contact', formData);
 
@@ -104,3 +108,13 @@ export const updateQueryStatus = (id, status) => api.put(`/contact/${id}`, {stat
 
 // delete query
 export const deleteQuery = (id) => api.delete(`/contact/${id}`);
+
+// Admin
+// login
+export const adminLogin = (email, password) => api.post("/admin/login", {email, password})
+
+// create-admin
+export const createAdmin = (email, password) => api.post("/admin/create-admin", {email, password})
+
+// refresh-token
+export const refreshAdminToken = () => api.post("/admin/refresh-token")

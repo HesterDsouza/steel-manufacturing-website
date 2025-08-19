@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import "./adminLogin.css"
 import { useState } from "react";
-import axios from "axios";
 import { toast } from "react-toastify";
+import { adminLogin } from "../../api";
 
 const AdminLogin = () => {
     const [email, setEmail] = useState("");
@@ -13,7 +13,7 @@ const AdminLogin = () => {
         e.preventDefault();
 
         try {
-            const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/admin/login`, { email, password });
+            const {data} = await adminLogin(email, password);
             localStorage.setItem('token', data.token);
             navigate('/admin/dashboard');
         } catch (error) {

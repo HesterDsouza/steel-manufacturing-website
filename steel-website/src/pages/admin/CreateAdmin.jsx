@@ -1,7 +1,7 @@
 import { useState } from "react";
-import axios from "axios";
 import "./createAdmin.css";
 import { toast } from "react-toastify";
+import { createAdmin } from "../../api";
 
 const CreateAdmin = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +22,7 @@ const CreateAdmin = () => {
     }
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/admin/create-admin`, { email, password });
+      const response = await createAdmin(email, password);
       toast.success(response.data.message);
       setEmail("");
       setPassword("");
