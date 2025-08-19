@@ -7,7 +7,7 @@ import navbar_en from "./locales/en/components/navbar.json";
 import footer_en from "./locales/en/components/footer.json";
 import contact_en from "./locales/en/components/contact.json";
 import detailsCard_en from "./locales/en/components/detailsCard.json";
-import slideshow_en from "./locales/en/components/slideshow.json";
+import slideshow_en from "./locales/en/components/slideShow.json";
 import privacyPolicy_en from "./locales/en/components/privacyPolicy.json"
 
 // EN - Layouts
@@ -33,7 +33,7 @@ import navbar_ar from "./locales/ar/components/navbar.json";
 import footer_ar from "./locales/ar/components/footer.json";
 import contact_ar from "./locales/ar/components/contact.json";
 import detailsCard_ar from "./locales/ar/components/detailsCard.json";
-import slideshow_ar from "./locales/ar/components/slideshow.json";
+import slideshow_ar from "./locales/ar/components/slideShow.json";
 import privacyPolicy_ar from "./locales/ar/components/privacyPolicy.json"
 
 // AR - Layouts
