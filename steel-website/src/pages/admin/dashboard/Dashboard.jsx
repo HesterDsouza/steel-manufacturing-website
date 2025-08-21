@@ -204,7 +204,7 @@ const Dashboard = () => {
           className="addProductBtn">
           Add Product
       </Button>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} className="tableContainer">
         <Table>
           <TableHead>
               <TableRow>
@@ -322,7 +322,7 @@ const Dashboard = () => {
         </DialogActions>
       </Dialog>
       <Dialog className="confirm-delete-dialog" open={confirmDialog} onClose={closeConfirmDialog}>
-        <DialogTitle className="confirm-delete-dialog-title">Are you sure you wan to delete the &apos;{productToDelete?.title}&apos; product?</DialogTitle>
+        <DialogTitle className="confirm-delete-dialog-title">Are you sure you want to delete the &apos;{productToDelete?.title?.en}&apos; product?</DialogTitle>
         <DialogActions className="confirm-delete-dialog-actions">
           <Button className="confirm-delete-dialog-btn" variant="contained" onClick={closeConfirmDialog}>
               Cancel

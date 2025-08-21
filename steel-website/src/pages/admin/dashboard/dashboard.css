@@ -31,7 +31,7 @@
             table-layout: fixed;
             width: 100%;
             
-            .MuiTableHead-root.css-1a7iywq-MuiTableHead-root .MuiTableRow-root .MuiTableCell-root{    
+            .MuiTableHead-root .MuiTableRow-root .MuiTableCell-root{    
                 font-family: "Montserrat", sans-serif;
                 color: var(--text-primary);
                 font-size: 1.4rem;
@@ -43,7 +43,7 @@
                 padding: 20px 0;
             }
             
-            .MuiTableBody-root.css-gmh7jj-MuiTableBody-root .MuiTableRow-root{
+            .MuiTableBody-root .MuiTableRow-root{
                 .MuiTableCell-root{
                     font-family: "Montserrat", sans-serif;
                     color: var(--text-primary);
@@ -84,11 +84,11 @@
         }
 
         .MuiPaper-root .MuiTable-root {
-            .MuiTableHead-root.css-1a7iywq-MuiTableHead-root .MuiTableRow-root .MuiTableCell-root{
+            .MuiTableHead-root .MuiTableRow-root .MuiTableCell-root{
                 font-size: 1.3rem;
             }
 
-            .MuiTableBody-root.css-gmh7jj-MuiTableBody-root .MuiTableRow-root{
+            .MuiTableBody-root .MuiTableRow-root{
                 .MuiTableCell-root{
                     font-size: 1.1rem;
                 }
@@ -108,7 +108,7 @@
     }
 }
 
-.custom-dialog .MuiDialog-container.MuiDialog-scrollPaper.css-19do60a-MuiDialog-container .css-10d30g3-MuiPaper-root-MuiDialog-paper{
+.custom-dialog .MuiDialog-paper{
     background-color: var(--bg-highlight);
     max-width: 600px;
     width: 100%;
@@ -244,7 +244,7 @@
     }
 }
 
-.confirm-delete-dialog .MuiDialog-container.MuiDialog-scrollPaper.css-19do60a-MuiDialog-container .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation24.MuiDialog-paper.MuiDialog-paperScrollPaper.MuiDialog-paperWidthSm.css-10d30g3-MuiPaper-root-MuiDialog-paper{
+.confirm-delete-dialog .MuiDialog-paper{
     background-color: var(--bg-highlight);
     padding: 5px;
     
